@@ -1,0 +1,2 @@
+class Rideshare < ApplicationRecord
+end
