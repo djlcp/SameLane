@@ -13,13 +13,13 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV['RAILS_MAX_THREADS'] { 5 } %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  username: <%= ENV['DB_USERNAME'] || 'root' %>
+  password: <%= ENV['DB_PASSWORD'] || 'Developer!' %>
   host: db
 
 development:
   <<: *default
-  database: <%= ENV['DEV_DB_NAME'] || app_development %>
+  database: <%= ENV['DEV_DB_NAME'] || 'dj_recruit' %>
 
 # Warning: The database defined as 'test' will be erased and
 # re-generated from your development database when you run 'rake'.
