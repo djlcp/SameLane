@@ -30,3 +30,7 @@
 yarn-debug.log*
 .yarn-integrity
 .env
+
+.idea/
+
+db/development.sqlite3

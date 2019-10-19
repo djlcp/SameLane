@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_10_12_150343) do
 
-  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.integer "user_id"
     t.integer "rideshare_id"
     t.text "text"
@@ -20,14 +20,14 @@ ActiveRecord::Schema.define(version: 2019_10_12_150343) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "passengers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "passengers", force: :cascade do |t|
     t.integer "user_id"
     t.integer "rideshare_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "places", force: :cascade do |t|
     t.string "address"
     t.string "parish"
     t.float "lat"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_10_12_150343) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "rideshares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "rideshares", force: :cascade do |t|
     t.integer "user_id"
     t.integer "from_id"
     t.integer "to_id"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_10_12_150343) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
