@@ -10,21 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_16_153544) do
+ActiveRecord::Schema.define(version: 2019_10_22_183711) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "rideshare_id"
+    t.bigint "user_id"
+    t.bigint "rideshare_id"
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["rideshare_id"], name: "fk_rails_a499cb2721"
+    t.index ["user_id"], name: "fk_rails_273a25a7a6"
   end
 
   create_table "passengers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "rideshare_id"
+    t.bigint "user_id"
+    t.bigint "rideshare_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["rideshare_id"], name: "fk_rails_e710398495"
+    t.index ["user_id"], name: "fk_rails_e53b659d9d"
   end
 
   create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -37,9 +41,9 @@ ActiveRecord::Schema.define(version: 2019_10_16_153544) do
   end
 
   create_table "rideshares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "from_id"
-    t.integer "to_id"
+    t.bigint "user_id"
+    t.bigint "from_id"
+    t.bigint "to_id"
     t.integer "days"
     t.datetime "start_date"
     t.datetime "end_date"
@@ -48,6 +52,9 @@ ActiveRecord::Schema.define(version: 2019_10_16_153544) do
     t.integer "seat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["from_id"], name: "fk_rails_e4eeea412b"
+    t.index ["to_id"], name: "fk_rails_1f0681e884"
+    t.index ["user_id"], name: "fk_rails_58d169bbec"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -74,4 +81,11 @@ ActiveRecord::Schema.define(version: 2019_10_16_153544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "messages", "rideshares"
+  add_foreign_key "messages", "users"
+  add_foreign_key "passengers", "rideshares"
+  add_foreign_key "passengers", "users"
+  add_foreign_key "rideshares", "places", column: "from_id"
+  add_foreign_key "rideshares", "places", column: "to_id"
+  add_foreign_key "rideshares", "users"
 end
