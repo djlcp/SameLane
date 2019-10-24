@@ -11,6 +11,8 @@ gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'rails', '~> 6.0.0'
 # Use mysql as the database for Active Record
 if Gem.win_platform?
+  gem 'dotenv-rails'
+  gem 'wdm', '>= 0.1.0'
   gem 'pg'
 else
   gem 'mysql2', '>= 0.4.4'
@@ -47,8 +49,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'dotenv-rails'
-  gem 'wdm', '>= 0.1.0' if Gem.win_platform?
   gem "better_errors"
   gem "binding_of_caller"
 end

@@ -13,14 +13,13 @@ services:
     web:
         build: .
         container_name: same_lane_web
-        entrypoint: ["sh", "-c", "sleep infinity"]
-#        command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+        command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
         env_file:
             - .env
         tty: true
         stdin_open: true
         volumes:
-            - //d_drive:/app
+            - .:/app
         ports:
             - "3000:3000"
         depends_on:
@@ -32,6 +31,6 @@ services:
             - .env
         command: ./bin/webpack-dev-server
         volumes:
-            - //d_drive:/app
+            - .:/app
         ports:
             - "3035:3035"
