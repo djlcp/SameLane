@@ -1,0 +1,29 @@
+
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Days: </th>
+      <th scope="col">Starts at: </th>
+      <th scope="col">Ends at: </th>
+      <th scope="col">Departure: </th>
+      <th scope="col">Arrival: </th>
+      <th scope="col">Seats: </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rideshares.each do |ride| %>
+      <tr>
+        <td><%= ride.days %></td>
+        <td><%= ride.start_date.strftime('%B %d, %Y') %></td>
+        <td><%= ride.end_date.strftime('%B %d, %Y') %></td>
+        <td><%= ride.dep_at.strftime("%B %e, %Y at %I:%M %p")%></td>
+        <td><%= ride.arr_at.strftime("%B %e, %Y at %I:%M %p") %></td>
+        <td><%= ride.seat %></td>
+      </tr>
+      
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Ride', new_rideshare_path %>
+</div>

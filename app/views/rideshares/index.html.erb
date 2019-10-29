@@ -1,0 +1,41 @@
+<h3 id="notice">Rides</h3>
+<div>
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name: </th>
+      <th scope="col">From: </th>
+      <th scope="col">To: </th>
+      <th scope="col">Days: </th>
+      <th scope="col">Starts at: </th>
+      <th scope="col">Ends at: </th>
+      <th scope="col">Departure: </th>
+      <th scope="col">Arrival: </th>
+      <th scope="col">Seats: </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rideshares.each do |ride| %>
+      <tr>
+      <!-- GO/ Capitalized first name and last name first letter capitalized-->
+        <td><strong><%= ride.user.first_name.capitalize + ' ' + 
+        ride.user.last_name.slice(0).upcase + '.'%></strong></td>
+   
+        <td><%= ride.days %></td>
+        <td><%= ride.start_date.strftime('%B %d, %Y') %></td>
+        <td><%= ride.end_date.strftime('%B %d, %Y') %></td>
+        <td><%= ride.dep_at.strftime("%B %e, %Y at %I:%M %p")%></td>
+        <td><%= ride.arr_at.strftime("%B %e, %Y at %I:%M %p") %></td>
+        <td><%= ride.seat %></td>
+      </tr>
+
+        <td><%= ride.from.parish %></td>
+         <td><%= ride.from.address %></td>
+       
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Ride', new_rideshare_path %>
+</div>
+

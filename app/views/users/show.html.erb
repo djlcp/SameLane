@@ -1,0 +1,8 @@
+First name: <%= @user.first_name.capitalize%><br /> <!-- GO/ In case they don't capitalize their names -->
+Last name: <%= @user.last_name.capitalize%><br />
+Email: <%= @user.email%><br />
+Phone: <%= @user.phone_number%><br />
+
+
+<%= link_to "Be a passenger", current_user %>
+<%= link_to "Create a ride", new_rideshare_path %>
