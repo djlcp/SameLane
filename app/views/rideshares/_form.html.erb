@@ -1,0 +1,47 @@
+<%= form_with(model: [@place, @rideshare], local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :from_id %>
+    <%= form.collection_select :from_id, Place.all, :id, :parish %>
+  </div>
+
+  <div class="field">
+    <%= form.label :to_id %>
+    <%= form.collection_select :to_id, Place.all, :id, :parish %>
+  </div>
+
+  <div class="field">
+    <%= form.label :days%>
+    <%= form.number_field :days, min: 1, max: 7%>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date%>
+    <%= form.date_field :start_date, min: Date.today %> 
+  </div>
+<!-- GO/Users can't choose a date in the past -->
+  <div class="field">
+    <%= form.label :end_date%>
+    <%= form.date_field :end_date, min: Date.today %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dep_at%>
+    <%= form.time_field :dep_at %>
+  </div>
+
+   <div class="field">
+    <%= form.label :arr_at%>
+    <%= form.time_field :arr_at %>
+  </div>
+<!-- GO/Avoiding unnecessary numbers -->
+   <div class="field">
+    <%= form.label :seat %>
+    <%= form.number_field :seat, min: 1, max: 4 %> 
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  
+<% end %>
