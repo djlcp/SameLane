@@ -12,26 +12,25 @@
 
 ActiveRecord::Schema.define(version: 2019_10_22_183711) do
 
-  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "rideshare_id"
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["rideshare_id"], name: "fk_rails_a499cb2721"
-    t.index ["user_id"], name: "fk_rails_273a25a7a6"
   end
 
-  create_table "passengers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "passengers", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "rideshare_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["rideshare_id"], name: "fk_rails_e710398495"
-    t.index ["user_id"], name: "fk_rails_e53b659d9d"
   end
 
-  create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "places", force: :cascade do |t|
     t.string "address"
     t.string "parish"
     t.float "lat"
@@ -40,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_183711) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "rideshares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "rideshares", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "from_id"
     t.bigint "to_id"
@@ -52,12 +51,9 @@ ActiveRecord::Schema.define(version: 2019_10_22_183711) do
     t.integer "seat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["from_id"], name: "fk_rails_e4eeea412b"
-    t.index ["to_id"], name: "fk_rails_1f0681e884"
-    t.index ["user_id"], name: "fk_rails_58d169bbec"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -80,8 +76,6 @@ ActiveRecord::Schema.define(version: 2019_10_22_183711) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
 
   add_foreign_key "messages", "rideshares"
   add_foreign_key "messages", "users"
