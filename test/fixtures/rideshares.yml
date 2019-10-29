@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  from_id: 1
+  to_id: 1
+  days: 1
+  start_date: 2019-10-12 15:01:29
+  end_date: 2019-10-12 15:01:29
+  dep_at: 2019-10-12 15:01:29
+  arr_at: 2019-10-12 15:01:29
+  seat: 1
+
+two:
+  user_id: 1
+  from_id: 1
+  to_id: 1
+  days: 1
+  start_date: 2019-10-12 15:01:29
+  end_date: 2019-10-12 15:01:29
+  dep_at: 2019-10-12 15:01:29
+  arr_at: 2019-10-12 15:01:29
+  seat: 1

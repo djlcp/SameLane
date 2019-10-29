@@ -1,0 +1,15 @@
+
+
+<h3 id="notice">Places</h3>
+<div>
+
+<% @places.each do |place| %>
+  <p>
+    <div>Parish: <%= place.parish %></div><br />
+    <div>Address: <%= place.address %></div><br />
+    <div>Lat: <%= place.lat %></div><br />
+    <div>Lng: <%= place.lng %></div><br />
+  </p>
+<% end %>
+
+<%= link_to "New place", new_place_path %><br />
