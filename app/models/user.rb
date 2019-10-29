@@ -7,4 +7,10 @@ class User < ApplicationRecord
   has_many :messages 
   has_many :rideshares
   has_many :passengers
+
+  protected
+    def confirmation_required?
+      false
+    end
+    
 end
