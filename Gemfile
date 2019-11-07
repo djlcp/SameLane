@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
+
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.7', '>= 4.7.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -63,3 +64,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+#Admin Dashboard gem
+gem 'rails_admin', '~> 2.0'#, github: 'sferik/rails_admin'
