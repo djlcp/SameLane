@@ -61,9 +61,6 @@ function initMap2() {
     document.getElementById('rideshare_from_attributes_lng').value = newlng;
     document.getElementById('rideshare_to_attributes_lat').value = newlat;
     document.getElementById('rideshare_to_attributes_lng').value = newlng;
-
-    document.getElementById('rideshare_from_attributes_name').value = newlat;
-    document.getElementById('rideshare_to_attributes_name').value = newlng;
   });
 
   // When drag ends, center (pan) the map on the marker position
