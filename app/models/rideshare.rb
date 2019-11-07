@@ -5,4 +5,8 @@ class Rideshare < ApplicationRecord
 
   has_many :messages
   has_many :passengers
+
+  accepts_nested_attributes_for :from
+  accepts_nested_attributes_for :to
+
 end

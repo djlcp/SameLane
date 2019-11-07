@@ -1,3 +1,27 @@
 @import "variables";
 @import "mixin";
 @import '../../../node_modules/bootstrap/scss/bootstrap';
+
+//geolocation styling
+
+#map {
+	width: 600px;
+	height: 400px;
+	border-radius: 16px 16px;
+	border-color: #fff;
+	border-style: solid;
+	box-shadow: 2px 2px 10px #B1B1B1;
+	margin-top: 25px;
+	border-width: 7px;
+}
+
+#map2 {
+	width: 600px;
+	height: 400px;
+	border-radius: 16px 16px;
+	border-color: #fff;
+	border-style: solid;
+	box-shadow: 2px 2px 10px #B1B1B1;
+	margin-top: 25px;
+	border-width: 7px;
+}

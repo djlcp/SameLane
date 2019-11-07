@@ -18,4 +18,7 @@ require("../../../node_modules/bootstrap/dist/js/bootstrap")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import '../stylesheets/application';
+import '../stylesheets/application'
+
+// GO/functions for form map, when creating place
+import '../javascript/map2.js'

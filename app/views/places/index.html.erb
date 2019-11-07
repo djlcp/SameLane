@@ -1,14 +1,13 @@
-
-
 <h3 id="notice">Places</h3>
 <div>
 
 <% @places.each do |place| %>
   <p>
-    <div>Parish: <%= place.parish %></div><br />
-    <div>Address: <%= place.address %></div><br />
+    <div>Location: <%= place.name%></div><br />
     <div>Lat: <%= place.lat %></div><br />
     <div>Lng: <%= place.lng %></div><br />
+    <%= link_to 'Edit', edit_place_path(place) %>
+    <%= link_to 'Delete', place, method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
 <% end %>
 
