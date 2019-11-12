@@ -1,9 +1,13 @@
+<% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'> 
+<% end %>
+
 <h3 id="notice">Ride</h3>
 <% days = Date::ABBR_DAYNAMES %>
 Name: <%= @rideshare.user.first_name.capitalize + ' ' + 
       @rideshare.user.last_name.slice(0).upcase + '.'%><br />
-From: <%= @rideshare.from.name%><br />
-To: <%= @rideshare.to.name%><br />
+From: <span id="from"><%= @rideshare.from.name%></span><br />
+To: <span id="to"><%= @rideshare.to.name%></span><br />
 Days: <%= days[@rideshare.days.to_i]%><br />
 Start Date: <%= @rideshare.start_date.strftime('%B %d, %Y')%><br />
 End Date: <%= @rideshare.end_date.strftime('%B %d, %Y') %><br />
@@ -13,3 +17,18 @@ Seats available: <%= @rideshare.seat%><br />
 
 <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
 <%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to "Rides List", rideshares_path %><br />
+
+<!-- GO/ Add map-->
+
+<div id="map"></div><br /> 
+
+<!-- GO/ We need the info from these elem for the map, but we don't have to see 
+them on the page, hence the hidden class-->
+
+<span id="latFrom" class = "hidden"><%= @rideshare.from.lat %></span><br />
+<span id="lngFrom" class = "hidden"><%= @rideshare.from.lng %></span><br />
+<span id="latTo" class = "hidden" ><%= @rideshare.to.lat %></span><br />
+<span id="lngTo" class = "hidden"><%= @rideshare.to.lng %></span><br />
+
+

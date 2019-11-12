@@ -7,9 +7,6 @@
 <p>Address: <%= @place.name %></p>
 <p>Coordinates: <%= @place.lat %> <%= @place.lng %></p>
 
-<div id="map"><%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@place.lat},#{@place.lng}&markers=#{@place.lat},#{@place.lng}&zoom=15&size=610x400&key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A",
-class: 'img-fluid img-rounded', alt: "#{@place.name} on the map"%></div>
-
 <%= link_to 'Edit', edit_place_path(@place) %>
 <%= link_to 'Delete', @place, method: :delete, data: { confirm: 'Are you sure?' } %>
 

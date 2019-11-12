@@ -2,7 +2,7 @@
 @import "mixin";
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 
-//geolocation styling
+//GO/ geolocation styling
 
 #map {
 	width: 600px;
@@ -24,4 +24,10 @@
 	box-shadow: 2px 2px 10px #B1B1B1;
 	margin-top: 25px;
 	border-width: 7px;
+}
+// GO/ Add a class to form for rideshare and hide the labels for lat, lng.
+// Same for show info.
+
+.hidden {
+	display: none;
 }

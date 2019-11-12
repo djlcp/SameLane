@@ -18,7 +18,7 @@ class RidesharesController < ApplicationController
     if user_signed_in? 
       @rideshare = current_user.rideshares.build(rideshare_params)
       @rideshare.save
-      redirect_to rideshares_path
+      redirect_to @rideshare
     else
       redirect_to new_user_session_path
     end

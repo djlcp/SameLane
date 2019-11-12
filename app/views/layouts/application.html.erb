@@ -7,15 +7,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-
-		<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A&libraries=places' %> 
+		<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A&libraries=places' %>
     <!-- GO/ Without places api -->
     <!-- <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A' %> -->  
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     
-			<%= yield(:head_tags) %> 
+		<%= yield(:head_tags) %> 
   </head>
 
   <body>

@@ -1,149 +1,194 @@
-document.addEventListener("DOMContentLoaded", initMap2);
+document.addEventListener("DOMContentLoaded", map2);
 
-function initMap2() {
-  var lat = document.getElementById('rideshare_from_attributes_lat').value;
-  var lng = document.getElementById('rideshare_from_attributes_lng').value;
-  var lat = document.getElementById('rideshare_to_attributes_lat').value;
-  var lng = document.getElementById('rideshare_to_attributes_lng').value;
-  var name = document.getElementById('rideshare_from_attributes_name').value;
-  var name = document.getElementById('rideshare_to_attributes_name').value;
+function map2() {
 
-  // if not defined create default position
-  if (!lat || !lng) {
-    lat = 49.182;
-    lng = -2.106;
-    document.getElementById('rideshare_from_attributes_lat').value = lat;
-    document.getElementById('rideshare_from_attributes_lng').value = lng;
-    document.getElementById('rideshare_to_attributes_lat').value = lat;
-    document.getElementById('rideshare_to_attributes_lng').value = lng;
+  let latFrom = document.getElementById('rideshare_from_attributes_lat').value;
+  let lngFrom = document.getElementById('rideshare_from_attributes_lng').value;
+  let latTo = document.getElementById('rideshare_to_attributes_lat').value;
+  let lngTo = document.getElementById('rideshare_to_attributes_lng').value;
+
+  // default positions
+
+  if (!latFrom || !lngFrom) {
+    latFrom = 49.182;
+    lngFrom = -2.106;
+    document.getElementById('rideshare_from_attributes_lat').value = latFrom;
+    document.getElementById('rideshare_from_attributes_lng').value = lngFrom;
   }
 
-  var myCoords = new google.maps.LatLng(lat, lng);
-  var mapOptions = {
-    center: myCoords,
-    zoom: 14
+  if (!latTo || !lngTo) {
+    latTo = 49.188;
+    lngTo = -2.092;
+    document.getElementById('rideshare_to_attributes_lat').value = latTo;
+    document.getElementById('rideshare_to_attributes_lng').value = lngTo;
+  }
+
+  //GO/ Grab our coords
+
+  let myCoordsFrom = new google.maps.LatLng(latFrom, lngFrom);
+  let myCoordsTo = new google.maps.LatLng(latTo, lngTo);
+
+  //GO/ Create map
+
+  let mapOptions = {
+    center: myCoordsTo,
+    zoom: 14,
+    // gestureHandling: 'cooperative'
+    gestureHandling: 'greedy'
   };
+  let map = new google.maps.Map(document.getElementById('map2'), mapOptions);
 
-  var map = new google.maps.Map(document.getElementById('map2'), mapOptions);
+  //GO/ Create our markers
 
-  var marker = new google.maps.Marker({
-    position: myCoords,
+  let markerFrom = new google.maps.Marker({
+    position: myCoordsFrom,
     animation: google.maps.Animation.DROP,
+    icon: 'http://maps.google.com/mapfiles/kml/paddle/A.png',
+    map: map,
+    draggable: true
+  });
+
+  let markerTo = new google.maps.Marker({
+    position: myCoordsTo,
+    animation: google.maps.Animation.DROP,
+    icon: 'http://maps.google.com/mapfiles/kml/paddle/B.png',
     map: map,
     draggable: true
   });
 
   // refresh marker position and recenter map on marker
+
+  google.maps.event.addDomListener(window, 'load', refreshMarker);
   function refreshMarker() {
-    var lat = document.getElementById('rideshare_from_attributes_lat').value;
-    var lng = document.getElementById('rideshare_from_attributes_lng').value;
-    var lat = document.getElementById('rideshare_to_attributes_lat').value;
-    var lng = document.getElementById('rideshare_to_attributes_lng').value;
-    var name = document.getElementById('rideshare_from_attributes_name').value;
-    var name = document.getElementById('rideshare_to_attributes_name').value;
-    var myCoords = new google.maps.LatLng(lat, lng);
-    marker.setPosition(myCoords);
-    map.setCenter(marker.getPosition());
+    let latFrom = document.getElementById('rideshare_from_attributes_lat').value;
+    let lngFrom = document.getElementById('rideshare_from_attributes_lng').value;
+    let latTo = document.getElementById('rideshare_to_attributes_lat').value;
+    let lngTo = document.getElementById('rideshare_to_attributes_lng').value;
+
+    // GO/Restrict to Jersey
+
+    let options = {
+      componentRestrictions: { country: 'je' }
+    };
+
+    //GO/ autocomplete
+
+    let findNameFrom = document.getElementById('rideshare_from_attributes_name');
+    let autocompleteFrom = new google.maps.places.Autocomplete(findNameFrom, options);
+    google.maps.event.addListener(autocompleteFrom, 'place_changed', function () {
+      let place = autocompleteFrom.getPlace();
+      findNameFrom.value = place.formatted_address;
+      latFrom = place.geometry.location.lat();
+      lngFrom = place.geometry.location.lng();
+      let myCoordsFrom = new google.maps.LatLng(latFrom, lngFrom);
+      markerFrom.setPosition(myCoordsFrom);
+      map.setCenter(markerFrom.getPosition());
+
+      //GO/ Change the lat, lng when changing the name
+
+      latFrom = (Math.round(latFrom * 1000000)) / 1000000;
+      lngFrom = (Math.round(lngFrom * 1000000)) / 1000000;
+      document.getElementById('rideshare_from_attributes_lat').value = latFrom;
+      document.getElementById('rideshare_from_attributes_lng').value = lngFrom;
+    });
+
+
+    let findNameTo = document.getElementById('rideshare_to_attributes_name');
+    let autocompleteTo = new google.maps.places.Autocomplete(findNameTo, options);
+    google.maps.event.addListener(autocompleteTo, 'place_changed', function () {
+      let place = autocompleteTo.getPlace();
+      findNameTo.value = place.name;
+      latTo = place.geometry.location.lat();
+      lngTo = place.geometry.location.lng();
+      let myCoordsTo = new google.maps.LatLng(latTo, lngTo);
+      markerTo.setPosition(myCoordsTo);
+      map.setCenter(markerTo.getPosition());
+
+      //Change the lat, lng When changing the name
+
+      latTo = (Math.round(latTo * 1000000)) / 1000000;
+      lngTo = (Math.round(lngTo * 1000000)) / 1000000;
+      document.getElementById('rideshare_to_attributes_lat').value = latTo;
+      document.getElementById('rideshare_to_attributes_lng').value = lngTo;
+    });
+
+    let myCoordsFrom = new google.maps.LatLng(latFrom, lngFrom);
+    markerFrom.setPosition(myCoordsFrom);
+    map.setCenter(markerFrom.getPosition());
+
+    let myCoordsTo = new google.maps.LatLng(latTo, lngTo);
+    markerTo.setPosition(myCoordsTo);
+    map.setCenter(markerTo.getPosition());
   }
+
   // when input values change call refreshMarker
+
   document.getElementById('rideshare_from_attributes_lat').onchange = refreshMarker;
   document.getElementById('rideshare_from_attributes_lng').onchange = refreshMarker;
   document.getElementById('rideshare_to_attributes_lat').onchange = refreshMarker;
   document.getElementById('rideshare_to_attributes_lng').onchange = refreshMarker;
 
-
   // when marker is dragged update input values
-  marker.addListener('drag', function () {
-    latlng = marker.getPosition();
-    newlat = (Math.round(latlng.lat() * 1000000)) / 1000000;
-    newlng = (Math.round(latlng.lng() * 1000000)) / 1000000;
-    document.getElementById('rideshare_from_attributes_lat').value = newlat;
-    document.getElementById('rideshare_from_attributes_lng').value = newlng;
-    document.getElementById('rideshare_to_attributes_lat').value = newlat;
-    document.getElementById('rideshare_to_attributes_lng').value = newlng;
+
+  markerFrom.addListener('drag', function () {
+    latlngFrom = markerFrom.getPosition();
+    newlatFrom = (Math.round(latlngFrom.lat() * 1000000)) / 1000000;
+    newlngFrom = (Math.round(latlngFrom.lng() * 1000000)) / 1000000;
+    document.getElementById('rideshare_from_attributes_lat').value = newlatFrom;
+    document.getElementById('rideshare_from_attributes_lng').value = newlngFrom;
   });
 
-  // When drag ends, center (pan) the map on the marker position
-  marker.addListener('dragend', function () {
-    map.panTo(marker.getPosition());
+  markerTo.addListener('drag', function () {
+    latlngTo = markerTo.getPosition();
+    newlatTo = (Math.round(latlngTo.lat() * 1000000)) / 1000000;
+    newlngTo = (Math.round(latlngTo.lng() * 1000000)) / 1000000;
+    document.getElementById('rideshare_to_attributes_lat').value = newlatTo;
+    document.getElementById('rideshare_to_attributes_lng').value = newlngTo;
+  });
+
+  // when marker is dragged update input values
+
+  markerFrom.addListener('drag', function () {
+    position = geocodePosition(markerFrom.getPosition());
+    function geocodePosition(position) {
+      let geocoder = new google.maps.Geocoder();
+      geocoder.geocode({
+        latLng: position
+      }, function (responses) {
+        if (responses && responses.length > 0) {
+          updateAddress(responses[1].formatted_address);
+        }
+      });
+    }
+    function updateAddress(str) {
+      document.getElementById('rideshare_from_attributes_name').value = str;
+    }
+  });
+
+  markerTo.addListener('drag', function () {
+    position = geocodePosition(markerTo.getPosition());
+    function geocodePosition(position) {
+      let geocoder = new google.maps.Geocoder();
+      geocoder.geocode({
+        latLng: position
+      }, function (responses) {
+        if (responses && responses.length > 0) {
+          updateAddress(responses[1].formatted_address);
+        }
+      });
+    }
+    function updateAddress(str) {
+      document.getElementById('rideshare_to_attributes_name').value = str;
+    }
+  });
+
+  // When drag ends, center(pan) the map on the marker position
+
+  markerFrom.addListener('dragend', function () {
+    map.panTo(markerFrom.getPosition());
+  });
+  markerTo.addListener('dragend', function () {
+    map.panTo(markerTo.getPosition());
   });
 
 }
-
-
-// function initMap() {
-
-//   var lat = document.getElementById('rideshare_from_attributes_lat').value;
-//   var lng = document.getElementById('rideshare_from_attributes_lng').value;
-//   var lat = document.getElementById('rideshare_to_attributes_lat').value;
-//   var lng = document.getElementById('rideshare_to_attributes_lng').value;
-
-//   geocoder = new google.maps.Geocoder();
-
-
-
-//   var latlng = new google.maps.LatLng(lat, lng);
-//   var mapOptions = {
-//     zoom: 8,
-//     center: latlng,
-//     mapTypeId: google.maps.MapTypeId.ROADMAP
-//   }
-//   map = new google.maps.Map(document.getElementById('map'), mapOptions);
-//   google.maps.event.addListener(map, 'click', function () {
-//     infowindow.close();
-//   });
-// }
-
-// function geocodePosition(pos) {
-//   geocoder.geocode({
-//     latLng: pos
-//   }, function (responses) {
-//     if (responses && responses.length > 0) {
-//       marker.formatted_address = responses[0].formatted_address;
-//     } else {
-//       marker.formatted_address = 'Cannot determine address at this location.';
-//     }
-//     infowindow.setContent(marker.formatted_address + "<br>coordinates: " + marker.getPosition().toUrlValue(6));
-//     infowindow.open(map, marker);
-//   });
-// }
-
-// function codeAddress() {
-//   var address = document.getElementById('rideshare_from_attributes_name').value;
-//   var address = document.getElementById('rideshare_to_attributes_name').value;
-//   geocoder.geocode({
-//     'address': address
-//   }, function (results, status) {
-//     if (status == google.maps.GeocoderStatus.OK) {
-//       map.setCenter(results[0].geometry.location);
-//       if (marker) {
-//         marker.setMap(null);
-//         if (infowindow) infowindow.close();
-//       }
-//       marker = new google.maps.Marker({
-//         map: map,
-//         draggable: true,
-//         position: results[0].geometry.location
-//       });
-//       google.maps.event.addListener(marker, 'dragend', function () {
-//         geocodePosition(marker.getPosition());
-//       });
-//       google.maps.event.addListener(marker, 'click', function () {
-//         if (marker.formatted_address) {
-//           infowindow.setContent(marker.formatted_address + "<br>coordinates: " + marker.getPosition().toUrlValue(6));
-//         } else {
-//           infowindow.setContent(address + "<br>coordinates: " + marker.getPosition().toUrlValue(6));
-//         }
-//         infowindow.open(map, marker);
-//       });
-//       google.maps.event.trigger(marker, 'click');
-//     } else {
-//       alert('Geocode was not successful for the following reason: ' + status);
-//     }
-//   });
-// }
-
-
-
-
-

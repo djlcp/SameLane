@@ -20,5 +20,7 @@ require("../../../node_modules/bootstrap/dist/js/bootstrap")
 
 import '../stylesheets/application'
 
-// GO/functions for form map, when creating place
-import '../javascript/map2.js'
+
+import '../javascript/map'
+import '../javascript/map2'
+

@@ -3,7 +3,6 @@
 <% end %>
 
 <%= form_with(model: rideshare, local: true) do |form| %>
-
   <% if rideshare.errors.any? %>
     <%= rideshare.errors.full_messages %>
   <% end %>
@@ -18,31 +17,33 @@
     </div>
 
     <div class="field">
-      <%= ff.label :lat %>
-      <%= ff.text_field :lat%>
+      <%= ff.label :lat, class: "hidden" %> <!-- GO/ We don't want to see these fields -->
+      <%= ff.hidden_field :lat%>
     </div>
 
     <div class="field">
-      <%= ff.label :lng %>
-      <%= ff.text_field :lng%>
+      <%= ff.label :lng, class: "hidden" %>
+      <%= ff.hidden_field :lng%>
     </div>
   <% end %>
 
   <%= form.fields_for :to, Place.new do |ff| %>
+
     <div class="field">
       <%= ff.label :to %>
       <%= ff.text_field :name %>
     </div>
 
     <div class="field">
-      <%= ff.label :lat %>
-      <%= ff.text_field :lat%>
+      <%= ff.label :lat, class: "hidden" %>
+      <%= ff.hidden_field :lat%>
     </div>
 
     <div class="field">
-      <%= ff.label :lng %>
-      <%= ff.text_field :lng%>
+      <%= ff.label :lng, class: "hidden" %>
+      <%= ff.hidden_field :lng%>
     </div>
+    
   <% end %>
 
 <!-- GO/To be created a way of storing multiple days
@@ -61,7 +62,9 @@
     <%= form.label :start_date%>
     <%= form.date_field :start_date, min: Date.today %> 
   </div>
+
   <!-- GO/Users can't choose a date in the past -->
+
   <div class="field">
     <%= form.label :end_date%>
     <%= form.date_field :end_date, min: Date.today %>
@@ -78,6 +81,7 @@
   </div>
   
   <!-- GO/Avoiding unnecessary numbers -->
+
   <div class="field">
     <%= form.label :seat %>
     <%= form.number_field :seat, min: 1, max: 4 %> 
