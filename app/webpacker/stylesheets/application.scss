@@ -31,3 +31,83 @@
 .hidden {
 	display: none;
 }
+
+// **** KEYS **** 
+$primary-colour: #083f4c;
+$text-color: #525a5a;
+$main-font:'Roboto', sans-serif;;
+
+// **** BODY **** 
+body{
+  font-family: $main-font;
+}
+
+// **** NAVIGRATION BAR ****
+.main-header-bar{
+  height: 70px;
+  background-color: $primary-colour;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.corner-logo{
+  height: 50px;
+  margin-left: 50px;
+}
+.sign-up a{
+  color: white;
+  font-family: $main-font;
+}
+.sign-up{
+  color: white;
+  font-family: $main-font;
+  margin-right: 50px;
+}
+
+// **** DEVISE PAGES ****
+// Title of pages
+h2{
+  margin-left: 20%;
+  font-family: 'Comfortaa', cursive;
+  margin-top: 30px;
+  color: $primary-colour;
+  font-size: 40px;
+}
+// Forms writing area
+input{
+  border-radius: 5px;
+  background-color: #e6e6e7;
+  border: none;
+  width: 300px;
+  margin-bottom: 10px;
+}
+// Submit button of form
+.submit-button{
+  background-color: $primary-colour;
+  color: white;
+  width: auto;
+  margin-left: 30%;
+}
+// Cancel button account
+.delete-button{
+  background-color: #8C0000;
+  color: white;
+  width: auto;
+  margin-left: 10%;
+}
+// Form section devise pages
+.form-section{
+  width: 50%;
+  margin: 5% 20% 0 20%;
+}
+
+
+
+
+.devise-links a{
+ font-family: 'Roboto:300i', sans-serif;
+}
+.alert .alert-danger{
+  margin-top: 300px;
+}
