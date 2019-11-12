@@ -2,84 +2,101 @@
 @import "mixin";
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 
-html, body  {
+html, body {
 	background-color: theme-color("light");
 	margin: 0;
 	padding: 0;
 }
 
-.vertical-center {
-	min-height: 100%;
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-	margin: 0;
-	padding: 0;
-}
-
-.container {
-	height: 100vh;
-	//background-color: #00D200;
-	padding: 0;
-	margin: 0;
-}
-
-.container-small {
-	height: 100vh;
-	padding: 0;
-	width: 50%;
-	margin: auto;
-	//background-color: blue;
-	text-align: center;
-}
-
 //navigation bar
-.nav-container {
-	padding: 0;
-	margin: auto;
+.nav {
+	background-color: theme-color("accent");
+	.logo-img {
+		img {
+			align-self: center;
+			max-height: 40px;
+			max-width: 55px;
+			margin-left: 35px;
+		}
+	}
+	.nav-item {
+		.nav-link {
+			color: theme-color("light");
+			margin: 0;
+			padding: 10px   ;
 
-}
-.msg-notice {
-	display:flex;
-	position: fixed;
-	bottom:0;
-	left: 0;
-	right: 0;
-
-}
-nav {
-	width: 100%;
-	display: flex;
-	padding: 0;
-	margin: 0;
+		}
+	}
 }
 
-ul {
-	display: flex;
+//search bar
+.search-bar {
+
+	-webkit-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.75);
+	padding: 10px;
+	margin-top: 20px;
+
+	input {
+		box-sizing: border-box;
+		height: 100%;
+		width: 100%;
+		color: theme-color("primary");
+		background-color: theme-color("gray");
+		border: none;
+		padding-left: 10px;
+	}
+
+	button {
+		background-color: theme-color("secondary");
+		border: none;
+		color: theme-color("light");
+	}
+}
+//carousel style
+
+.carousel-container {
+	margin-top: 20px;
+
+	.carousel-item {
+
+		.user-picture {
+
+		}
+
+		.user-name  {
+			background-color: theme-color("secondary");
+			color: theme-color("light");
+		}
+
+		.rs-c-d {
+
+		}
+
+		p {
+			margin: 0;
+		}
+
+		.card-info {
+			background-color: theme-color("gray");
+			padding: 10px;
+
+		}
+
+		.join-ride-btn {
+
+				padding: 0;
+			button {
+				color: theme-color("primary");
+				border: none;
+				background-color: theme-color("light");
+				margin: 5px;
+			}
+		}
+	}
+}
+
+.carousel-indicators {
 	background-color: theme-color("secondary");
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: auto;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-i {
-	font-size: 30px;
-	color: theme-color("light");
-	padding: auto;
-	width: auto;
-}
-
-//carousel styleing
-
-
-.card-img-top{
-	padding: 25px;
-}
-.card-block {
-	padding-top: 10px;
 }

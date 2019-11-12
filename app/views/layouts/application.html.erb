@@ -13,28 +13,25 @@
 </head>
 
 <body>
-<div class="container">
-	<section class="container h-100">
-		<%= yield %>
-	</section>
-	<div class="nav-container">
-		<nav class="justify-content-center">
-			<ul class="align-items-center">
-				<li class="col">
-					<a class="nav-link" href="#"><i class="fas fa-home"></i></a>
-				</li>
-				<li class="col">
-					<a class="nav-link" href="#"><i class="fas fa-car"></i></a>
-				</li>
-				<li class="col">
-					<a class="nav-link" href="#" ><i class="fas fa-bell"></i></a>
-				</li>
-				<li class="col">
-					<a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
-				</li>
-			</ul>
-		</nav>
+<div class="nav justify-content-between">
+	<div class="nav logo-img">
+		<%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %>
 	</div>
+	<ul class="nav">
+		<li class="nav-item">
+			<%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
+		</li>
+		<li class="nav-item">
+			<p class="nav-link">||</p>
+		</li>
+		<li class="nav-item">
+			<%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+		</li>
+	</ul>
 </div>
+
+<%= yield %>
+
+
 </body>
 </html>
