@@ -18,5 +18,8 @@ require.context('../images/', true, /.(gif|jpg|png|svg)$/i);
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import '../javascript/map'
+import '../javascript/map2'
 import '../javascript/search';
 import '../stylesheets/application';

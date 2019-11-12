@@ -7,12 +7,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+		<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A&libraries=places' %>
+    <!-- GO/ Without places api -->
+    <!-- <%#= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A' %> -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+		<%= yield(:head_tags) %> 
   </head>
 
   <body>

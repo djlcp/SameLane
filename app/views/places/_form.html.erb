@@ -1,14 +1,8 @@
 <%= form_with(model: @place, local: true) do |f| %>
 
-	
     <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-    </div>
-
-    <div class="field">
-    <%= f.label :parish %>
-    <%= f.text_field :parish %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
     </div>
     
 
@@ -25,43 +19,21 @@
 <!-- <%= f.fields_for :rideshares do |form|%>
 
   <div class="field">
-    <%= form.label :days%>
-    <%= form.number_field :days %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  </div>  
+
+  <div class="field">
+  <%= f.label :lat %>
+  <%= f.text_field :lat %>
   </div>
 
   <div class="field">
-    <%= form.label :start_date%>
-    <%= form.date_field :start_date %>
-  </div>
-
-   <div class="field">
-    <%= form.label :end_date%>
-    <%= form.date_field :end_date %>
-  </div>
-
-    <div class="field">
-    <%= form.label :dep_at%>
-    <%= form.time_field :dep_at %>
-  </div>
-
-   <div class="field">
-    <%= form.label :arr_at%>
-    <%= form.time_field :arr_at %>
-  </div>
-
-   <div class="field">
-    <%= form.label :seat%>
-    <%= form.number_field :seat %>
+  <%= f.label :lng %>
+  <%= f.text_field :lng %>
   </div>
 
   <%end%> -->
 
-	
-	
   <%= f.submit %>
 <% end %>
-
-
-<p>
-<div id="map2"></div>
-</p>

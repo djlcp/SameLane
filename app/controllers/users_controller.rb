@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :destroy, :rideshares]
+  before_action :set_user, only: [:show, :destroy, :rides]
   respond_to :js, :json, :html
   
   def index 
     @users = User.all 
+  end
+
+  def show
   end
 
   def destroy
@@ -12,7 +15,7 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  def rideshares
+  def rides
     @rideshares = @user.rideshares
   end
 
