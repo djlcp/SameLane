@@ -42,7 +42,9 @@ class RidesharesController < ApplicationController
     redirect_to rideshares_path
   end
 
- 
+  def search
+    puts params[:search]
+  end
 
   private
 

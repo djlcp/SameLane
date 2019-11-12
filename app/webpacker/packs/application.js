@@ -10,6 +10,7 @@ require("channels")
 require("../../../node_modules/jquery/dist/jquery")
 require("../../../node_modules/popper.js")
 require("../../../node_modules/bootstrap/dist/js/bootstrap")
+require.context('../images/', true, /.(gif|jpg|png|svg)$/i);
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -18,9 +19,7 @@ require("../../../node_modules/bootstrap/dist/js/bootstrap")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import '../stylesheets/application'
-
-
 import '../javascript/map'
 import '../javascript/map2'
-
+import '../javascript/search';
+import '../stylesheets/application';

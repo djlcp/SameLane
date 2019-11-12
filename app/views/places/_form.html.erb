@@ -1,5 +1,23 @@
 <%= form_with(model: @place, local: true) do |f| %>
 
+    <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+    
+
+    <div class="field">
+    <%= f.label :lat %>
+    <%= f.number_field :lat, id: 'lat' %>
+    </div>
+
+    <div class="field">
+    <%= f.label :lng %>
+    <%= f.number_field :lng, id: 'lng' %>
+    </div>
+
+<!-- <%= f.fields_for :rideshares do |form|%>
+
   <div class="field">
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -14,6 +32,8 @@
   <%= f.label :lng %>
   <%= f.text_field :lng %>
   </div>
-  
+
+  <%end%> -->
+
   <%= f.submit %>
 <% end %>

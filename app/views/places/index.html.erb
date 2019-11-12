@@ -3,7 +3,7 @@
 
 <% @places.each do |place| %>
   <p>
-    <div>Location: <%= place.name%></div><br />
+    <div>Location: <%= place.name %></div><br />
     <div>Lat: <%= place.lat %></div><br />
     <div>Lng: <%= place.lng %></div><br />
     <%= link_to 'Edit', edit_place_path(place) %>

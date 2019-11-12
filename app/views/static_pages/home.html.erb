@@ -1,17 +1,86 @@
-<%= link_to "Users", users_path %><br />
-<%= link_to "Rideshares", rideshares_path %><br />
-<%= link_to "Create a ride", new_rideshare_path %><br />
-<%= link_to "Places", places_path %><br />
+<!--<h5 style="color:orange;">⬇ These links are temporary </h5>-->
+<!--<%#= link_to "Users", users_path %><br />-->
+<!--<%#= link_to "Rideshares", rideshares_path %><br />-->
+<!--<%#= link_to "Create a ride", new_rideshare_path %><br />-->
+<!--<%#= link_to "Create a place", new_place_path %><br />-->
+<!--<%#= link_to "Places", places_path %><br />-->
+<!--<%#= link_to "User's Rideshare", 'users/4/rideshares' %><br />-->
+<!-- <#%= link_to "User Rideshare", user_rideshares_path %> -->
 
-<button type="button" class="btn btn-accent">Primary</button>
 
-<div class="dropdown">
-	<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		Dropdown button
-	</button>
-	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-		<a class="dropdown-item" href="#">Action</a>
-		<a class="dropdown-item" href="#">Another action</a>
-		<a class="dropdown-item" href="#">Something else here</a>
+<!--		Search Bar-->
+<%#= form_tag root_path, method: :get, id: 'search-form' do |form| %>
+<!--	<div class="search-bar container">-->
+<!--		<div class="row justify-content-between">-->
+<!--			<div class="col-3">-->
+<%#= text_field_tag 'search[from]', 'FROM' %>
+<!--			</div>-->
+<!--			<div class="col-3">-->
+<%#= text_field_tag 'search[to]', 'TO' %>
+<!--			</div>-->
+<!--			<div class="col-2">-->
+<%#= text_field_tag 'search[date]', 'DATE' %>
+<!--			</div>-->
+<!--			<div class="col-2">-->
+<%#= text_field_tag 'search[time]', 'TIME' %>
+<!--			</div>-->
+<!--			<div class="col-2">-->
+<!--				<button>Search</button>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<%# end %>
+
+<div class="container">
+	<div class="carousel-container">
+		<div id="carouselExampleIndicators" class="carousel slide vertical-center" data-ride="carousel">
+			<div class="carousel-inner">
+				<% @rideshares.each_with_index do |r, i| %>
+					<div class="carousel-item <%= i == 0 ? "active" : "" %>">
+						<div class="container w-75">
+							<div class="row">
+								<div class="col-2 user-picture">
+									<img class="img-fluid" src="http://i.imgur.com/EW5FgJM.png" alt="Carousel 1">
+								</div>
+								<div class="col-3 user-name align-self-center">
+									<%= r.user.first_name %>
+								</div>
+								<div class="col-4 offset-3 rs-c-d align-self-center ">
+									<p>**Day of Ride**</p>
+								</div>
+							</div>
+							<div class="row card-info text-center justify-content-between">
+								<div class="col">
+									<%= r.dep_at.strftime("%-l:%M%P") %>
+									<%= r.from.name %>
+									<%= r.from.parish %>
+								</div>
+								<div class="col">
+									<p>Travel-time</p>
+									<p>Distance</p>
+								</div>
+								<div class="col">
+									<%= r.arr_at.strftime("%-l:%M%P") %>
+									<%= r.to.name %>
+									<%= r.to.parish %>
+								</div>
+							</div>
+							<div class="row bg-gray">
+								<div class="col-3 offset-9 join-ride-btn align-items-end">
+									<button>Join Ride</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				<%
+					end
+				%>
+			</div>
+		</div>
+		<ol class="carousel-indicators">
+			<% @rideshares.each_with_index do |r, i| %>
+				<li data-target="#carouselExampleIndicators" data-slide-to="<%= i %>" class="<%= i == 0 ? "active" : "" %>"></li>
+			<% end %>
+		</ol>
 	</div>
 </div>
