@@ -15,28 +15,23 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header class="main-header-bar">
-    <div class="#">
-      <a href="../"><%= image_tag("logo-square-white.png", :alt => "Same Way Logo", :class => "corner-logo") %> </a>
-    </div>
-
-    <div class="sign-up">
-      <p>
-        <% if user_signed_in? %>
-          Hi, <strong><%= current_user.first_name %></strong>!<br />
-          <%= link_to 'Edit profile', edit_user_registration_path %> &emsp;||&emsp;
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Register", new_user_registration_path %>  &emsp;||&emsp; 
-          <%= link_to "Sign in", new_user_session_path %>
-        <% end %>
-        </p>
-    </div>
-  </header>
-
-
   <body>
-  
+    <div class="nav justify-content-between">
+      <div class="nav logo-img">
+        <%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %>
+      </div>
+      <ul class="nav">
+        <li class="nav-item">
+          <%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link">||</p>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+        </li>
+      </ul>
+
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
@@ -57,6 +52,5 @@
         </p>
       <% end %>
 
-    <%= yield %>
   </body>
 </html>

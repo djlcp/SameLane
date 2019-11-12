@@ -5,4 +5,8 @@ class Rideshare < ApplicationRecord
 
   has_many :messages
   has_many :passengers
+
+  def self.search(from: nil, to: nil, date: nil, time: nil)
+    Rideshare.where(start_date: date)
+  end
 end

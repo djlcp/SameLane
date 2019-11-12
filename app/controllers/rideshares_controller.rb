@@ -3,7 +3,13 @@ class RidesharesController < ApplicationController
 
   def index
     @rideshares = Rideshare.all
-    # @places = Place.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json do
+        rideshares = Rideshare.all
+        render json: rideshares
+      end
+    end
   end
 
   def show
@@ -30,6 +36,10 @@ class RidesharesController < ApplicationController
   def destroy
     @rideshare.destroy
     redirect_to rideshares_path
+  end
+
+  def search
+    puts params[:search]
   end
 
   private
