@@ -25,37 +25,40 @@
       <div class="nav logo-img">
         <%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %>
       </div>
+        <!-- GO/ We'd have to style these alerts somehow to blend with the other elem -->
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
       <ul class="nav">
+        <% if user_signed_in? %>
+        <!-- > <li class="nav-item">
+          Logged in as <strong><%= current_user.email %></strong>.
+        </li> -->
         <li class="nav-item">
-          <%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
+        <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link' %>
         </li>
+        <li class="nav-item">
+        <p class="nav-link">||</p>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'  %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+        <%= link_to 'Register', new_user_registration_path, class: 'nav-link'  %>
+        </li> 
         <li class="nav-item">
           <p class="nav-link">||</p>
         </li>
         <li class="nav-item">
-          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link'  %>
         </li>
+      <% end %>
       </ul>
-
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
-
-      <% if false %>
-        <p>
-          <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.email %></strong>.
-            <%= link_to 'Edit profile', edit_user_registration_path %> |
-            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to "Sign up", new_user_registration_path %> |
-            <%= link_to "Login", new_user_session_path %>
-          <% end %>
-        </p>
-      <% end %>
-
+    </div>
+    <%= yield %>
   </body>
 </html>
