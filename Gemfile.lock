@@ -92,15 +92,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    dotenv (2.7.5)
-    dotenv-rails (2.7.5)
-      dotenv (= 2.7.5)
-      railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     ffi (1.11.1)
     ffi (1.11.1-x64-mingw32)
     ffi (1.11.1-x86-mingw32)
-    geocoder (1.5.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
@@ -154,7 +149,6 @@ GEM
     nokogiri (1.10.4-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    pg (1.1.4-x64-mingw32)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -263,7 +257,6 @@ GEM
       tzinfo (>= 1.0.0)
     warden (1.2.8)
       rack (>= 2.0.6)
-    wdm (0.1.1)
     web-console (4.0.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -295,11 +288,9 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   capybara (>= 2.15)
   devise (~> 4.7, >= 4.7.1)
-  geocoder (~> 1.5, >= 1.5.2)
-  dotenv-rails
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
-  pg
+  mysql2 (>= 0.4.4)
   pry
   puma (~> 3.11)
   rails (~> 6.0.0)
@@ -310,7 +301,6 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
-  wdm (>= 0.1.0)
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
