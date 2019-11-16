@@ -15,9 +15,40 @@ Start Time: <%= @rideshare.dep_at.strftime("%B %e, %Y at %I:%M %p")%><br />
 End Time: <%= @rideshare.arr_at.strftime("%B %e, %Y at %I:%M %p")%><br />
 Seats available: <%= @rideshare.seat%><br />
 
-<%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
-<%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to "Rides List", rideshares_path %><br />
+
+
+
+<!-- JN/ If admin then he can edit or delete his ride -->
+<p>
+  <% if user_signed_in? %>
+  <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
+  <%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% else %>
+    <%= form_for(@rideshare) do |f| %>
+        <div class="field">
+          <%= f.label :seat %>
+          <%= f.number_field :seat, min: 1, max: 4 %> 
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Join the Ride", :class => "submit-button"  %>
+        </div>
+    <% end %>
+
+  <% end %>
+</p>
+
+
+
+
+<%= link_to "Back", rideshares_path %><br />
+
+<!-- JN/ If user logged in, then he can request to join the ride -->
+
+
+
+
+
 
 <!-- GO/ Add map-->
 
@@ -30,5 +61,3 @@ them on the page, hence the hidden class-->
 <span id="lngFrom" class = "hidden"><%= @rideshare.from.lng %></span><br />
 <span id="latTo" class = "hidden" ><%= @rideshare.to.lat %></span><br />
 <span id="lngTo" class = "hidden"><%= @rideshare.to.lng %></span><br />
-
-
