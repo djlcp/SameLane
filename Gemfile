@@ -66,3 +66,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Admin Dashboard gem
 gem 'rails_admin', '~> 2.0' # , github: 'sferik/rails_admin'
+
+gem 'pundit', '~> 1.1'
+
+gem 'debug_inspector', '~> 0.0.3'
