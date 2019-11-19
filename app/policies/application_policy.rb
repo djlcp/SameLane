@@ -1,8 +1,8 @@
 class ApplicationPolicy
-  attr_reader :user, :record
+  attr_reader :devise, :record
 
-  def initialize(user, record)
-    @user = user
+  def initialize(devise, record)
+    @devise = devise
     @record = record
   end
 
@@ -23,7 +23,6 @@ class ApplicationPolicy
   end
 
   def update?
-    false
   end
 
   def edit?
@@ -35,10 +34,10 @@ class ApplicationPolicy
   end
 
   class Scope
-    attr_reader :user, :scope
+    attr_reader :devise, :scope
 
     def initialize(user, scope)
-      @user = user
+      @devise = devise
       @scope = scope
     end
 
