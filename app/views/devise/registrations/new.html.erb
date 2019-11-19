@@ -16,7 +16,8 @@
 
     <div class="field">
       <%= f.label :phone_number %><br />
-      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+      <%= f.text_field :phone_number, maxlength: 11,
+      autofocus: true, autocomplete: "phone_number" %>
     </div>
 
     <div class="field">
