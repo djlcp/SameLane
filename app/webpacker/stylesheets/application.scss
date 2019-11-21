@@ -188,3 +188,8 @@ input{
 .alert .alert-danger{
   margin-top: 300px;
 }
+
+//GO/A quick fix for edit registration buttons.
+.actions {
+	display: flex;
+}
