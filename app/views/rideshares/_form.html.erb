@@ -1,25 +1,70 @@
-<%= form_with(model: [@place, @rideshare], local: true) do |form| %>
+<% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'>
+<% end %>
 
-  <div class="field">
-    <%= form.label :from_id %>
-    <%= form.collection_select :from_id, Place.all, :id, :parish %>
-  </div>
+<%= form_with(model: rideshare, local: true) do |form| %>
+  <% if rideshare.errors.any? %>
+    <%= rideshare.errors.full_messages %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :to_id %>
-    <%= form.collection_select :to_id, Place.all, :id, :parish %>
-  </div>
+  <%= form.fields_for :from, Place.new do |ff| %>
+
+  <div id="map2"></div><br /> <!-- GO/ Renders the map -->
+
+    <div class="field">
+      <%= ff.label :from %>
+      <%= ff.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= ff.label :lat, class: "hidden" %> <!-- GO/ We don't want to see these fields -->
+      <%= ff.hidden_field :lat%>
+    </div>
+
+    <div class="field">
+      <%= ff.label :lng, class: "hidden" %>
+      <%= ff.hidden_field :lng%>
+    </div>
+  <% end %>
+
+  <%= form.fields_for :to, Place.new do |ff| %>
+
+    <div class="field">
+      <%= ff.label :to %>
+      <%= ff.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= ff.label :lat, class: "hidden" %>
+      <%= ff.hidden_field :lat%>
+    </div>
+
+    <div class="field">
+      <%= ff.label :lng, class: "hidden" %>
+      <%= ff.hidden_field :lng%>
+    </div>
+    
+  <% end %>
+
+<!-- GO/To be created a way of storing multiple days
+
+  <% Date::ABBR_DAYNAMES.each do |day| %>
+    <%= form.check_box :days, {}, day %>
+    <%= day %>
+  <% end %>     -->
 
   <div class="field">
     <%= form.label :days%>
-    <%= form.number_field :days, min: 1, max: 7%>
+    <%= form.select :days, Date::ABBR_DAYNAMES.zip((0..6).to_a) %>
   </div>
 
   <div class="field">
     <%= form.label :start_date%>
     <%= form.date_field :start_date, min: Date.today %> 
   </div>
-<!-- GO/Users can't choose a date in the past -->
+
+  <!-- GO/Users can't choose a date in the past -->
+
   <div class="field">
     <%= form.label :end_date%>
     <%= form.date_field :end_date, min: Date.today %>
@@ -30,16 +75,18 @@
     <%= form.time_field :dep_at %>
   </div>
 
-   <div class="field">
-    <%= form.label :arr_at%>
-    <%= form.time_field :arr_at %>
+  <div class="field">
+  <%= form.label :arr_at%>
+  <%= form.time_field :arr_at %>
   </div>
-<!-- GO/Avoiding unnecessary numbers -->
-   <div class="field">
+  
+  <!-- GO/Avoiding unnecessary numbers -->
+
+  <div class="field">
     <%= form.label :seat %>
     <%= form.number_field :seat, min: 1, max: 4 %> 
   </div>
-
+  
   <div class="actions">
     <%= form.submit %>
   </div>

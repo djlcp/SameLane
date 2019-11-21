@@ -15,27 +15,26 @@
     </tr>
   </thead>
   <tbody>
+  <% days = Date::ABBR_DAYNAMES %>
     <% @rideshares.each do |ride| %>
       <tr>
       <!-- GO/ Capitalized first name and last name first letter capitalized-->
         <td><strong><%= ride.user.first_name.capitalize + ' ' + 
         ride.user.last_name.slice(0).upcase + '.'%></strong></td>
-   
-        <td><%= ride.days %></td>
-        <td><%= ride.start_date.strftime('%B %d, %Y') %></td>
-        <td><%= ride.end_date.strftime('%B %d, %Y') %></td>
-        <td><%= ride.dep_at.strftime("%B %e, %Y at %I:%M %p")%></td>
-        <td><%= ride.arr_at.strftime("%B %e, %Y at %I:%M %p") %></td>
+        <td><%= ride.from.name %></td>
+        <td><%= ride.to.name %></td>
+        <td><%= days[ride.days.to_i] %></td>
+        <td><%= ride.start_date&.strftime('%B %d, %Y') %></td>
+        <td><%= ride.end_date&.strftime('%B %d, %Y') %></td>
+        <td><%= ride.dep_at&.strftime("%B %e, %Y at %I:%M %p")%></td>
+        <td><%= ride.arr_at&.strftime("%B %e, %Y at %I:%M %p") %></td>
         <td><%= ride.seat %></td>
+        <td><%= link_to 'Edit', edit_rideshare_path(ride) %><td>
+        <td><%= link_to 'Delete', ride, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-
-        <td><%= ride.from.parish %></td>
-         <td><%= ride.from.address %></td>
-       
     <% end %>
   </tbody>
 </table>
 
 <%= link_to 'New Ride', new_rideshare_path %>
 </div>
-

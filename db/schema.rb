@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_183711) do
+ActiveRecord::Schema.define(version: 2019_11_07_201317) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_183711) do
   end
 
   create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "address"
+    t.string "name"
     t.string "parish"
     t.float "lat"
     t.float "lng"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_183711) do
     t.integer "seat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "distance", precision: 10
+    t.integer "travel_time"
     t.index ["from_id"], name: "fk_rails_e4eeea412b"
     t.index ["to_id"], name: "fk_rails_1f0681e884"
     t.index ["user_id"], name: "fk_rails_58d169bbec"

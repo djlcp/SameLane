@@ -1,7 +1,9 @@
+<h3 id="notice">User Profile</h3>
+
 First name: <%= @user.first_name.capitalize%><br /> <!-- GO/ In case they don't capitalize their names -->
 Last name: <%= @user.last_name.capitalize%><br />
 Email: <%= @user.email%><br />
-Phone: <%= @user.phone_number%><br />
+Phone: <%= number_to_phone(@user.phone_number, pattern: /(\d{4,5})(\d{6})$/, delimiter: " ")%><br />
 
 
 <%= link_to "Be a passenger", current_user %>

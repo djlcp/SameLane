@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
-
+  # before_action :authenticate_user!, except: [:index]
   def index
     @places = Place.all
   end
@@ -13,11 +13,14 @@ class PlacesController < ApplicationController
     # @place.rideshares.build
   end
 
-
   def create
     @place = Place.new(place_params)
-    @place.save
-    redirect_to places_path
+    if @place.save
+      redirect_to @place
+    else
+      render :new
+    end
+    # redirect_to @place
   end
 
   def edit
@@ -25,9 +28,14 @@ class PlacesController < ApplicationController
 
   def update
     @place.update(place_params)
-    redirect_to @place
+    if @place.update(place_params)
+      redirect_to @place
+    else
+      render :edit
+    end
   end
 
+ 
   def destroy
     @place.destroy
     redirect_to places_path
@@ -36,7 +44,7 @@ class PlacesController < ApplicationController
   private
 
     def place_params
-      params.require(:place).permit(:id, :address, :parish, :lat, :lng,
+      params.require(:place).permit(:id, :name, :parish, :lat, :lng,
       rideshares_attributes: [:id, :user_id, :from_id, :to_id, :days, :start_date,
       :end_date, :dep_at, :arr_at, :seat])
     end
