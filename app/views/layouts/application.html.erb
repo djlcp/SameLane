@@ -3,34 +3,62 @@
   <head>
 	  <meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>App</title>
+    <title>Same Way</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+		<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A&libraries=places' %>
+    <!-- GO/ Without places api -->
+    <!-- <%#= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A' %> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+
+
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+		<%= yield(:head_tags) %> 
   </head>
 
   <body>
-  
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
-
-      <p>
-        <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
-          <%= link_to 'Edit profile', edit_user_registration_path %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> |
-          <%= link_to "Login", new_user_session_path %>
+    <div class="nav justify-content-between">
+      <div class="nav logo-img">
+        <%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %>
+      </div>
+        <!-- GO/ We'd have to style these alerts somehow to blend with the other elem -->
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
         <% end %>
-      </p>
-
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      <ul class="nav">
+        <% if user_signed_in? %>
+        <!-- > <li class="nav-item">
+          Logged in as <strong><%= current_user.email %></strong>.
+        </li> -->
+        <li class="nav-item">
+        <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+        <p class="nav-link">||</p>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'  %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+        <%= link_to 'Register', new_user_registration_path, class: 'nav-link'  %>
+        </li> 
+        <li class="nav-item">
+          <p class="nav-link">||</p>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link'  %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
     <%= yield %>
   </body>
 </html>
