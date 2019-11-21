@@ -48,7 +48,10 @@ development:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: <%= ENV['PROD_DB_NAME'] %>
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
   username: <%= ENV['PROD_DB_USER'] %>
   password: <%= ENV['PROD_DB_PASSWORD'] %>
+  database: <%= ENV['PROD_DB_NAME'] %>
+  socket:   <%= ENV['PROD_DB_SOCKET'] %>
