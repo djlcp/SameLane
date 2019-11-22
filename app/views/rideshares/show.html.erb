@@ -21,20 +21,32 @@ Seats available: <%= @rideshare.seat - @rideshare.passengers.count %><br />
 </p>
 
 <!-- JN/ Join a ride -->
-<p>
-  <%= link_to "Join the ride", passenger_path(@rideshare.id), method: :post %>
-  <p id="notice"><% notice %></p>
-</p>
+<div>
+  <% if @rideshare.passengers.map(&:user).include?(current_user) %> 
+    <p>
+      <%= button_to 'Cancel request', passenger_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, :class => "delete-button" %>
+    </p>
+  <% else %>
+    <p>
+    <%= button_to "Join the ride", passenger_path(@rideshare.id), method: :post, :class => "submit-button"%>
+      
+    </p>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <%= link_to "Back", rideshares_path %><br />
-
-
-<!-- TEST ERROR MESSAGE-->
-
-
-
-
 
 
 <!-- GO/ Add map-->

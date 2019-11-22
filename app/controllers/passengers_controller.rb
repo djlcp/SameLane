@@ -30,6 +30,9 @@ class PassengersController < ApplicationController
   end
 
   def destroy
+    @passenger = Passenger.find_by(user_id: params[:id])
+    @passenger.destroy
+    redirect_to rideshare_path(params[:id])
   end
 
 end

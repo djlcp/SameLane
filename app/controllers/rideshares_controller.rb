@@ -10,7 +10,6 @@ class RidesharesController < ApplicationController
   end
 
   def show
-    render action: 'show', notice: 'Test'
   end
 
   def new
