@@ -3,11 +3,14 @@ class RidesharesController < ApplicationController
   # before_action :authenticate_user!, except: [:index]
   respond_to :js, :json, :html
 
+  
+
   def index
     @rideshares = Rideshare.all
   end
 
   def show
+    render action: 'show', notice: 'Test'
   end
 
   def new
@@ -47,6 +50,8 @@ class RidesharesController < ApplicationController
   end
 
   private
+
+
 
     def rideshare_params
       params.require(:rideshare).permit(:id, :user_id, :from_id, :to_id, :days, :start_date,

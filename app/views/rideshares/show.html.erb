@@ -13,37 +13,24 @@ Start Date: <%= @rideshare.start_date.strftime('%B %d, %Y')%><br />
 End Date: <%= @rideshare.end_date.strftime('%B %d, %Y') %><br />
 Start Time: <%= @rideshare.dep_at.strftime("%B %e, %Y at %I:%M %p")%><br />
 End Time: <%= @rideshare.arr_at.strftime("%B %e, %Y at %I:%M %p")%><br />
-Seats available: <%= @rideshare.seat%><br />
+Seats available: <%= @rideshare.seat - @rideshare.passengers.count %><br />
 
-
-
-
-<!-- JN/ If admin then he can edit or delete his ride -->
 <p>
-  <% if user_signed_in? %>
   <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
   <%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% else %>
-    <%= form_for(@rideshare) do |f| %>
-        <div class="field">
-          <%= f.label :seat %>
-          <%= f.number_field :seat, min: 1, max: 4 %> 
-        </div>
-
-        <div class="actions">
-          <%= f.submit "Join the Ride", :class => "submit-button"  %>
-        </div>
-    <% end %>
-
-  <% end %>
 </p>
 
-
+<!-- JN/ Join a ride -->
+<p>
+  <%= link_to "Join the ride", passenger_path(@rideshare.id), method: :post %>
+  <p id="notice"><% notice %></p>
+</p>
 
 
 <%= link_to "Back", rideshares_path %><br />
 
-<!-- JN/ If user logged in, then he can request to join the ride -->
+
+<!-- TEST ERROR MESSAGE-->
 
 
 
