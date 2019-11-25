@@ -15,21 +15,21 @@ Start Time: <%= @rideshare.dep_at.strftime("%B %e, %Y at %I:%M %p")%><br />
 End Time: <%= @rideshare.arr_at.strftime("%B %e, %Y at %I:%M %p")%><br />
 Seats available: <%= @rideshare.seat - @rideshare.passengers.count %><br />
 
-<p>
-  <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
-  <%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
 
-<!-- JN/ Join a ride -->
+
 <div>
-  <% if @rideshare.passengers.map(&:user).include?(current_user) %> 
+    <p>
+      <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
+      <%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p> 
+  <!-- JN/ Join a ride button-->
+  <% if @rideshare.passengers.map(&:user).include?(current_user) %> <!-- IF THE USER IS ALREADY IN THE RIDE, PASSENGER CAN CANCEL HIS REQUEST -->
     <p>
       <%= button_to 'Cancel request', passenger_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, :class => "delete-button" %>
     </p>
-  <% else %>
+  <% else %> <!-- IF THE USER IS NOT IN THE RIDE, THEN PASSENGER CAN REQUEST TO JOIN THE RIDE -->
     <p>
     <%= button_to "Join the ride", passenger_path(@rideshare.id), method: :post, :class => "submit-button"%>
-      
     </p>
   <% end %>
 </div>
