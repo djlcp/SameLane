@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   resources :users, except: :show
   resources :places 
   resources :rideshares
+  resources :passengers
 
   get 'users/:id', to: 'users#show', as: 'user_profile'
   get 'users/:id/rides', to: 'users#rides', as: 'user_rides'
+  post 'passengers/:id', to: 'passengers#create'
   
 end

@@ -7,9 +7,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-		<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A&libraries=places' %>
+		<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB1MuDp2iQq-uZhq0KWt9JGVG0vKRWrst0&libraries=places' %>
     <!-- GO/ Without places api -->
-    <!-- <%#= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A' %> -->
+    <!-- <%#= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAPcSSvE43EhPqfRl_wAsHsqalqJHJ-jeE' %> -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 
@@ -23,7 +23,7 @@
   <body>
     <div class="nav justify-content-between">
       <div class="nav logo-img">
-        <%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %>
+        <a href="../"><%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %></a>
       </div>
         <!-- GO/ We'd have to style these alerts somehow to blend with the other elem -->
         <% if notice %>
@@ -33,6 +33,7 @@
           <p class="alert alert-danger"><%= alert %></p>
         <% end %>
       <ul class="nav">
+
         <% if user_signed_in? %>
         <!-- > <li class="nav-item">
           Logged in as <strong><%= current_user.email %></strong>.
@@ -59,6 +60,7 @@
       <% end %>
       </ul>
     </div>
+
     <%= yield %>
   </body>
 </html>

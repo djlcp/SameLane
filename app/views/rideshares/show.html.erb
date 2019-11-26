@@ -13,11 +13,41 @@ Start Date: <%= @rideshare.start_date.strftime('%B %d, %Y')%><br />
 End Date: <%= @rideshare.end_date.strftime('%B %d, %Y') %><br />
 Start Time: <%= @rideshare.dep_at.strftime("%B %e, %Y at %I:%M %p")%><br />
 End Time: <%= @rideshare.arr_at.strftime("%B %e, %Y at %I:%M %p")%><br />
-Seats available: <%= @rideshare.seat%><br />
+Seats available: <%= @rideshare.seat - @rideshare.passengers.count %><br />
 
-<%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
-<%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to "Rides List", rideshares_path %><br />
+
+
+<div>
+    <p>
+      <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
+      <%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p> 
+  <!-- JN/ Join a ride button-->
+  <% if @rideshare.passengers.map(&:user).include?(current_user) %> <!-- IF THE USER IS ALREADY IN THE RIDE, PASSENGER CAN CANCEL HIS REQUEST -->
+    <p>
+      <%= button_to 'Cancel request', passenger_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, :class => "delete-button" %>
+    </p>
+  <% else %> <!-- IF THE USER IS NOT IN THE RIDE, THEN PASSENGER CAN REQUEST TO JOIN THE RIDE -->
+    <p>
+    <%= button_to "Join the ride", passenger_path(@rideshare.id), method: :post, :class => "submit-button"%>
+    </p>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%= link_to "Back", rideshares_path %><br />
+
 
 <!-- GO/ Add map-->
 
@@ -30,5 +60,3 @@ them on the page, hence the hidden class-->
 <span id="lngFrom" class = "hidden"><%= @rideshare.from.lng %></span><br />
 <span id="latTo" class = "hidden" ><%= @rideshare.to.lat %></span><br />
 <span id="lngTo" class = "hidden"><%= @rideshare.to.lng %></span><br />
-
-

@@ -28,8 +28,9 @@
         <td><%= ride.end_date&.strftime('%B %d, %Y') %></td>
         <td><%= ride.dep_at&.strftime("%B %e, %Y at %I:%M %p")%></td>
         <td><%= ride.arr_at&.strftime("%B %e, %Y at %I:%M %p") %></td>
-        <td><%= ride.seat %></td>
-        <td><%= link_to 'Edit', edit_rideshare_path(ride) %><td>
+        <td><%= ride.seat - ride.passengers.count %></td>
+        <td><%= link_to 'Join the ride', rideshare_path(ride) %></td>
+        <td><%= link_to 'Edit', edit_rideshare_path(ride) %></td>
         <td><%= link_to 'Delete', ride, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
