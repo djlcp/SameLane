@@ -16,7 +16,7 @@
 
     <div class="field">
       <%= f.label :phone_number %><br />
-      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+      <%= f.text_field :phone_number, maxlength: 11, autofocus: true, autocomplete: "phone_number" %>
     </div>
 
     <div class="field">
@@ -48,11 +48,12 @@
     </div>
 
     <div class="actions">
-      <%= link_to "Back", :back %>
-      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "delete-button"%>
       <%= f.submit "Update", :class => "submit-button"  %>
+    <% end %>
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, 
+      method: :delete, :class => "delete-button"%>
     </div>
-  <% end %>
+      <%= link_to "Back", :back %>
 </div>
 
 
