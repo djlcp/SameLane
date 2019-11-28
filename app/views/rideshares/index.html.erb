@@ -1,41 +1,75 @@
-<h3 id="notice">Rides</h3>
-<div>
-<table class="table table-hover">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Name: </th>
-      <th scope="col">From: </th>
-      <th scope="col">To: </th>
-      <th scope="col">Days: </th>
-      <th scope="col">Starts at: </th>
-      <th scope="col">Ends at: </th>
-      <th scope="col">Departure: </th>
-      <th scope="col">Arrival: </th>
-      <th scope="col">Seats: </th>
-    </tr>
-  </thead>
-  <tbody>
-  <% days = Date::ABBR_DAYNAMES %>
-    <% @rideshares.each do |ride| %>
-      <tr>
-      <!-- GO/ Capitalized first name and last name first letter capitalized-->
-        <td><strong><%= ride.user.first_name.capitalize + ' ' + 
-        ride.user.last_name.slice(0).upcase + '.'%></strong></td>
-        <td><%= ride.from.name %></td>
-        <td><%= ride.to.name %></td>
-        <td><%= days[ride.days.to_i] %></td>
-        <td><%= ride.start_date&.strftime('%B %d, %Y') %></td>
-        <td><%= ride.end_date&.strftime('%B %d, %Y') %></td>
-        <td><%= ride.dep_at&.strftime("%B %e, %Y at %I:%M %p")%></td>
-        <td><%= ride.arr_at&.strftime("%B %e, %Y at %I:%M %p") %></td>
-        <td><%= ride.seat - ride.passengers.count %></td>
-        <td><%= link_to 'Join the ride', rideshare_path(ride) %></td>
-        <td><%= link_to 'Edit', edit_rideshare_path(ride) %></td>
-        <td><%= link_to 'Delete', ride, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h2 id="notice">Rides</h2>
+<div class="blue-line"></div>
 
-<%= link_to 'New Ride', new_rideshare_path %>
+<div class ="container">
+  <div class="row">
+
+    <div class="col">
+      <div class="div-empty-col">Search div</div>
+    </div>
+
+    <div class="col">
+      <% @rideshares.each do |ride| %>
+        <div class ="container">
+          <div class="row">
+            <div class="container-custom">
+              <div class="col-costum2">
+
+                <div class="container-custom"> 
+                  <div class="col-custom3">
+                    <div class="col-custom">
+                      <div id="avatar">Here goes the avatar</div>
+                    </div>
+                    <div class="col-custom">
+                      <div id="rider-name">
+                        <strong><%= ride.user.first_name.capitalize + ' ' + 
+                        ride.user.last_name.slice(0).upcase + '.'%></strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="updated_at"><%= ride.updated_at&.strftime("%B %e, %Y") %></div>
+          
+                  <div class="container-grey">
+                    <div class="row-custom">
+                      <div id="ride-time"><%= ride.dep_at&.strftime('%I:%M %p') %></div>
+                      <div id="ride-time"><%= ride.arr_at&.strftime('%I:%M %p') %></div>
+                    </div>
+                    <div class="col-custom2">
+                      <%= image_tag(asset_pack_path('media/images/dashed-line.svg')) %>
+                      <div class="row-custom">
+                        <div id="ride-name"><%= ride.from.name %></div>
+                        <div id="ride-name"><%= ride.to.name%></div>
+                      </div>
+                    </div> 
+                  </div>
+
+                  <div class="button-join">
+                    <%= button_to 'Join the ride', rideshare_path(ride), :method => :get, class: 'submit-button' %>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- >  Days: <%= ride.days %>
+          Starts At: <%= ride.start_date&.strftime('%B %d, %Y') %>
+          Ends At: <%= ride.end_date&.strftime('%B %d, %Y') %>
+          Departure: <%= ride.dep_at&.strftime("%B %e, %Y at %I:%M %p")%>
+          Arrival: <%= ride.arr_at&.strftime("%B %e, %Y at %I:%M %p") %>
+          Seats: <%= ride.seat - ride.passengers.count %>
+
+    
+          <%= link_to 'Join the ride', rideshare_path(ride) %>
+          <%= link_to 'Edit', edit_rideshare_path(ride) %>
+          <%= link_to 'Delete', ride, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+      <% end %>
+    </div> 
+
+    <div class="col">Other info</div>
+      
+      
+
+  </div> 
 </div>

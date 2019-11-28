@@ -6,7 +6,7 @@ class RidesharesController < ApplicationController
   
 
   def index
-    @rideshares = Rideshare.all
+    @rideshares = Rideshare.order("created_at desc").limit(5)
   end
 
   def show
@@ -20,7 +20,7 @@ class RidesharesController < ApplicationController
     if user_signed_in? 
       @rideshare = current_user.rideshares.build(rideshare_params)
       @rideshare.save
-      redirect_to @rideshare
+      redirect_to rideshares_path
     else
       redirect_to new_user_session_path
     end

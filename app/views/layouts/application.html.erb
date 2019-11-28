@@ -32,10 +32,22 @@
         <% end %>
       <ul class="nav">
 
+       <div class="wrap">
+          <li class="nav-item">
+          <a class="plus-img" href="../rideshares/new"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
+          <%= link_to 'Create a ride', new_rideshare_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+          <a class="plus-img" href="../rideshares"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
+          <%= link_to 'Join a ride', rideshares_path, class: 'nav-link' %>
+          </li>
+        </div>
+
         <% if user_signed_in? %>
         <!-- > <li class="nav-item">
           Logged in as <strong><%= current_user.email %></strong>.
         </li> -->
+       
         <li class="nav-item">
         <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link' %>
         </li>
