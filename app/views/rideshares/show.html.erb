@@ -1,28 +1,59 @@
 <% provide :head_tags do %>
     <meta name='turbolinks-visit-control' content='reload'> 
 <% end %>
-
-<h3 id="notice">Ride</h3>
-<% days = Date::ABBR_DAYNAMES %>
-Name: <%= @rideshare.user.first_name.capitalize + ' ' + 
+<div class="container">
+  <!-- Driver Dashboard -->
+  <div class="row">
+    <div class="col">
+      <!-- Here profil picture -->
+    </div>
+    <div class="col">
+      <%= @rideshare.user.first_name.capitalize + ' ' + 
       @rideshare.user.last_name.slice(0).upcase + '.'%><br />
-From: <span id="from"><%= @rideshare.from.name%></span><br />
-To: <span id="to"><%= @rideshare.to.name%></span><br />
-Days: <%= days[@rideshare.days.to_i]%><br />
-Start Date: <%= @rideshare.start_date.strftime('%B %d, %Y')%><br />
-End Date: <%= @rideshare.end_date.strftime('%B %d, %Y') %><br />
-Start Time: <%= @rideshare.dep_at.strftime("%B %e, %Y at %I:%M %p")%><br />
-End Time: <%= @rideshare.arr_at.strftime("%B %e, %Y at %I:%M %p")%><br />
-Seats available: <%= @rideshare.seat - @rideshare.passengers.count %><br />
-
-
-
-<div>
-    <p>
-      <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
-      <%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p> 
-  <!-- JN/ Join a ride button-->
+    </div>
+  </div> <!-- /Driver Dashboard -->
+  <!-- Routes -->
+  <div class="row">
+    <!-- Routes Details -->
+    <div class="col">
+      <!-- Date -->
+      <div class="row">
+        <%= @rideshare.start_date.strftime('%B %d, %Y')%><br />
+        <%= @rideshare.end_date.strftime('%B %d, %Y') %><br />
+      </div> <!-- /Date -->
+      <!-- Time -->
+      <div class="col">
+        <div class="row">
+          <%= @rideshare.dep_at.strftime("%I:%M %P")%><br />
+        </div>
+        <div class="row">
+          <%= @rideshare.arr_at.strftime("%I:%M %P")%><br />
+        </div>
+      </div> <!-- /Time -->
+      <!-- dessin from and to -->
+      <div class="col">
+        <div class="routes-img">
+          <%= image_tag(asset_pack_path('media/images/dashed-line.svg')) %>
+        </div>
+      </div> <!-- /dessin from and to -->
+      <!-- Adresse -->
+      <div class="col">
+        <div class="row">
+          <span id="from"><%= @rideshare.from.name%></span><br />
+        </div>
+        <div class="row">
+          <span id="to"><%= @rideshare.to.name%></span><br />
+        </div>
+      </div> <!-- /Adresse -->
+    </div> <!-- /Routes details -->
+    <!-- Map Routes -->
+    <div class="col">
+      <div id="map"></div><br /> 
+    </div><!-- /Map Routes -->
+  </div> <!-- /Routes -->
+  <!-- Seat to book  -->
+  <div class="row">
+  Seats available: <%= @rideshare.seat - @rideshare.passengers.count %><br />
   <% if @rideshare.passengers.map(&:user).include?(current_user) %> <!-- IF THE USER IS ALREADY IN THE RIDE, PASSENGER CAN CANCEL HIS REQUEST -->
     <p>
       <%= button_to 'Cancel request', passenger_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, :class => "delete-button" %>
@@ -32,30 +63,20 @@ Seats available: <%= @rideshare.seat - @rideshare.passengers.count %><br />
     <%= button_to "Join the ride", passenger_path(@rideshare.id), method: :post, :class => "submit-button"%>
     </p>
   <% end %>
+  </div> <!-- /Seat to book -->
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%= link_to "Back", rideshares_path %><br />
-
-
-<!-- GO/ Add map-->
-
-<div id="map"></div><br /> 
-
+<% days = Date::ABBR_DAYNAMES %>
+Days: <%= days[@rideshare.days.to_i]%><br />
+<div>
+    <p>
+      <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
+      <%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to "Back", rideshares_path %><br />
+    </p> 
+  <!-- JN/ Join a ride button-->
+</div>
 <!-- GO/ We need the info from these elem for the map, but we don't have to see 
 them on the page, hence the hidden class-->
-
 <span id="latFrom" class = "hidden"><%= @rideshare.from.lat %></span><br />
 <span id="lngFrom" class = "hidden"><%= @rideshare.from.lng %></span><br />
 <span id="latTo" class = "hidden" ><%= @rideshare.to.lat %></span><br />
