@@ -1,61 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	  <meta charset="utf-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Same Way</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Same Way</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+	
+	<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API']}&libraries=places" %>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+	
+	
+	<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-		<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A&libraries=places' %>
-    <!-- GO/ Without places api -->
-    <!-- <%#= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A' %> -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+</head>
 
+<body>
+<div class="nav justify-content-between">
+	<div class="nav logo-img">
+		<%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %>
+	</div>
+	<ul class="nav">
+		<li class="nav-item">
+			<% if user_signed_in? %>
+				<%= link_to 'edit profile', edit_user_registration_path, class: 'nav-link' %>
+			<% else %>
+				<%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
+			
+			<% end %>
+		</li>
+		<li class="nav-item">
+			<p class="nav-link">||</p>
+		</li>
+		<li class="nav-item">
+			<% if user_signed_in? %>
+				<%= link_to current_user.email, destroy_user_session_path, method: :delete, class: 'nav-link' %>
+			<% else %>
+				<%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+			<% end %>
+		</li>
+	</ul>
+</div>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-		<%= yield(:head_tags) %> 
-  </head>
+<% if notice %>
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<%= notice %>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+<% end %>
+<% if alert %>
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<%= alert %>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+<% end %>
 
-  <body>
-    <div class="nav justify-content-between">
-      <div class="nav logo-img">
-        <%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %>
-      </div>
-      <ul class="nav">
-        <li class="nav-item">
-          <%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <p class="nav-link">||</p>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
-        </li>
-      </ul>
-
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
-
-      <% if false %>
-        <p>
-          <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.email %></strong>.
-            <%= link_to 'Edit profile', edit_user_registration_path %> |
-            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to "Sign up", new_user_registration_path %> |
-            <%= link_to "Login", new_user_session_path %>
-          <% end %>
-        </p>
-      <% end %>
-
-  </body>
+<%= yield %>
+</body>
 </html>
