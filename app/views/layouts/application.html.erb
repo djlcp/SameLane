@@ -7,60 +7,77 @@
 	<%= csrf_meta_tags %>
 	<%= csp_meta_tag %>
 	
-	<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API']}&libraries=places" %>
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
-	
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_API_KEY']}&libraries=places" %>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">	
 	
 	<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 </head>
+  <body>
+    <div class="nav justify-content-between">
+      <div class="nav logo-img">
+        <a href="../"><%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %></a>
+      </div>
+        <!-- GO/ We'd have to style these alerts somehow to blend with the other elem -->
 
-<body>
-<div class="nav justify-content-between">
-	<div class="nav logo-img">
-		<%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %>
-	</div>
-	<ul class="nav">
-		<li class="nav-item">
-			<% if user_signed_in? %>
-				<%= link_to 'edit profile', edit_user_registration_path, class: 'nav-link' %>
-			<% else %>
-				<%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
-			
-			<% end %>
-		</li>
-		<li class="nav-item">
-			<p class="nav-link">||</p>
-		</li>
-		<li class="nav-item">
-			<% if user_signed_in? %>
-				<%= link_to current_user.email, destroy_user_session_path, method: :delete, class: 'nav-link' %>
-			<% else %>
-				<%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
-			<% end %>
-		</li>
-	</ul>
-</div>
+      
+      <ul class="nav">
 
-<% if notice %>
-	<div class="alert alert-success alert-dismissible fade show" role="alert">
-		<%= notice %>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
-<% end %>
-<% if alert %>
-	<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		<%= alert %>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-	</div>
-<% end %>
+       <div class="wrap">
+          <li class="nav-item">
+          <a class="plus-img" href="../rideshares/new"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
+          <%= link_to 'Create a ride', new_rideshare_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+          <a class="plus-img" href="../rideshares"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
+          <%= link_to 'Join a ride', rideshares_path, class: 'nav-link' %>
+          </li>
+        </div>
 
-<%= yield %>
-</body>
+    <ul class="nav">
+
+        <% if user_signed_in? %>
+        <!-- > <li class="nav-item">
+          Logged in as <strong><%= current_user.email %></strong>.
+        </li> -->
+
+        <ul class="nav">
+          <div class="btn-group">
+          <button type="button" class="btn btn-outline-secondary"><p> Hi, <strong><%= current_user.first_name + ' ' + current_user.last_name.slice(0).upcase + '.'%></strong> !</p></button>
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu">
+            <%= link_to 'My Profil', current_user, class: 'nav-link dropdown-item' %> 
+            <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link dropdown-item' %>
+            <%= link_to 'Ride History', user_rides_path(current_user) , class: 'nav-link dropdown-item' %>
+            <%= link_to 'Messages', edit_user_registration_path, class: 'nav-link dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link dropdown-item'  %>
+          </div>
+        </ul>        
+
+      <% else %>
+        <li class="nav-item">
+        <%= link_to 'Register', new_user_registration_path, class: 'nav-link'  %>
+        </li> 
+        <li class="nav-item">
+          <p class="nav-link">||</p>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link'  %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+    <%= yield %>
+        </body>
 </html>

@@ -1,4 +1,5 @@
 class RidesharesController < ApplicationController
+  
 	before_action :set_rideshare, only: [:show, :edit, :update, :destroy]
 	# before_action :authenticate_user!, except: [:index]
 	respond_to :js, :json, :html

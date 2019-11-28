@@ -11,11 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_11_07_201317) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "messages", force: :cascade do |t|
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "rideshare_id"
     t.text "text"
@@ -23,14 +19,14 @@ ActiveRecord::Schema.define(version: 2019_11_07_201317) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "passengers", force: :cascade do |t|
+  create_table "passengers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "rideshare_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "places", force: :cascade do |t|
+  create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "parish"
     t.float "lat"
@@ -39,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_201317) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "rideshares", force: :cascade do |t|
+  create_table "rideshares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "from_id"
     t.bigint "to_id"
@@ -55,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_201317) do
     t.integer "travel_time"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   protected
     def confirmation_required?
-      false
+      true
     end
     
 end

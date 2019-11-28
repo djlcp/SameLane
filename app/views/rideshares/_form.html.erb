@@ -9,86 +9,112 @@
 
   <%= form.fields_for :from, Place.new do |ff| %>
 
-  <div id="map2"></div><br /> <!-- GO/ Renders the map -->
 
-    <div class="field">
-      <%= ff.label :from %>
-      <%= ff.text_field :name %>
-    </div>
 
-    <div class="field">
-      <%= ff.label :lat, class: "hidden" %> <!-- GO/ We don't want to see these fields -->
-      <%= ff.hidden_field :lat%>
-    </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col">
 
-    <div class="field">
-      <%= ff.label :lng, class: "hidden" %>
-      <%= ff.hidden_field :lng%>
-    </div>
-  <% end %>
 
-  <%= form.fields_for :to, Place.new do |ff| %>
+        <div class="field">
+          <%= ff.label "Where is your starting point? " %><br />
+          <%= ff.text_field :name %>
+        </div>
 
-    <div class="field">
-      <%= ff.label :to %>
-      <%= ff.text_field :name %>
-    </div>
+        <div class="field">
+          <%= ff.label :lat, class: "hidden" %> <!-- GO/ We don't want to see these fields -->
+          <%= ff.hidden_field :lat%>
+        </div>
 
-    <div class="field">
-      <%= ff.label :lat, class: "hidden" %>
-      <%= ff.hidden_field :lat%>
-    </div>
+        <div class="field">
+          <%= ff.label :lng, class: "hidden" %>
+          <%= ff.hidden_field :lng%>
+        </div>
+      <% end %>
 
-    <div class="field">
-      <%= ff.label :lng, class: "hidden" %>
-      <%= ff.hidden_field :lng%>
-    </div>
+      <%= form.fields_for :to, Place.new do |ff| %>
+
+        <div class="field">
+          <%= ff.label "Where are you going to?" %><br />
+          <%= ff.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= ff.label :lat, class: "hidden" %>
+          <%= ff.hidden_field :lat%>
+        </div>
+
+        <div class="field">
+          <%= ff.label :lng, class: "hidden" %>
+          <%= ff.hidden_field :lng%>
+        </div>
+      
+      <% end %>
+
+    <!-- GO/To be created a way of storing multiple days
+
+      <% Date::ABBR_DAYNAMES.each do |day| %>
+        <%= form.check_box :days, {}, day %>
+        <%= day %>
+      <% end %>     -->
+
+        <div class="field">
+          <%= form.label "How many days per week?"%><br />
+          <%= form.number_field :days, min: 1, max: 7, class: 'col-2 input-sm' %>
+        </div>
+
+      <!-- GO/Avoiding unnecessary numbers -->
+
+        <div class="field">
+          <%= form.label "How many passengers can you take?" %><br />
+          <%= form.number_field :seat, min: 1, max: 6, class: 'col-2 input-sm' %> 
+        </div>
+
+        <h6>What time will it be? </h6>
+
+        <div class="row-date">
+          <div class="col-date">
+            <div class="field">
+              <%= form.label "Departure at: "%><br />
+              <%= form.time_field :dep_at, class: 'col-custom input-sm' %>
+            </div>
+          </div>
+          <div class="col-date">
+            <div class="field">
+              <%= form.label "Arrival at: "%><br />
+              <%= form.time_field :arr_at, class: 'col-custom input-sm'%>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="field">
+          <h6>The interval of time sharing a ride: </h6>
+          <%= form.label "Starts: "%><br />
+          <%= form.date_field :start_date, min: Date.today %> 
+        </div>
+
+      <!-- GO/Users can't choose a date in the past -->
+
+        <div class="field">
+          <%= form.label "Ends: "%><br />
+          <%= form.date_field :end_date, min: Date.today %>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Create ride", class: 'submit-button' %>
+        </div>
+  
+      </div>
+
+    <div class="col">
+
+    <div id="map2"></div><br /> <!-- GO/ Renders the map -->
     
-  <% end %>
-
-<!-- GO/To be created a way of storing multiple days
-
-  <% Date::ABBR_DAYNAMES.each do |day| %>
-    <%= form.check_box :days, {}, day %>
-    <%= day %>
-  <% end %>     -->
-
-  <div class="field">
-    <%= form.label :days%>
-    <%= form.select :days, Date::ABBR_DAYNAMES.zip((0..6).to_a) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date%>
-    <%= form.date_field :start_date, min: Date.today %> 
-  </div>
-
-  <!-- GO/Users can't choose a date in the past -->
-
-  <div class="field">
-    <%= form.label :end_date%>
-    <%= form.date_field :end_date, min: Date.today %>
-  </div>
-
-  <div class="field">
-    <%= form.label :dep_at%>
-    <%= form.time_field :dep_at %>
-  </div>
-
-  <div class="field">
-  <%= form.label :arr_at%>
-  <%= form.time_field :arr_at %>
-  </div>
+    </div>
   
-  <!-- GO/Avoiding unnecessary numbers -->
+      <% end %>
 
-  <div class="field">
-    <%= form.label :seat %>
-    <%= form.number_field :seat, min: 1, max: 4 %> 
   </div>
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-  
-<% end %>
+</div>

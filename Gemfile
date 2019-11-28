@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
-
+# Using mailcatcher image
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.7', '>= 4.7.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -66,3 +66,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Admin Dashboard gem
 gem 'rails_admin', '~> 2.0' # , github: 'sferik/rails_admin'
+
+gem 'pundit', '~> 2.1'

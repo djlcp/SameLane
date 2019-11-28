@@ -4,26 +4,15 @@
 
 //GO/ geolocation styling
 
-#map {
-	width: 600px;
-	height: 400px;
-	border-radius: 16px 16px;
+#map2, #map {
+	width: 550px;
+	height: 350px;
+	border-radius: 4px 4px;
 	border-color: #fff;
 	border-style: solid;
-	box-shadow: 2px 2px 10px #B1B1B1;
+	box-shadow: 2px 5px 10px rgb(105, 105, 105);
 	margin-top: 25px;
-	border-width: 7px;
-}
-
-#map2 {
-	width: 600px;
-	height: 400px;
-	border-radius: 16px 16px;
-	border-color: #fff;
-	border-style: solid;
-	box-shadow: 2px 2px 10px #B1B1B1;
-	margin-top: 25px;
-	border-width: 7px;
+	border-width: 2px;
 }
 // GO/ Add a class to form for rideshare and hide the labels for lat, lng.
 // Same for show info.
@@ -53,11 +42,11 @@ html, body {
 		.nav-link {
 			color: theme-color("light");
 			margin: 0;
-			padding: 10px   ;
-
+			padding: 10px;
 		}
 	}
 }
+
 
 //search bar
 .search-bar {
@@ -154,8 +143,11 @@ h2{
 // Forms writing area
 input{
   border-radius: 5px;
-  background-color: #e6e6e7;
-  border: none;
+	background-color: #e6e6e7;
+	padding-left: 7px;
+	border: none;
+	color: theme-color("accent");
+	font-weight: bold;
   width: 300px;
   margin-bottom: 10px;
 }
@@ -169,7 +161,7 @@ input{
 // Cancel button account
 .delete-button{
   background-color: #8C0000;
-  color: white;
+	color: white;
   width: auto;
   margin-left: 10%;
 }
@@ -179,12 +171,166 @@ input{
   margin: 5% 20% 0 20%;
 }
 
-
-
-
 .devise-links a{
  font-family: 'Roboto:300i', sans-serif;
 }
-.alert .alert-danger{
-  margin-top: 300px;
+
+//GO/Other settings..
+
+.nav-item {
+	display:flex;
 }
+
+.plus-img {
+	margin-top: 9px;
+	margin-right: -8px;
+}
+
+.wrap {
+	width: 20em;
+	margin-right: 5em;
+	display: flex;
+	justify-content: space-between;
+}
+
+.blue-line {
+	width: 60%;
+	margin:  0 0 2.5% 20%;
+	height: 4px;
+	border-radius: 5px;
+	box-shadow: 5px 5px 7px theme-color("dark");
+	background: theme-color("secondary");
+}
+
+.container {
+	width: 100%;
+}
+
+.col-2 {
+	padding: 0;
+	width: 50px;
+}
+
+.col-custom {
+	display: block;
+	padding: 0;
+	width: 120px;
+}
+
+.col-custom3 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0;
+	width: 120px;
+}
+
+.col-custom2 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.row-custom {
+	display: flex;
+	width: 500px;
+	height: 80px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.input-sm {
+	padding-left: 12px;
+}
+
+.row-date {
+	display: flex;
+	width: 300px;
+}
+
+.col-date {
+	width: 150px;
+}
+
+.search-container {
+	background-color: green;
+}
+
+#avatar {
+	display: block;
+	width: 70px;
+	height: 70px;
+	background-color: rgb(255, 255, 255);
+	border: lightgrey solid 1px;
+	border-radius: 5px;
+}
+
+#rider-name {
+	width: 180px;
+	padding: 7px;
+	height: 35px;
+	color: theme-color("light");
+	background-color: theme-color("secondary");
+	border-radius: 0 5px 5px 0;
+	box-shadow: 2px 5px 10px rgb(105, 105, 105);
+}
+
+#ride-name {
+	font-size: 14px;
+	color: theme-color("dark");
+	text-align: center;
+	width: 150px;
+	height: 80px;
+}
+
+#ride-time {
+	font-size: 14px;
+	color: theme-color("dark");
+	text-align: center;
+	width: 150px;
+	height: 10px;
+}
+
+.container-grey {
+	display: flex;
+	position: static;
+	z-index: -2;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 500px;
+	height: 150px;
+	background: lightgrey;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+.button-join {
+	position: static;
+	z-index: 1;
+	margin-top: -30px;
+	margin-left: 65%;
+}
+
+#updated_at {
+	margin-top: -40px;
+	margin-left: 65%;
+}
+//GO Temporary divs on rideshares page
+
+.div-empty-col {
+	border: 1px solid grey;
+	border-radius: 5px;
+	width: 300px;
+	height: 300px;
+}
+
+.div-empty-col2 {
+	border: 1px solid grey;
+	border-radius: 5px;
+	width: 300px;
+	height: 300px;
+}
+
