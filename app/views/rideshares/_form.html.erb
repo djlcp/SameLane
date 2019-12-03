@@ -2,20 +2,16 @@
     <meta name='turbolinks-visit-control' content='reload'>
 <% end %>
 
-<%= form_with(model: rideshare, local: true) do |form| %>
+<%= form_with(model: rideshare, local: true)  do |form| %>
   <% if rideshare.errors.any? %>
     <%= rideshare.errors.full_messages %>
   <% end %>
 
   <%= form.fields_for :from, Place.new do |ff| %>
 
-
-
-  
   <div class="container">
     <div class="row">
       <div class="col">
-
 
         <div class="field">
           <%= ff.label "Where is your starting point? " %><br />
@@ -52,18 +48,20 @@
       
       <% end %>
 
-    <!-- GO/To be created a way of storing multiple days
-
-      <% Date::ABBR_DAYNAMES.each do |day| %>
-        <%= form.check_box :days, {}, day %>
-        <%= day %>
-      <% end %>     -->
-
-        <div class="field">
-          <%= form.label "How many days per week?"%><br />
-          <%= form.number_field :days, min: 1, max: 7, class: 'col-2 input-sm' %>
+    <!-- GO/Days of the week -->
+        <p>How many days per week? </p>
+        <div class="box-week">    
+          <% days = Date::ABBR_DAYNAMES %>
+          <% days.each do |day| %>  
+            <div class ="week">
+              <label id='weekdays'>
+                <%= check_box_tag 'rideshare[days][]', day, checked(day), id: 'weekdays' %>
+                <span id='weekdays'><%= day %></span> 
+              </label>
+            </div> 
+          <% end %>
         </div>
-
+    
       <!-- GO/Avoiding unnecessary numbers -->
 
         <div class="field">
@@ -105,13 +103,11 @@
         <div class="actions">
           <%= form.submit "Create ride", class: 'submit-button' %>
         </div>
-  
-      </div>
+
+    </div>
 
     <div class="col">
-
     <div id="map2"></div><br /> <!-- GO/ Renders the map -->
-    
     </div>
   
       <% end %>

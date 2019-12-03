@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_201317) do
+ActiveRecord::Schema.define(version: 2019_12_02_101945) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_201317) do
     t.bigint "user_id"
     t.bigint "from_id"
     t.bigint "to_id"
-    t.integer "days"
+    t.string "days"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "dep_at"

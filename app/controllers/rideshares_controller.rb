@@ -53,7 +53,8 @@ class RidesharesController < ApplicationController
 
 
     def rideshare_params
-      params.require(:rideshare).permit(:id, :user_id, :from_id, :to_id, :days, :start_date,
+      # params[:rideshare][:days] ||= []
+      params.require(:rideshare).permit(:id, :user_id, :from_id, :to_id, {days: []}, :start_date,
       :end_date, :dep_at, :arr_at, :seat, from_attributes: [:name, :lat, :lng], to_attributes: [:name, :lat, :lng])
     end
 
