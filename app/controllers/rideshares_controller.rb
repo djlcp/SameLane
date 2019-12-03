@@ -64,12 +64,11 @@ class RidesharesController < ApplicationController
 
 	private
 
-	def rideshare_params
-		params.require(:rideshare).permit(:id, :user_id, :from_id, :to_id, :days, :start_date,
-		                                  :end_date, :dep_at, :arr_at, :seat, from_attributes: [:name, :lat, :lng], to_attributes: [:name, :lat, :lng])
-	end
-
-
+    def rideshare_params
+      # params[:rideshare][:days] ||= []
+      params.require(:rideshare).permit(:id, :user_id, :from_id, :to_id, {days: []}, :start_date,
+      :end_date, :dep_at, :arr_at, :seat, from_attributes: [:name, :lat, :lng], to_attributes: [:name, :lat, :lng])
+    end
 
 	def set_rideshare
 		@rideshare = Rideshare.find(params[:id])

@@ -1,3 +1,6 @@
+<h2 id="notice">Ride</h2>
+<div class="blue-line"></div>
+
 <% provide :head_tags do %>
     <meta name='turbolinks-visit-control' content='reload'> 
 <% end %>
@@ -33,7 +36,7 @@
       <!-- dessin from and to -->
       <div class="col">
         <div class="routes-img">
-          <%= image_tag(asset_pack_path('media/images/dashed-line.svg')) %>
+          <%= image_tag(asset_pack_path('media/images/routes.png')) %>
         </div>
       </div> <!-- /dessin from and to -->
       <!-- Adresse -->
@@ -66,7 +69,7 @@
   </div> <!-- /Seat to book -->
 </div>
 <% days = Date::ABBR_DAYNAMES %>
-Days: <%= days[@rideshare.days.to_i]%><br />
+Days: <%= @rideshare.days %><br />
 <div>
     <p>
       <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>

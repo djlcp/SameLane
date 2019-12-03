@@ -12,6 +12,7 @@
       <% @rideshares.each do |ride| %>
         <div class ="container">
           <div class="row">
+           Days: <%= ride.days %>
             <div class="container-custom">
               <div class="col-costum2">
 
@@ -53,17 +54,20 @@
             </div>
           </div>
         </div>
+
+        
         <!-- >  Days: <%= ride.days %>
           Starts At: <%= ride.start_date&.strftime('%B %d, %Y') %>
           Ends At: <%= ride.end_date&.strftime('%B %d, %Y') %>
           Departure: <%= ride.dep_at&.strftime("%B %e, %Y at %I:%M %p")%>
           Arrival: <%= ride.arr_at&.strftime("%B %e, %Y at %I:%M %p") %>
-          Seats: <%= ride.seat - ride.passengers.count %>
+          Seats: <%= ride.seat - ride.passengers.count %> -->
 
     
-          <%= link_to 'Join the ride', rideshare_path(ride) %>
+          <div class="col-custom">
           <%= link_to 'Edit', edit_rideshare_path(ride) %>
-          <%= link_to 'Delete', ride, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+          <%= link_to 'Delete', ride, method: :delete, data: { confirm: 'Are you sure?' } %> 
+          </div>
       <% end %>
     </div> 
 

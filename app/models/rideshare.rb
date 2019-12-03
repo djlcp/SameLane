@@ -11,7 +11,10 @@ class Rideshare < ApplicationRecord
 	accepts_nested_attributes_for :from
 	accepts_nested_attributes_for :to
   
-  
+    before_save do
+        self.days.gsub!(/[\[\]\"]/,"") if attribute_present?("days")
+    end
+    
 	def self.search(from: nil, to: nil, date: nil, time: nil)
 		from_ids = Place.where('name LIKE ?', '%' + from + '%').ids
 		puts from_ids
