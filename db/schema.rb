@@ -11,15 +11,12 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_11_07_201317) do
-
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "rideshare_id"
     t.text "text"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["rideshare_id"], name: "fk_rails_a499cb2721"
-    t.index ["user_id"], name: "fk_rails_273a25a7a6"
   end
 
   create_table "passengers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -27,8 +24,6 @@ ActiveRecord::Schema.define(version: 2019_11_07_201317) do
     t.bigint "rideshare_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["rideshare_id"], name: "fk_rails_e710398495"
-    t.index ["user_id"], name: "fk_rails_e53b659d9d"
   end
 
   create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -52,11 +47,8 @@ ActiveRecord::Schema.define(version: 2019_11_07_201317) do
     t.integer "seat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "distance", precision: 10
+    t.decimal "distance"
     t.integer "travel_time"
-    t.index ["from_id"], name: "fk_rails_e4eeea412b"
-    t.index ["to_id"], name: "fk_rails_1f0681e884"
-    t.index ["user_id"], name: "fk_rails_58d169bbec"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
