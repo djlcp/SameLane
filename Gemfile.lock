@@ -293,6 +293,9 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   capybara (>= 2.15)
   devise (~> 4.7, >= 4.7.1)
+
+  dotenv-rails
+
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4)
