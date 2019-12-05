@@ -48,15 +48,19 @@ class RidesharesController < ApplicationController
 	end
 
 	def search
-		params.require(:search).permit(:from, :to, :date, :time, :search)
-
+		
 		if params[:search]
-			puts params
+			params.require(:search).permit(:from, :to, :date, :time, :search)
 			@rideshares = Rideshare.search(
 				from: params[:search][:from],
 				to: params[:search][:to],
 				date: params[:search][:date],
 				time: params[:search][:time]
+			)
+		else
+			@rideshares = Rideshare.search(
+				from: '',
+				to: ''
 			)
 		end
 

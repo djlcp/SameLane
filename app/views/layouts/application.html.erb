@@ -21,7 +21,7 @@
 
       <!-- Logo Navigation -->
       <div class="nav logo-img">
-    <%= link_to(image_tag(asset_pack_path('media/images/logo-square-white.png'), class: 'logo-img')   ) %>
+    <%= link_to(image_tag(asset_pack_path('media/images/logo-square-white.png'), class: 'logo-img'), root_path   ) %>
       </div> <!-- /Logo Navigation -->
 
       <!-- Links Navigation -->
@@ -35,7 +35,7 @@
         <!-- Join a Ride link -->
         <li class="nav-item">
           <a class="plus-img" href="../rideshares"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
-          <%= link_to 'Join a ride', rideshares_path, class: 'nav-link' %>
+          <%= link_to 'Join a ride', search_rideshares_path, class: 'nav-link' %>
         </li> <!-- /Join a Ride link -->
       </ul><!-- /Links Navigation -->
 
