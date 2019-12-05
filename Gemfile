@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
-# Using mailcatcher image
+# Gems required for avatar
+gem 'gravatar_image_tag', '~> 1.2'
+gem 'image_processing', '~> 1.9', '>= 1.9.3'
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.7', '>= 4.7.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
