@@ -28,24 +28,24 @@ html, body {
 }
 
 //navigation bar
-.nav {
-	background-color: theme-color("accent");
-	.logo-img {
-		img {
-			align-self: center;
-			max-height: 40px;
-			max-width: 55px;
-			margin-left: 35px;
-		}
-	}
-	.nav-item {
-		.nav-link {
-			color: theme-color("light");
-			margin: 0;
-			padding: 10px;
-		}
-	}
-}
+// .nav {
+// 	background-color: theme-color("accent");
+// 	.logo-img {
+// 		img {
+// 			align-self: center;
+// 			max-height: 40px;
+// 			max-width: 55px;
+// 			margin-left: 35px;
+// 		}
+// 	}
+// 	.nav-item {
+// 		.nav-link {
+// 			color: theme-color("light");
+// 			margin: 0;
+// 			padding: 10px;
+// 		}
+// 	}
+// }
 
 
 //search bar
@@ -67,11 +67,7 @@ html, body {
 		padding-left: 10px;
 	}
 
-	button {
-		background-color: theme-color("secondary");
-		border: none;
-		color: theme-color("light");
-	}
+
 }
 //carousel style
 
@@ -131,40 +127,23 @@ body{
   font-family: $main-font;
 }
 
-// **** DEVISE PAGES ****
-// Title of pages
-h2{
-  margin-left: 20%;
-  font-family: 'Comfortaa', cursive;
-  margin-top: 30px;
-  color: $primary-colour;
-  font-size: 40px;
-}
-// Forms writing area
-input{
-  border-radius: 5px;
-	background-color: #e6e6e7;
-	padding-left: 7px;
-	border: none;
-	color: theme-color("accent");
-	font-weight: bold;
-  width: 300px;
-  margin-bottom: 10px;
-}
+
+// Already in scss/components/_buttons.scss
+
 // Submit button of form
-.submit-button{
-  background-color: $primary-colour;
-  color: white;
-  width: auto;
-  margin-left: 30%;
-}
-// Cancel button account
-.delete-button{
-  background-color: #8C0000;
-	color: white;
-  width: auto;
-  margin-left: 10%;
-}
+// .submit-button{
+//   background-color: $primary-colour;
+//   color: white;
+//   width: auto;
+//   margin-left: 30%;
+// }
+// // Cancel button account
+// .delete-button{
+//   background-color: #8C0000;
+// 	color: white;
+//   width: auto;
+//   margin-left: 10%;
+// }
 // Form section devise pages
 .form-section{
   width: 50%;
@@ -202,8 +181,16 @@ input{
 	background: theme-color("secondary");
 }
 
-.container {
+.container-home {
 	width: 100%;
+}
+
+.container-padding{
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .col-2 {

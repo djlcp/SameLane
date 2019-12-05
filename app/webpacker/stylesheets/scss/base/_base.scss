@@ -7,7 +7,9 @@
 html, body {
 	background-color: $twilight-blue;
 	margin: 0;
-	padding: 0;
+  padding: 0;
+  height: 100%;
+  position: relative;
 }
 .hidden {
 	display: none;
@@ -30,5 +32,5 @@ h4{
 }
 
 a{
-  color: $nandor;
+  color: $teal !important;
 }
