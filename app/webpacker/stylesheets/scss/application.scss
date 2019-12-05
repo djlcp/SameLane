@@ -83,8 +83,6 @@ input{
 
 //GO/Other settings..
 
-
-
 .blue-line {
 	width: 60%;
 	margin:  0 0 2.5% 20%;
@@ -93,10 +91,6 @@ input{
 	box-shadow: $bs;
 	background: $teal;
 }
-
-
-
-
 
 .row-custom {
 	display: flex;
@@ -108,15 +102,13 @@ input{
 }
 
 .input-sm {
-	padding-left: 12px;
+	padding-left: 12px !important;
 }
 
 .row-date {
 	display: flex;
 	width: 300px;
 }
-
-
 
 .search-container {
 	background-color: $iron;
@@ -130,8 +122,6 @@ input{
 	border: lightgrey solid 1px;
 	border-radius: 5px;
 }
-
-
 
 #ride-name {
 	font-size: 14px;
@@ -174,6 +164,7 @@ input{
 	margin-top: -40px;
 	margin-left: 65%;
 }
+
 //GO Temporary divs on rideshares page
 
 .div-empty-col {
@@ -189,8 +180,6 @@ input{
 	width: 300px;
 	height: 300px;
 }
-
-
 
 
 // GO/ Columns rideshare?
@@ -223,3 +212,50 @@ input{
 .col-date {
 	width: 150px;
 }
+
+//GO Below, the styling for days per week
+
+.box-week {
+	margin-top: -10px;
+	margin-bottom: 8px;
+	display: flex;
+	flex-direction: row;
+}
+
+.week label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	cursor: pointer;
+	background: theme-color("gray");
+	padding: 3px 3px;
+	color: theme-color("accent");
+	width: 40px;
+	padding-left: 4px;
+	border-radius: 3px;
+	font-size: 15px;
+	user-select: none;
+	overflow: hidden;
+	margin: 2px;
+}
+
+.week input[type='checkbox']:checked + span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: $teal;
+	color: theme-color("light");
+	width: 33px;
+	height: 22px;
+	border-radius: 3px;
+	padding: 0 2px 0 1px;
+	font-size: 15px;
+}
+
+input#weekdays {
+	display: none;
+}
+
+
+
