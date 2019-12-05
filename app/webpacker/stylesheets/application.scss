@@ -318,7 +318,6 @@ input{
 	margin-top: -40px;
 	margin-left: 65%;
 }
-
 //GO Temporary divs on rideshares page
 
 .div-empty-col {
@@ -334,49 +333,4 @@ input{
 	width: 300px;
 	height: 300px;
 }
-
-//GO Below, the styling for days per week
-
-.box-week {
-	margin-top: -10px;
-	margin-bottom: 8px;
-	display: flex;
-	flex-direction: row;
-}
-
-.week label {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	align-self: center;
-	cursor: pointer;
-	background: theme-color("gray");
-	padding: 3px 3px;
-	color: theme-color("accent");
-	width: 40px;
-	padding-left: 4px;
-	border-radius: 3px;
-	font-size: 15px;
-	user-select: none;
-	overflow: hidden;
-	margin: 2px;
-}
-
-.week input[type='checkbox']:checked + span {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: theme-color("secondary");
-	color: theme-color("light");
-	width: 33px;
-	height: 22px;
-	border-radius: 3px;
-	padding: 0 2px 0 1px;
-	font-size: 15px;
-}
-
-input#weekdays {
-	display: none;
-}
-
 

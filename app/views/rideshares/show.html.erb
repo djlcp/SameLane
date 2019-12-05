@@ -4,14 +4,10 @@
 <% provide :head_tags do %>
     <meta name='turbolinks-visit-control' content='reload'> 
 <% end %>
-<div class="container">
-  <!-- Driver Dashboard -->
-  <div class="row">
-    <div class="col">
-      <!-- Here profil picture -->
-    </div>
-    <div class="col">
-      <%= @rideshare.user.first_name.capitalize + ' ' + 
+
+<h2>Ride</h2>
+<% days = Date::ABBR_DAYNAMES %>
+Name: <%= @rideshare.user.first_name.capitalize + ' ' + 
       @rideshare.user.last_name.slice(0).upcase + '.'%><br />
     </div>
   </div> <!-- /Driver Dashboard -->
@@ -66,7 +62,6 @@
     <%= button_to "Join the ride", passenger_path(@rideshare.id), method: :post, :class => "submit-button"%>
     </p>
   <% end %>
-  </div> <!-- /Seat to book -->
 </div>
 <% days = Date::ABBR_DAYNAMES %>
 Days: <%= @rideshare.days %><br />

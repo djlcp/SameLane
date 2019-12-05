@@ -1,0 +1,126 @@
+// Same Way 
+ .container-sameway{
+  display: flex;;
+  justify-content: center;
+  align-items: center;
+  margin: 3em 0 2em 0;
+  width: 100%;
+
+}
+.logo-line-img{
+  max-width: 500px;
+  margin: auto;
+}
+.text-hero{
+  margin: auto;
+  text-align: center;
+}
+
+// **************************
+// Marketing Icon
+// **************************
+.container-card{
+  // display: flex;
+  // justify-content: center;
+  // align-items: flex-start;
+  // margin-top: 4em;
+  // height: auto;
+  // margin: auto;
+  // object-fit: scale-down;
+}
+
+.card{
+  display: flex;
+  justify-content: center;
+  border: 0 !important;
+  margin: 3em 10px 10px 10px;
+  height: 20em;
+  width: 15em;
+  text-align: center;
+
+}
+.card-img-top{
+  object-fit: scale-down;
+  max-height: 11em;
+  max-width: auto;
+}
+
+
+.card:hover{
+  background-color: $iron;
+  transition: 0.9s;
+  .card-img-top{
+    opacity: 0;
+    transition: all 0.7s;
+  }
+  h4{
+    transform: translateY(-150px);
+    transition: 0.9s;
+    color: $teal;
+  }
+  p{
+    opacity: 0;
+  }
+
+//   .card-text-hidden{
+//     transition: 0.9s;
+//     opacity: 1;
+//     transform: translateY(-170px);
+//     color: $nandor;
+//   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Container 
+.container {
+	width: 100%;
+}
+
+// Google Map
+#map2, #map {
+	width: 550px;
+	height: 350px;
+	border-radius: $br;
+	box-shadow: $bs;
+	margin-top: 25px;
+	border-width: 2px;
+}
+
+
+// Carousel style
+
+#rider-name {
+	width: 180px;
+	padding: 7px;
+	height: 35px;
+	color: $twilight-blue;
+	background-color: $tarawera;
+	border-radius: 0 5px 5px 0;
+  box-shadow: $bs;
+  font-family: $stack-roboto;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  width: 650px;
+  max-height: 900px;
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    width: 650px;
+  }
+}
