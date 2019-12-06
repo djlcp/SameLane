@@ -1,12 +1,12 @@
 
 <%= form_tag search_rideshares_path, method: :get do %>
 	<div class="search-bar container">
-		<div class="row justify-content-between">
+		<div class="row row-styling justify-content-between">
 			<div class="col-3">
-<%= text_field_tag 'search[from]', nil, placeholder: 'FROM' %>
+<%= text_field_tag 'search[from]', nil, placeholder: 'FROM', class: "search-area"%>
 			</div>
 			<div class="col-3">
-<%= text_field_tag 'search[to]', nil, placeholder: 'TO' %>
+<%= text_field_tag 'search[to]', nil, placeholder: 'TO', class: "search-area" %>
 			</div>
 <!--			<div class="col-2">-->
 <%#= text_field_tag 'search[date]', nil, placeholder: 'DATE' %>
@@ -15,7 +15,7 @@
 <%#= text_field_tag 'search[time]', nil, placeholder: 'TIME' %>
 <!--			</div>-->
 			<div class="col-2">
-				<button class="submit-button">Search</button>
+				<button class="submit-button search-button">Search</button>
 			</div>
 		</div>
 	</div>
@@ -23,14 +23,13 @@
 
 
 <!--SameWay -->
-<div class="container container-sameway">
-  <div class="row">
-     <%= image_tag(asset_pack_path('media/images/logo-line.png'), class: 'logo-line-img') %>
+<div class="container container-sameway"><!-- *** JN/ change class container -->
+  <div class="row row-styling">
+    <%= image_tag(asset_pack_path('media/images/logo-line.png'), class: 'logo-line-img') %>
   </div>
   </div>
-  <div class="container text-hero">
-   <p>
-     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh <br/>
+  <div class="container container-styling text-hero"> <!-- *** JN/ change class container -->
+  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh <br/>
 euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. <br/>
 Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper <br/>
 suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in <br/>
@@ -41,9 +40,9 @@ hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugia
 
 
 <!-- 3 points of using SameWay-->
-<div class="container container-card">
+<div class="container container-card"> <!-- *** JN/ change class container -->
   <div class="card" style="width: 18rem;">
-     <%= image_tag(asset_pack_path('media/images/cars.png'), class: 'card-img-top card-01') %>
+    <%= image_tag(asset_pack_path('media/images/cars.png'), class: 'card-img-top card-01') %>
     <div class="card-body">
       <h4>REDUCE TRAFFIC</h4>
       <p class="card- text-show">Reduce the number of cars on the road</p>
@@ -70,13 +69,13 @@ hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugia
 
 
 <!-- Carousel -->
-<div class="container">
+<div class="container container-ride "><!-- *** JN/ change class container -->
 	<div class="carousel-container">
 		<div id="carouselExampleIndicators" class="carousel slide vertical-center" data-ride="carousel">
 			<div class="carousel-inner">
 				<% @rideshares.each_with_index do |ride, i| %>
 					<div class="carousel-item <%= i == 0 ? "active" : "" %>">
-					<div class ="container">
+					<div class ="container container-styling">
           <div class="row">
             <div class="container-custom">
               <div class="col-costum2">
@@ -84,7 +83,8 @@ hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugia
                 <div class="container-custom"> 
                   <div class="col-custom3">
                     <div class="col-custom">
-                      <div id="avatar">Here goes the avatar</div>
+                      <div id="avatar"><%= image_tag user_avatar(ride.user, 69) %>
+          </div>
                     </div>
                     <div class="col-custom">
                       <div id="rider-name">
@@ -124,12 +124,12 @@ hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugia
 
 			</div>
         <% if false %>
-		    <ol class="carousel-indicators">
+		  <ol class="carousel-indicators">
           <% @rideshares.each_with_index do |r, i| %>
             <li data-target="#carouselExampleIndicators" data-slide-to="<%= i %>" class="<%= i == 0 ? "active" : "" %>"></li>
           <% end %>
-       </ol>
-       <% end %>
+      </ol>
+      <% end %>
 	</div>
 
 </div>

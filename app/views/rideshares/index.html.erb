@@ -2,7 +2,7 @@
 <div class="blue-line"></div>
 
 <div class ="container">
-  <div class="row">
+  <div class="row row-styling">
 
     <div class="col">
       <div class="div-empty-col">Search div</div>
@@ -10,9 +10,9 @@
 
     <div class="col">
       <% @rideshares.each do |ride| %>
-        <div class ="container">
-          <div class="row">
-           Days: <%= ride.days %>
+        <div class ="container container-styling">
+          <div class="row row-styling">
+            Days: <%= ride.days %>
             <div class="container-custom">
               <div class="col-costum2">
 

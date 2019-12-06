@@ -1,5 +1,5 @@
 <% if @rideshares.empty? %>
-	<div class="container">
+	<div class="conatiner container-styling"> <!-- *** JN/ change class container -->
 		<h1>No rideshares available</h1>
 	</div>
 <% else %>
@@ -10,7 +10,7 @@
     <div class="col-3">
       <div class="col-search">Search div
         <%= form_tag search_rideshares_path, method: :get do %>
-      <div class="search-bar container">
+      <div class="search-bar container container-styling">
         <div class="column justify-content-between">
           <div class="field">
             <%= text_field_tag 'search[from]', nil, placeholder: 'From' %>
@@ -34,8 +34,8 @@
     </div>
     <div class="col">
       <% @rideshares.each do |ride| %>
-        <div class ="container">
-          <div class="row">
+        <div class =" container container-styling">
+          <div class="row row-styling">
             <div class="container-custom">
               <div class="col-costum2">
                   Days: <%= ride.days %>
