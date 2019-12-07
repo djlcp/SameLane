@@ -82,14 +82,13 @@ a {
 }
 
 .blue-line {
-	width: 60%;
-	margin: 0 0 2.5% 20%;
-	height: 4px;
-	border-radius: 5px;
-	box-shadow: 5px 5px 7px theme-color("dark");
-	background: theme-color("secondary");
+  width: 60%;
+  margin:  0 0 2.5% 20%;
+  height: 4px;
+  border-radius: 5px;
+  box-shadow: $bs;
+  background: $teal;
 }
-
 
 /* ========================================================================== */
 /* BUTTONS */
@@ -194,13 +193,6 @@ a {
 /* GO/Other settings.. */
 /* ========================================================================== */
 
-.wrap {
-	width: 20em;
-	margin-right: 5em;
-	display: flex;
-	justify-content: space-between;
-}
-
 .container-home {
 	width: 100%;
 }
@@ -258,11 +250,12 @@ a {
 }
 
 .col-date {
-	width: 150px;
+	width: 100px !important;
+	margin-right: 1em;
 }
 
 .search-container {
-	background-color: green;
+  background-color: $iron;
 }
 
 #avatar {
@@ -277,19 +270,19 @@ a {
 
 
 #ride-name {
-	font-size: 14px;
-	color: theme-color("dark");
-	text-align: center;
-	width: 150px;
-	height: 80px;
+  font-size: 14px;
+  color: $nandor;
+  text-align: center;
+  width: 150px;
+  height: 80px;
 }
 
 #ride-time {
-	font-size: 14px;
-	color: theme-color("dark");
-	text-align: center;
-	width: 150px;
-	height: 10px;
+  font-size: 14px;
+  color: $nandor;
+  text-align: center;
+  width: 150px;
+  height: 10px;
 }
 
 .container-grey {
@@ -301,7 +294,7 @@ a {
 	justify-content: center;
 	width: 500px;
 	height: 150px;
-	background: lightgrey;
+	background: $iron;
 	margin-bottom: 20px;
 	border-radius: 5px;
 }
@@ -375,10 +368,6 @@ a {
 
 			// /Create and join a ride links
 
-			// Icon +
-			.plus-img {
-				margin-right: -8px;
-			}
 
 			// /Icon +
 
@@ -602,19 +591,16 @@ a {
 /* RIDEPOST */
 /* ========================================================================== */
 
-// WIP
-
-.container-ride {
-  flex-direction: column;
-  margin-bottom: 3em;
+.container-ridepost{
+  width: 40%;
+  margin-right: 40%;
 }
-.driver-profil {
-	margin-right: 70% !important;
-	width: 400px;
+.row-line{
+  width: 60em;
 }
 .line {
 	width: 100%;
-	margin: 1em 0 1em 0;
+	margin: 2em 0 2em 0;
 	height: 1px;
 	border-radius: $br;
 	background-color: $nandor;
@@ -628,8 +614,33 @@ a {
   display: flex;
   justify-content: center;
 }
+.date-row{
+  margin: 1em 0 1em 0;
+  color: $tarawera;
+  font-weight: bold;
 
-
+}
+.row-routes{
+  height: 172px;
+}
+.bottom-row{
+  display:flex;
+  flex-direction: column-reverse;
+}
+.bottom-row-test{
+  display: flex;
+  align-items: flex-end;
+}
+.book-row{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2em;
+  margin-left: 20%;
+}
+.row-link{
+  display: flex;
+  justify-content: flex-end;
+}
 /* ========================================================================== */
 /* FOOTER */
 /* ========================================================================== */
@@ -649,139 +660,6 @@ footer {
 
 
 
-//GO/Other settings..
-
-.blue-line {
-	width: 60%;
-	margin: 0 0 2.5% 20%;
-	height: 4px;
-	border-radius: 5px;
-	box-shadow: $bs;
-	background: $teal;
-}
-
-.row-custom {
-	display: flex;
-	width: 500px;
-	height: 80px;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.input-sm {
-	padding-left: 12px !important;
-}
-
-.row-date {
-	display: flex;
-	width: 300px;
-}
-
-.search-container {
-	background-color: $iron;
-}
-
-#avatar {
-	display: block;
-	width: 70px;
-	height: 70px;
-	background-color: rgb(255, 255, 255);
-	border: lightgrey solid 1px;
-	border-radius: 5px;
-	box-shadow: $bs;
-}
-
-#ride-name {
-	font-size: 14px;
-	color: $nandor;
-  text-align: center;
-  padding: 0 2px 0 2px 0;
-	width: 150px;
-	height: 80px;
-}
-
-#ride-time {
-	font-size: 14px;
-	color: $nandor;
-	text-align: center;
-	width: 150px;
-	height: 10px;
-}
-
-.container-grey {
-	display: flex;
-	position: static;
-	z-index: -2;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 500px;
-	height: 150px;
-	background: $iron;
-	margin-bottom: 20px;
-	border-radius: 5px;
-}
-
-.button-join {
-	position: static;
-	z-index: 1;
-	margin-top: -30px;
-	margin-left: 65%;
-}
-
-#updated_at {
-	margin-top: -40px;
-	margin-left: 65%;
-}
-
-//GO Temporary divs on rideshares page
-
-.div-empty-col {
-	border: 1px solid grey;
-	border-radius: 5px;
-	width: 300px;
-	height: 300px;
-}
-
-.div-empty-col2 {
-	border: 1px solid grey;
-	border-radius: 5px;
-	width: 300px;
-	height: 300px;
-}
-
-
-// GO/ Columns rideshare?
-.col-2 {
-	padding: 0;
-	width: 50px;
-}
-
-.col-custom {
-	display: block;
-	padding: 0;
-	width: 120px;
-}
-
-.col-custom3 {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	padding: 0;
-	width: 120px;
-}
-
-.col-custom2 {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.col-date {
-	width: 150px;
-}
 
 //GO Below, the styling for days per week
 
@@ -789,7 +667,6 @@ footer {
 	margin-top: -10px;
 	margin-bottom: 8px;
 	display: flex;
-	flex-direction: row;
 }
 
 .week label {
@@ -807,7 +684,7 @@ footer {
 	font-size: 15px;
 	user-select: none;
 	overflow: hidden;
-	margin: 2px;
+	margin: 1px;
 }
 
 .week input[type='checkbox']:checked+span {
@@ -839,4 +716,48 @@ input#weekdays {
 // Container 
 .container-custom {
 	width: 100%;
+}
+
+.input-sm-style {
+  padding-left: 12px !important;
+}
+
+.field-style {
+  margin-bottom: 10px;
+}
+
+.input-custom {
+	padding-left: 10px;
+	border-radius: 5px;
+	background-color: #e6e6e7;
+	border: none;
+	color: #083f4c;
+	width: 17em;
+	height: 2em;
+	margin-bottom: 0.5em;
+}
+
+.create-ride-container{
+	display: flex;
+	justify-content: center;
+}
+
+
+/* ========================================================================== */
+/* SEARCH PAGE */
+/* ========================================================================== */
+
+.container-search-page{
+	width: 100%;
+}
+
+.map-style-search{
+	width: 350px;
+	height: 150px;
+	border-radius: 4px 4px;
+	border-color: #fff;
+	border-style: solid;
+	box-shadow: 2px 5px 10px rgb(105, 105, 105);
+	margin-top: 25px;
+	border-width: 2px;
 }

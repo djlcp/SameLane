@@ -5,7 +5,7 @@
 <h2 id="notice">Ride</h2>
 <div class="blue-line"></div>
 
-<div class="container">
+<div class="container container-ridepost">
   <div class="row">
     <div class="container-custom"> 
       <div class="col-custom3">
@@ -20,47 +20,46 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>   
+    <div class="row date-row">
+      <%= @rideshare.updated_at&.strftime("%B %e, %Y") %>
+    </div>
 
   <div class="row">
-    <div class="col-7">
+    <div class="col-8">
       <div class="row">
-        DATE
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <div class="row justify-content-end">
+        <div class="col-2">
+          <div class="row justify-content-end row-routes">
             <%= @rideshare.dep_at.strftime("%I:%M %P")%><br />
           </div>
-          <div class="row justify-content-end">
+          <div class="row-routes bottom-row-test ">
             <%= @rideshare.arr_at.strftime("%I:%M %P")%><br />            
           </div>
         </div>
         <div class="col-2 routes-img-div">
           <%= image_tag(asset_pack_path('media/images/routes.png'), class: "routes-img" )%>
         </div>
-        <div class="col-4">
-          <div class="row justify-content-start">
+        <div class="col-6">
+          <div class="row justify-content-start row-routes">
             <span id="from"><%= @rideshare.from.name%></span><br />
           </div>
-          <div class="row justify-content-start">
+          <div class="row justify-content-start row-routes bottom-row ">
             <span id="to"><%= @rideshare.to.name%></span><br />            
           </div>
         </div>     
       </div>
     </div>
-    <div class="col-5">
+    <div class="col-4">
       <div id="map"></div>
     </div> 
   </div>
-
-  <% if false %>
-  <div class="row">
-    Seats available: <%= @rideshare.seat - @rideshare.passengers.count %><br />
+  <div class="row row-line">
+    <div class="line"><div>
   </div>
 
-  <div class="row">
-    <% if @rideshare.passengers.map(&:user).include?(current_user) %> <!-- IF THE USER IS ALREADY IN THE RIDE, PASSENGER CAN CANCEL HIS REQUEST -->
+  <div class="row book-row">
+    Seats available: <%= @rideshare.seat - @rideshare.passengers.count %><br />
+        <% if @rideshare.passengers.map(&:user).include?(current_user) %> <!-- IF THE USER IS ALREADY IN THE RIDE, PASSENGER CAN CANCEL HIS REQUEST -->
       <p>
         <%= button_to 'Cancel request', passenger_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, :class => "delete-button" %>
       </p>
@@ -69,38 +68,26 @@
       <%= button_to "Join the ride", passenger_path(@rideshare.id), method: :post, :class => "submit-button"%>
       </p>
     <% end %>
-    <% end %>
+  </div>
+  <div class="row row-line">
+    <div class="line"><div>
   </div>
 
-
-  
-
-</div>
-
-
-
-
-
-
-
-
-
-<% if true %>
-
-
-
-<% days = Date::ABBR_DAYNAMES %>
-Days: <%= @rideshare.days %><br />
-<div>
+  <div class="row row-link">
     <p>
       <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
       <%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
       <%= link_to "Back", rideshares_path %><br />
     </p> 
-  <!-- JN/ Join a ride button-->
+  </div>
+
+<% days = Date::ABBR_DAYNAMES %>
+Days: <%= @rideshare.days %><br />
+
+  
+
 </div>
 
-<% end %>
 <!-- GO/ We need the info from these elem for the map, but we don't have to see 
 them on the page, hence the hidden class-->
 <span id="latFrom" class = "hidden"><%= @rideshare.from.lat %></span><br />
