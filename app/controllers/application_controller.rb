@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery
 
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || user_rideshares_current_path
+  end
+
     protected
 
     def configure_permitted_parameters
