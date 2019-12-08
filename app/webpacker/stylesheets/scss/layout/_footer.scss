@@ -1,10 +1,15 @@
-// Footer 
+// ***********************
+// FOOTER PAGES
+// ***********************
 
 footer{
+  position: relative;
+  bottom: 0;
   width: 100%;
   background-color: $iron;
-  height: 50px;
-  bottom: 0;
+  // height: 2.5rem;
+  margin-top: 3rem;
+  padding: 5px 5% 5px 5%;
   p{
     color: $tarawera;
   }

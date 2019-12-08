@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :messages 
   has_many :rideshares
   has_many :passengers
+  has_one_attached :avatar
 
   protected
     def confirmation_required?

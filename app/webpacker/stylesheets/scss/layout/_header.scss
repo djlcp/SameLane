@@ -2,16 +2,17 @@
 
 // Genaral top navigation bar
 .nav {
+	position: relative;
 	background-color: $tarawera;
 	color: $twilight-blue;
 	display: flex;
 	align-items: center;
 	flex-wrap: nowrap;
-	min-height: 50px;
-
+	min-height: 60px;
+	padding: 4px;
 	// SameWay logo
 	.logo-img {
-		max-height: 40px;
+		max-height: 45px;
 		margin-left: 5%;
 	} // /SameWay logo
 
@@ -28,14 +29,21 @@
 		.nav-item {
 			display:flex;
 			align-items: center;
+			justify-content: center;
+			flex-wrap: nowrap;
+
+			a{
+				color: $twilight-blue !important;
+		}
 
 			// Create and join a ride links
 			.nav-link {
-				color: $twilight-blue;
+				color: $twilight-blue !important;
 				display:flex;
 				align-items: center;
 				margin: 0;
 				padding: 10px;
+
 			}// /Create and join a ride links
 
 			// Icon +
@@ -46,6 +54,11 @@
 		}// /Links position
 
 	} // /Rideshare links
+
+	.nav-user-name{
+		display: flex;
+		align-items: center;
+	}
 		
 	// User section
 	.nav-user{
@@ -56,8 +69,7 @@
 			display: flex;
 			align-items: center;
 			p{
-				display: flex;
-				align-content: center;
+				margin-bottom: 0 ;
 			}
 			.avatar{
 				height: 50px;
@@ -84,3 +96,23 @@
 
 	} // /User section
 }// /Genaral top navigation bar
+
+
+
+.show > .btn-outline-secondary.dropdown-toggle {
+	color: $teal;
+	background-color: transparent !important; 
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+.outline-secondary.dropdown-toggle { 
+	color: $teal;
+	background-color: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+.btn .btn-outline-secondary .dropdown-toggle .dropdown-toggle-split{
+	background-color: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}

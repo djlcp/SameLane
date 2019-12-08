@@ -13,8 +13,9 @@
 	
 	<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+<%= yield(:head_tags) %> 
 </head>
+
 <body>
 <!-- Navigation Bar -->
 <div class="nav justify-content-between">
