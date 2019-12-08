@@ -142,9 +142,9 @@ a {
 	box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0.75);
 	padding: 10px;
   margin-top: 3em;
-  margin-bottom: 2em;
+	margin-bottom: 2em;
 
-	.search-area {
+	.search-area-home {
     padding-left: 10px;
     border-radius: 5px;
     background-color: #e6e6e7;
@@ -157,7 +157,16 @@ a {
     height: 100% !important;
   }
 }
-
+.search-area-rideshare {
+	padding-left: 10px;
+	border-radius: 5px;
+	background-color: #e6e6e7;
+	border: none;
+	color: #083f4c;
+	width: 17em;
+	height: 2em;
+	margin: 1em;
+}
 /* ========================================================================== */
 /* CAROUSEL */
 /* ========================================================================== */
@@ -469,6 +478,7 @@ a {
 .logo-line-img {
 	max-width: 500px;
 	margin: auto;
+	margin-bottom: 1em;
 }
 
 .text-hero {
@@ -573,10 +583,13 @@ a {
 }
 
 .form-control {
-	background-color: $iron !important;
-	color: $nandor !important;
+	background-color: $iron;
+	color: $nandor;
 	margin: 1em 0 1em 0;
-	width: 350px !important;
+	width: 350px;
+}
+.form-edit{
+	margin:0 0 0 0 !important;
 }
 
 .new_user {
@@ -584,8 +597,30 @@ a {
 	align-items: center;
 	flex-direction: column;
 }
+.edit-avatar{
+	display: block;
+	width: 5em;
+	height:5em;
+	background-color: rgb(255, 255, 255);
+	border: lightgrey solid 1px;
+	border-radius: 5px;
+	box-shadow: $bs;
+	margin: 0 1em 1em 0;
 
+}
+.container-edit-user{
+	display: flex;
+	justify-content: center;
+}
 
+.field-edit-user{
+	margin-bottom: 1em;
+}
+
+.action-user-button{
+	display: flex;
+	justify-content: space-around;
+}
 
 /* ========================================================================== */
 /* RIDEPOST */
@@ -661,6 +696,44 @@ footer {
 
 
 
+
+
+
+
+/* ========================================================================== */
+/* TO ARRANGE */
+/* ========================================================================== */
+
+
+// Container 
+.container-custom {
+	width: 100%;
+}
+
+.input-sm-style {
+  padding-left: 12px !important;
+}
+
+.field-style {
+  margin-bottom: 10px;
+}
+
+.input-custom {
+	padding-left: 10px;
+	border-radius: 5px;
+	background-color: #e6e6e7;
+	border: none;
+	color: #083f4c;
+	width: 17em;
+	height: 2em;
+	margin-bottom: 0.5em;
+}
+
+.create-ride-container{
+	display: flex;
+	justify-content: center;
+}
+
 //GO Below, the styling for days per week
 
 .box-week {
@@ -706,58 +779,28 @@ input#weekdays {
 
 
 /* ========================================================================== */
-/* TO ARRANGE */
-/* ========================================================================== */
-
-.form-section {
-	margin: 5% 20% 0 20%;
-}
-
-// Container 
-.container-custom {
-	width: 100%;
-}
-
-.input-sm-style {
-  padding-left: 12px !important;
-}
-
-.field-style {
-  margin-bottom: 10px;
-}
-
-.input-custom {
-	padding-left: 10px;
-	border-radius: 5px;
-	background-color: #e6e6e7;
-	border: none;
-	color: #083f4c;
-	width: 17em;
-	height: 2em;
-	margin-bottom: 0.5em;
-}
-
-.create-ride-container{
-	display: flex;
-	justify-content: center;
-}
-
-
-/* ========================================================================== */
 /* SEARCH PAGE */
 /* ========================================================================== */
 
-.container-search-page{
-	width: 100%;
-}
 
-.map-style-search{
-	width: 350px;
-	height: 150px;
+#map-style-search{
+	width: 400px;
+	height: 400px;
 	border-radius: 4px 4px;
 	border-color: #fff;
 	border-style: solid;
 	box-shadow: 2px 5px 10px rgb(105, 105, 105);
 	margin-top: 25px;
 	border-width: 2px;
+}
+
+.container-search{
+	position: sticky;
+	display: flex;
+	min-width: 90%;
+}
+.container-ride {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1.5em;
 }
