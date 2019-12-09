@@ -1,0 +1,22 @@
+version: "3"
+services:
+    db:
+        image: mysql:5.7
+        container_name: same_lane_db
+        command: --default-authentication-plugin=mysql_native_password
+        env_file:
+            - .env
+        volumes:
+            - ~/databases/same_lane:/var/lib/mysql/
+    web:
+        build: .
+        container_name: same_lane_web
+        command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+        env_file:
+            - .env
+        volumes:
+            - .:/app
+        ports:
+            - "${PRODUCTION_WEB_PORT}:3000"
+        depends_on:
+            - db
