@@ -16,72 +16,67 @@
 <%= yield(:head_tags) %> 
 </head>
 
-<body>
-<!-- Navigation Bar -->
-<div class="nav justify-content-between">
-	
-	<!-- Logo Navigation -->
-	<div class="nav logo-img">
-		<%= link_to(image_tag(asset_pack_path('media/images/logo-square-white.png'), class: 'logo-img')) %>
-	</div> <!-- /Logo Navigation -->
-	
-	<!-- Links Navigation -->
-	<ul class="nav wrap">
-		<!-- Create a Ride link -->
-		<li class="nav-item">
-			<a class="plus-img" href="../rideshares/new"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
-			<%= link_to 'Create a ride', new_rideshare_path, class: 'nav-link' %>
-		</li><!-- /Create a Ride link -->
-		
-		<!-- Join a Ride link -->
-		<li class="nav-item">
-			<a class="plus-img" href="../rideshares"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
-			<%= link_to 'Join a ride', rideshares_path, class: 'nav-link' %>
-		</li> <!-- /Join a Ride link -->
-	</ul><!-- /Links Navigation -->
-	
-	<!-- User Navigation -->
-	<ul class="nav nav-user">
-		<% if user_signed_in? %>
-			<ul>
-				<div>
-					<!-- User name -->
-					<div>
-						<p class=""> Hi, <strong><%= current_user.first_name %></strong> !</p>
-					</div> <!-- /User name -->
-					
-					<!-- Drop Down Menu -->
-					<div class="btn-group">
-						<button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="sr-only">Toggle Dropdown</span>
-						</button>
-						<div class="dropdown-menu">
-							<%= link_to 'My Dashboard', user_rideshares_current_path, class: 'nav-link dropdown-item' %>
-							<%= link_to 'My Profile', current_user, class: 'nav-link dropdown-item' %>
-							<%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link dropdown-item' %>
-							<%= link_to 'Ride History', user_rides_path(current_user), class: 'nav-link dropdown-item' %>
-							<%= link_to 'Messages', edit_user_registration_path, class: 'nav-link dropdown-item' %>
-							<div class="dropdown-divider"></div>
-							<%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link dropdown-item' %>
-						</div>
-					</div>
-				</div>
-				<div class="avatar"></div>
-			</ul> <!-- /Drop Down Menu -->
-		
-		<% else %>
-			<li class="nav-item">
-				<%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
-			</li>
-			<li class="nav-item">
-				<p class="nav-link">||</p>
-			</li>
-			<li class="nav-item">
-				<%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
-			</li>
-		<% end %>
-	
-	</ul><!-- /User Navigation -->
+      <!-- Logo Navigation -->
+      <div class="nav logo-img">
+    <%= link_to(image_tag(asset_pack_path('media/images/logo-square-white.png'), class: 'logo-img'), root_path   ) %>
+      </div> <!-- /Logo Navigation -->
+
+      <!-- Links Navigation -->
+      <ul class="nav wrap">
+        <!-- Create a Ride link -->
+        <li class="nav-item">
+          <a class="plus-img" href="../rideshares/new"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
+          <%= link_to 'Create a ride', new_rideshare_path, class: 'nav-link' %>
+        </li><!-- /Create a Ride link -->
+
+        <!-- Join a Ride link -->
+        <li class="nav-item">
+          <a class="plus-img" href="../rideshares"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
+          <%= link_to 'Join a ride', search_rideshares_path, class: 'nav-link' %>
+        </li> <!-- /Join a Ride link -->
+      </ul><!-- /Links Navigation -->
+
+      <!-- User Navigation -->
+      <ul class="nav nav-user">
+        <% if user_signed_in? %>
+          <ul>
+            <div class="nav-user-name">
+              <!-- User name -->
+              <div>
+                <p class=""> Hi, <strong><%= current_user.first_name%></strong> !</p>
+              </div> <!-- /User name -->
+
+              <!-- Drop Down Menu -->
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                  <%= link_to 'My Profil', current_user, class: 'nav-link dropdown-item' %> 
+                  <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link dropdown-item' %>
+                  <%= link_to 'Ride History', user_rides_path(current_user) , class: 'nav-link dropdown-item' %>
+                  <%= link_to 'Messages', edit_user_registration_path, class: 'nav-link dropdown-item' %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link dropdown-item'  %>
+                </div>
+              </div>
+            </div>
+            <div class="avatar"><%= link_to((image_tag user_avatar(current_user, 50)), current_user) %></div>
+          </ul> <!-- /Drop Down Menu -->
+          
+        <% else %>
+            <li class="nav-item">
+              <%= link_to 'Register', new_user_registration_path, class: 'nav-link'  %>
+            </li> 
+            <li class="nav-item">
+              <p class="nav-link">||</p>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign in', new_user_session_path, class: 'nav-link'  %>
+            </li>
+        <% end %>
+        
+      </ul><!-- /User Navigation -->
 
 </div><!-- /Navigation Bar -->
 

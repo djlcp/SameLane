@@ -9,13 +9,13 @@
 
   <%= form.fields_for :from, Place.new do |ff| %>
 
-  <div class="container">
-    <div class="row">
-      <div class="col">
+  <div class="container create-ride-container"> <!--*** JN/ change class container -->
+    <div class="row row-styling">
+      <div class="col-5">
 
         <div class="field">
           <%= ff.label "Where is your starting point? " %><br />
-          <%= ff.text_field :name %>
+          <%= ff.text_field :name, class: "input-sm-style input-custom" %>
         </div>
 
         <div class="field">
@@ -33,7 +33,7 @@
 
         <div class="field">
           <%= ff.label "Where are you going to?" %><br />
-          <%= ff.text_field :name %>
+          <%= ff.text_field :name,  class: "input-custom" %>
         </div>
 
         <div class="field">
@@ -66,7 +66,7 @@
 
         <div class="field">
           <%= form.label "How many passengers can you take?" %><br />
-          <%= form.number_field :seat, min: 1, max: 6, class: 'col-2 input-sm' %> 
+          <%= form.number_field :seat, min: 1, max: 6, class: 'col-2 input-sm input-sm-style input-custom ' %> 
         </div>
 
         <h6>What time will it be? </h6>
@@ -75,29 +75,29 @@
           <div class="col-date">
             <div class="field">
               <%= form.label "Departure at: "%><br />
-              <%= form.time_field :dep_at, class: 'col-custom input-sm' %>
+              <%= form.time_field :dep_at, class: 'col-custom input-sm input-custom col-date' %>
             </div>
           </div>
           <div class="col-date">
             <div class="field">
               <%= form.label "Arrival at: "%><br />
-              <%= form.time_field :arr_at, class: 'col-custom input-sm'%>
+              <%= form.time_field :arr_at, class: 'col-custom input-sm input-custom col-date'%>
             </div>
           </div>
         </div>
 
 
-        <div class="field">
+        <div class="field ">
           <h6>The interval of time sharing a ride: </h6>
           <%= form.label "Starts: "%><br />
-          <%= form.date_field :start_date, min: Date.today %> 
+          <%= form.date_field :start_date, min: Date.today, class: "input-custom input-custom"%> 
         </div>
 
       <!-- GO/Users can't choose a date in the past -->
 
         <div class="field">
           <%= form.label "Ends: "%><br />
-          <%= form.date_field :end_date, min: Date.today %>
+          <%= form.date_field :end_date, min: Date.today, class: "input-custom" %>
         </div>
 
         <div class="actions">
@@ -106,7 +106,7 @@
 
     </div>
 
-    <div class="col">
+    <div class="col-6">
     <div id="map2"></div><br /> <!-- GO/ Renders the map -->
     </div>
   
