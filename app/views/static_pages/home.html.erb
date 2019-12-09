@@ -1,86 +1,135 @@
-<!--<h5 style="color:orange;">⬇ These links are temporary </h5>-->
-<!--<%#= link_to "Users", users_path %><br />-->
-<!--<%#= link_to "Rideshares", rideshares_path %><br />-->
-<!--<%#= link_to "Create a ride", new_rideshare_path %><br />-->
-<!--<%#= link_to "Create a place", new_place_path %><br />-->
-<!--<%#= link_to "Places", places_path %><br />-->
-<!--<%#= link_to "User's Rideshare", 'users/4/rideshares' %><br />-->
-<!-- <#%= link_to "User Rideshare", user_rideshares_path %> -->
 
-
-<!--		Search Bar-->
-<%#= form_tag root_path, method: :get, id: 'search-form' do |form| %>
-<!--	<div class="search-bar container">-->
-<!--		<div class="row justify-content-between">-->
-<!--			<div class="col-3">-->
-<%#= text_field_tag 'search[from]', 'FROM' %>
-<!--			</div>-->
-<!--			<div class="col-3">-->
-<%#= text_field_tag 'search[to]', 'TO' %>
+<%= form_tag search_rideshares_path, method: :get do %>
+	<div class="search-bar container">
+		<div class="row justify-content-between">
+			<div class="col-3">
+<%= text_field_tag 'search[from]', nil, placeholder: 'FROM' %>
+			</div>
+			<div class="col-3">
+<%= text_field_tag 'search[to]', nil, placeholder: 'TO' %>
+			</div>
+<!--			<div class="col-2">-->
+<%#= text_field_tag 'search[date]', nil, placeholder: 'DATE' %>
 <!--			</div>-->
 <!--			<div class="col-2">-->
-<%#= text_field_tag 'search[date]', 'DATE' %>
+<%#= text_field_tag 'search[time]', nil, placeholder: 'TIME' %>
 <!--			</div>-->
-<!--			<div class="col-2">-->
-<%#= text_field_tag 'search[time]', 'TIME' %>
-<!--			</div>-->
-<!--			<div class="col-2">-->
-<!--				<button>Search</button>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-<%# end %>
+			<div class="col-2">
+				<button class="submit-button">Search</button>
+			</div>
+		</div>
+	</div>
+<% end %>
 
+
+<!--SameWay -->
+<div class="container container-sameway">
+  <div class="row">
+     <%= image_tag(asset_pack_path('media/images/logo-line.png'), class: 'logo-line-img') %>
+  </div>
+  </div>
+  <div class="container text-hero">
+   <p>
+     Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh <br/>
+euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. <br/>
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper <br/>
+suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in <br/>
+hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan. </p>
+  
+</div>
+
+
+
+<!-- 3 points of using SameWay-->
+<div class="container container-card">
+  <div class="card" style="width: 18rem;">
+     <%= image_tag(asset_pack_path('media/images/cars.png'), class: 'card-img-top card-01') %>
+    <div class="card-body">
+      <h4>REDUCE TRAFFIC</h4>
+      <p class="card- text-show">Reduce the number of cars on the road</p>
+      <p class="card- text-hidden"><br/>Lorewk hfdf vmbndvb bhvbdvhdguhg z fhffhfhshffhfhf kfhjp>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <%= image_tag(asset_pack_path('media/images/people.png'), class: 'card-img-top card-02') %>
+    <div class="card-body">
+      <h4>MAKE FRIENDS</h4>
+      <p class="card-text text-show">Meet new friends, and share the road on groups</p>
+      <p class="card-text text-hidden"> <br/>hskjhfjkd hf jhfdj fjdfh jdhfudhfu dsuf  fdshkufgiug pfhfx</p>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <%= image_tag(asset_pack_path('media/images/plants.png'), class: 'card-img-top card-03') %>
+    <div class="card-body">
+      <h4>HELP NATURE</h4>
+      <p class="card-text text-show">By reducing the traffic your are also helping the nature. Less CO2 emission.</p>
+      <p class="card-text text-hidden">By reducing thsfdjkhf jkfku  hdjhf kjkddhdghdggggdgd ffdfs e tra</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- Carousel -->
 <div class="container">
 	<div class="carousel-container">
 		<div id="carouselExampleIndicators" class="carousel slide vertical-center" data-ride="carousel">
 			<div class="carousel-inner">
-				<% @rideshares.each_with_index do |r, i| %>
+				<% @rideshares.each_with_index do |ride, i| %>
 					<div class="carousel-item <%= i == 0 ? "active" : "" %>">
-						<div class="container w-75">
-							<div class="row">
-								<div class="col-2 user-picture">
-									<img class="img-fluid" src="http://i.imgur.com/EW5FgJM.png" alt="Carousel 1">
-								</div>
-								<div class="col-3 user-name align-self-center">
-									<%= r.user.first_name %>
-								</div>
-								<div class="col-4 offset-3 rs-c-d align-self-center ">
-									<p>**Day of Ride**</p>
-								</div>
-							</div>
-							<div class="row card-info text-center justify-content-between">
-								<div class="col">
-									<%= r.dep_at.strftime("%-l:%M%P") %>
-									<%= r.from.name %>
-									<%= r.from.parish %>
-								</div>
-								<div class="col">
-									<p>Travel-time</p>
-									<p>Distance</p>
-								</div>
-								<div class="col">
-									<%= r.arr_at.strftime("%-l:%M%P") %>
-									<%= r.to.name %>
-									<%= r.to.parish %>
-								</div>
-							</div>
-							<div class="row bg-gray">
-								<div class="col-3 offset-9 join-ride-btn align-items-end">
-									<button>Join Ride</button>
-								</div>
-							</div>
-						</div>
+					<div class ="container">
+          <div class="row">
+            <div class="container-custom">
+              <div class="col-costum2">
+
+                <div class="container-custom"> 
+                  <div class="col-custom3">
+                    <div class="col-custom">
+                      <div id="avatar">Here goes the avatar</div>
+                    </div>
+                    <div class="col-custom">
+                      <div id="rider-name">
+                        <strong><%= ride.user.first_name.capitalize + ' ' + 
+                        ride.user.last_name.slice(0).upcase + '.'%></strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="updated_at"><%= ride.updated_at&.strftime("%B %e, %Y") %></div>
+                  <div class="container-grey">
+                    <div class="row-custom">
+                      <div id="ride-time"><%= ride.dep_at&.strftime('%I:%M %p') %></div>
+                      <div id="ride-time"><%= ride.arr_at&.strftime('%I:%M %p') %></div>
+                    </div>
+                    <div class="col-custom2">
+                      <%= image_tag(asset_pack_path('media/images/dashed-line.svg')) %>
+                      <div class="row-custom">
+                        <div id="ride-name"><%= ride.from.name %></div>
+                        <div id="ride-name"><%= ride.to.name%></div>
+                      </div>
+                    </div> 
+                  </div>
+                  <div class="button-join">
+                    <%= button_to 'Join the ride', rideshare_path(ride), :method => :get, class: 'submit-button' %>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
 					</div>
 				<%
 					end
 				%>
+        </div>
+
 			</div>
-		</div>
-		<ol class="carousel-indicators">
-			<% @rideshares.each_with_index do |r, i| %>
-				<li data-target="#carouselExampleIndicators" data-slide-to="<%= i %>" class="<%= i == 0 ? "active" : "" %>"></li>
-			<% end %>
-		</ol>
+        <% if false %>
+		    <ol class="carousel-indicators">
+          <% @rideshares.each_with_index do |r, i| %>
+            <li data-target="#carouselExampleIndicators" data-slide-to="<%= i %>" class="<%= i == 0 ? "active" : "" %>"></li>
+          <% end %>
+       </ol>
+       <% end %>
 	</div>
+
 </div>

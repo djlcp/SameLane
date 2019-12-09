@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
-
+# Gems required for avatar
+gem 'gravatar_image_tag', '~> 1.2'
+gem 'image_processing', '~> 1.9', '>= 1.9.3'
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.7', '>= 4.7.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -18,7 +20,7 @@ else
   gem 'mysql2', '>= 0.4.4'
 end
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -66,3 +68,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Admin Dashboard gem
 gem 'rails_admin', '~> 2.0' # , github: 'sferik/rails_admin'
+
+gem 'pundit', '~> 2.1'

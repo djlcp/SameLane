@@ -1,0 +1,39 @@
+// Code color
+
+$tarawera: #083f4c;
+$teal: #008081;
+$red-berry: #8C0000;
+$nandor: #525a5a;
+$iron: #e6e6e7;
+$twilight-blue: #feffff;
+
+// $theme-color: (
+// 	// Color code
+// 		"primary": #083f4c, // main app color
+// 		"secondary": #008081,// mainly used for details
+// 		"urgent": #8C0000, // all cancel or delete buttons
+// 		"text": #525a5a, // color mainly used for all type of text
+// 		"area": #e6e6e7, // light grey mainly used for all text area, forms etc.
+// 		"light": #feffff, 
+// );
+
+
+// Font stacks
+$stack-sans-serif: Helvetica, Arial, sans-serif; // base font without styling
+$stack-roboto: 'Roboto:300', $stack-sans-serif; // all text font
+$stack-roboto-link: 'Roboto:300i', $stack-sans-serif; // all links font
+$stack-comfortaa: 'Comfortaa', cursive, $stack-sans-serif; // all titles font
+
+
+// Border radius
+
+$br: 5px;
+
+
+// Shadow
+
+$bs: 2px 5px 10px rgb(105, 105, 105);
+
+
+
+

@@ -1,52 +1,48 @@
- <div class="form-section">
-  <h2>Sign up</h2>
+  <div class="form-section">
+    <h2>Sign up</h2>
+    <div class="blue-line"></div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-    </div>
+      <div class="field">
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", :class => "form-control", :placeholder => "First Name"%>
+      </div>
 
-    <div class="field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-    </div>
+      <div class="field">
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", :class => "form-control", :placeholder => "Last Name"%>
+      </div>
 
-    <div class="field">
-      <%= f.label :phone_number %><br />
-      <%= f.text_field :phone_number, 
-                        maxlength: 11,
-                        autofocus: true, 
-                        autocomplete: "phone_number" 
-      %>
-    </div>
+      <div class="field">
+        <%= f.text_field :phone_number, 
+                          maxlength: 11,
+                          autofocus: true, 
+                          autocomplete: "phone_number",
+                          :class => "form-control", 
+                          :placeholder => "Phone Number" 
+        %>
+      </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control", :placeholder => "Email" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :password %>
+      <div class="field">
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
+        <%= f.password_field :password, autocomplete: "new-password", :class => "form-control", :placeholder => "Password (#{@minimum_password_length} characters minimum)" %>
+        <% end %>
+      </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control", :placeholder => "Confirm your password" %>
+      </div>
 
-    <div class="actions">
-      <%= f.submit "Sign up", :class => "submit-button"  %>
-    </div>
-  <% end %>
+      <div class="actions">
+        <%= f.submit "Sign up", :class => "submit-button"  %>
+      </div>
+    <% end %>
 
-  <% if false %>
-    <%= render "devise/shared/links" %>
-  <% end %>
-</div>
+    <% if false %>
+      <%= render "devise/shared/links" %>
+    <% end %>
+  </div>

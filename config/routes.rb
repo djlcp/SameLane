@@ -8,9 +8,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, except: :show
   resources :places 
-  resources :rideshares
+
+  resources :rideshares do
+    collection do
+      get 'search'
+    end
+  end
+  resources :passengers
 
   get 'users/:id', to: 'users#show', as: 'user_profile'
   get 'users/:id/rides', to: 'users#rides', as: 'user_rides'
-  
+  post 'passengers/:id', to: 'passengers#create'
 end

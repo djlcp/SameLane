@@ -1,0 +1,226 @@
+// ***********************
+// MAIN PAGE STYLE
+// ***********************
+ .container-sameway{
+  display: flex;;
+  justify-content: center;
+  align-items: center;
+  margin: 3em 0 2em 0;
+  width: 100%;
+
+}
+.logo-line-img{
+  max-width: 500px;
+  margin: auto;
+}
+.text-hero{
+  margin: auto;
+  text-align: center;
+}
+
+.card{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 0 !important;
+  margin: 3em 10px 10px 10px;
+  max-height: 20em;
+  width: 15em;
+  text-align: center;
+  overflow: hidden;
+}
+.card-img-top{
+  object-fit: scale-down;
+  max-height: 11em;
+  max-width: auto;
+}
+
+.card:hover{
+  background-color: $iron;
+  transition: 0.9s;
+  .card-img-top{
+    opacity: 0;
+    transition: all 0.7s;
+  }
+  h4{
+    transform: translateY(-160px);
+    transition: 0.9s;
+    color: $teal;
+  }
+  .text-show{
+    opacity: 0;
+  }
+  .text-hidden{
+    transition: 0.9s;
+    display: show;
+    opacity: 1;
+    transform: translateY(-250px);
+  }
+}
+
+// ***********************
+// GOODLE MAP
+// ***********************
+#map2, #map {
+	width: 550px;
+	height: 350px;
+	border-radius: $br;
+	box-shadow: $bs;
+	margin-top: 25px;
+	border-width: 2px;
+}
+
+// ***********************
+// CAROUSEL STYLE
+// ***********************
+#rider-name {
+	width: 180px;
+	padding: 7px;
+	height: 35px;
+	color: $twilight-blue;
+	background-color: $tarawera;
+	border-radius: 0 5px 5px 0;
+  box-shadow: $bs;
+  font-family: $stack-roboto;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  width: 650px;
+  max-height: 900px;
+  .carousel-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    width: 650px;
+  }
+}
+
+// ***********************
+// SEARCH BAR MAIN PAGE
+// ***********************
+
+#search_to #search_from{
+  width: 30em;
+}
+
+
+// ***********************
+// DEVISE PAGES
+// ***********************
+// Title of pages
+
+// Forms writing area
+.container-custom .devise{
+  width: 70%;
+  margin-top: 100px;
+}
+input{
+  border-radius: $br;
+	background-color: $iron;
+	// padding-left: 7px;
+	border: none;
+	color: $tarawera;
+  width: 300px;
+  margin-bottom: 10px;
+  margin: 2% 20% 5% 20%;
+}
+
+// Form section devise pages
+.form-section{
+  width: 70%;
+  // margin: 2% 20% 5% 20%;
+}
+input .remember{
+  width: 10px !important;
+  margin: 0;
+}
+.devise-links{
+  display: flex;
+  justify-content: flex-end;
+  text-align: right !important;
+}
+
+.devise-links a{
+  font-family: $stack-roboto-link;
+}
+.error{
+  color: $red-berry;
+}
+
+.form-control{
+  background-color: $iron !important;
+  color: $nandor !important;
+  margin: 1em 0 1em 0;
+  width: 350px !important;
+}
+.new_user{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+// ***********************
+// RIDE POST
+// ***********************
+.container-ride{
+  flex-direction: column;
+}
+.driver-profil{
+  margin-right: 70% !important;
+  width: 400px;
+}
+.line{
+  width: 100%;
+  margin: 1em 0 1em 0;
+  height: 1px;
+  border-radius: $br;
+  background-color: $nandor;
+}
+.blue-line {
+	width: 60%;
+	height: 4px;
+	border-radius: 5px;
+	box-shadow: 5px 5px 7px theme-color("dark");
+	background: theme-color("secondary");
+}
+.col-time{
+  margin-left: 3em; 
+  width: auto;
+  .row{
+    margin-left: 0 !important;
+  }
+}
+.row-route-top{
+  margin: 1em 0 15em 0 !important;
+}
+.routes-img{
+  margin-top: 50px;
+  height: 290px;
+}
+.container-date{
+  margin-left: 4em;
+   width: auto!important;
+}
+
+
+
+
+
+
+
+
+
+
+// ***********************
+// NO IDEA, NEED TO ORGANISE
+// ***********************
+// Container 
+.container-custom {
+	width: 100%;
+}
+
+
+
+
