@@ -1,8 +1,10 @@
 class RidesharesController < ApplicationController
   
 	before_action :set_rideshare, only: [:show, :edit, :update, :destroy]
+	before_action :owner_check, only: [:edit, :update, :destroy]
 	# before_action :authenticate_user!, except: [:index]
 	respond_to :js, :json, :html
+
 
 	def index
 		@rideshares = Rideshare.all
@@ -27,6 +29,7 @@ class RidesharesController < ApplicationController
 
 
 	def edit
+
 	end
 
 	def update
@@ -67,6 +70,13 @@ class RidesharesController < ApplicationController
 	end
 
 	private
+
+	def owner_check
+		unless @rideshare.user === current_user
+			flash[:alert] = "Unauthorized"
+			redirect_back fallback_location: root_path
+		end
+	end
 
     def rideshare_params
       # params[:rideshare][:days] ||= []
