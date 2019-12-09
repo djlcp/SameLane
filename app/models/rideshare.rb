@@ -10,6 +10,10 @@ class Rideshare < ApplicationRecord
 
 	accepts_nested_attributes_for :from
 	accepts_nested_attributes_for :to
+
+	scope :current, -> (user) { (joined(user)|created(user)) }
+	scope :joined,  -> (user) { joins(:passengers).where(passengers: {user: user}) }
+	scope :created, -> (user) { where(user: user) }
   
     before_save do
         self.days.gsub!(/[\[\]\"]/,"") if attribute_present?("days")
