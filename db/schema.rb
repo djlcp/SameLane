@@ -33,10 +33,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_135624) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "messages", force: :cascade do |t|
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "rideshare_id"
     t.text "text"
@@ -46,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_135624) do
     t.index ["user_id"], name: "fk_rails_273a25a7a6"
   end
 
-  create_table "passengers", force: :cascade do |t|
+  create_table "passengers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "rideshare_id"
     t.datetime "created_at", precision: 6, null: false
@@ -55,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_135624) do
     t.index ["user_id"], name: "fk_rails_e53b659d9d"
   end
 
-  create_table "places", force: :cascade do |t|
+  create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "parish"
     t.float "lat"
@@ -64,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_135624) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "rideshares", force: :cascade do |t|
+  create_table "rideshares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do
     t.bigint "user_id"
     t.bigint "from_id"
     t.bigint "to_id"
@@ -83,7 +80,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_135624) do
     t.index ["user_id"], name: "fk_rails_58d169bbec"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|	
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
