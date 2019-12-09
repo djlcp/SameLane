@@ -1,64 +1,98 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	  <meta charset="utf-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Same Way</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-		<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A&libraries=places' %>
-    <!-- GO/ Without places api -->
-    <!-- <%#= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCMlMjL004R1ybTdNwaDA37jZol1Ylyw-A' %> -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Same Way</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+	
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_API_KEY']}&libraries=places" %>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
-
-
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-		<%= yield(:head_tags) %> 
-  </head>
-
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">	
+	
+	<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= yield(:head_tags) %> 
+</head>
   <body>
+    <!-- Navigation Bar -->
     <div class="nav justify-content-between">
+
+      <!-- Logo Navigation -->
       <div class="nav logo-img">
-        <%= image_tag(asset_pack_path('media/images/logo-square-white.png')) %>
-      </div>
-        <!-- GO/ We'd have to style these alerts somehow to blend with the other elem -->
-        <% if notice %>
-          <p class="alert alert-success"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
-        <% end %>
-      <ul class="nav">
+    <%= link_to(image_tag(asset_pack_path('media/images/logo-square-white.png'), class: 'logo-img')   ) %>
+      </div> <!-- /Logo Navigation -->
+
+      <!-- Links Navigation -->
+      <ul class="nav wrap">
+        <!-- Create a Ride link -->
+        <li class="nav-item">
+          <a class="plus-img" href="../rideshares/new"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
+          <%= link_to 'Create a ride', new_rideshare_path, class: 'nav-link' %>
+        </li><!-- /Create a Ride link -->
+
+        <!-- Join a Ride link -->
+        <li class="nav-item">
+          <a class="plus-img" href="../rideshares"><%= image_tag(asset_pack_path('media/images/plus.svg')) %></a>
+          <%= link_to 'Join a ride', rideshares_path, class: 'nav-link' %>
+        </li> <!-- /Join a Ride link -->
+      </ul><!-- /Links Navigation -->
+
+      <!-- User Navigation -->
+      <ul class="nav nav-user">
         <% if user_signed_in? %>
-        <!-- > <li class="nav-item">
-          Logged in as <strong><%= current_user.email %></strong>.
-        </li> -->
-        <li class="nav-item">
-        <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-        <p class="nav-link">||</p>
-        </li>
-        <li class="nav-item">
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'  %>
-        </li>
-      <% else %>
-        <li class="nav-item">
-        <%= link_to 'Register', new_user_registration_path, class: 'nav-link'  %>
-        </li> 
-        <li class="nav-item">
-          <p class="nav-link">||</p>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link'  %>
-        </li>
+          <ul>
+            <div class="nav-user-name">
+              <!-- User name -->
+              <div>
+                <p class=""> Hi, <strong><%= current_user.first_name%></strong> !</p>
+              </div> <!-- /User name -->
+
+              <!-- Drop Down Menu -->
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                  <%= link_to 'My Profil', current_user, class: 'nav-link dropdown-item' %> 
+                  <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link dropdown-item' %>
+                  <%= link_to 'Ride History', user_rides_path(current_user) , class: 'nav-link dropdown-item' %>
+                  <%= link_to 'Messages', edit_user_registration_path, class: 'nav-link dropdown-item' %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link dropdown-item'  %>
+                </div>
+              </div>
+            </div>
+            <div class="avatar"><%= image_tag user_avatar(current_user, 50) %></div>
+          </ul> <!-- /Drop Down Menu -->
+          
+        <% else %>
+            <li class="nav-item">
+              <%= link_to 'Register', new_user_registration_path, class: 'nav-link'  %>
+            </li> 
+            <li class="nav-item">
+              <p class="nav-link">||</p>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign in', new_user_session_path, class: 'nav-link'  %>
+            </li>
+        <% end %>
+        
+      </ul><!-- /User Navigation -->
+
+    </div><!-- /Navigation Bar -->
+
+    <!-- Alert Messages -->
+    <div>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
       <% end %>
-      </ul>
-    </div>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %> 
+    </div><!-- /Alert Messages -->
+
     <%= yield %>
-  </body>
+        </body>
 </html>

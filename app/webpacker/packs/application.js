@@ -22,4 +22,4 @@ require.context('../images/', true, /.(gif|jpg|png|svg)$/i);
 import '../javascript/map'
 import '../javascript/map2'
 import '../javascript/search';
-import '../stylesheets/application';
+import '../stylesheets/scss/application';

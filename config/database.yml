@@ -48,7 +48,11 @@ development:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: <%= ENV['PROD_DB_NAME'] %>
-  username: <%= ENV['PROD_DB_USER'] %>
-  password: <%= ENV['PROD_DB_PASSWORD'] %>
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  username: <%= ENV['PROD_DB_USER'] || "test" %>
+  password: <%= ENV['PROD_DB_PASSWORD'] || "prod-test" %>
+  database: <%= ENV['PROD_DB_NAME'] || "samelane_production" %>
+  host: <%= ENV['PROD_DB_HOST'] || 'localhost' %>
+  socket:   <%= ENV['PROD_DB_SOCKET'] %>

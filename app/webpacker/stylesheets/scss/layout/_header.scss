@@ -1,0 +1,118 @@
+// ***** NAVIGATION BAR *****
+
+// Genaral top navigation bar
+.nav {
+	position: relative;
+	background-color: $tarawera;
+	color: $twilight-blue;
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	min-height: 60px;
+	padding: 4px;
+	// SameWay logo
+	.logo-img {
+		max-height: 45px;
+		margin-left: 5%;
+	} // /SameWay logo
+
+	// Links position
+	.wrap {
+		margin-left: 40%;
+		width: 17em;
+		margin-right: 5em;
+		display: flex;
+		justify-content: space-between;
+	 // /Links position
+
+		// Rideshare link
+		.nav-item {
+			display:flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: nowrap;
+
+			a{
+				color: $twilight-blue !important;
+		}
+
+			// Create and join a ride links
+			.nav-link {
+				color: $twilight-blue !important;
+				display:flex;
+				align-items: center;
+				margin: 0;
+				padding: 10px;
+
+			}// /Create and join a ride links
+
+			// Icon +
+			.plus-img{
+				margin-right: -8px;
+			}// /Icon +
+
+		}// /Links position
+
+	} // /Rideshare links
+
+	.nav-user-name{
+		display: flex;
+		align-items: center;
+	}
+		
+	// User section
+	.nav-user{
+		display: flex;
+		align-items: center;
+		margin-right: 5%;
+		ul{
+			display: flex;
+			align-items: center;
+			p{
+				margin-bottom: 0 ;
+			}
+			.avatar{
+				height: 50px;
+				width: 50px;
+				background-color: $iron;
+			}
+		}
+
+
+		// Button drop down menu
+		button{
+			color: $twilight-blue;
+			border: 0;
+			margin: 0;
+			&:hover{
+				color: $teal;
+				background-color: transparent;
+			}
+			button[aaria-haspopup="true"]{
+				color: $teal;
+				background-color: transparent;
+			}
+		}// /Button drop down menu
+
+	} // /User section
+}// /Genaral top navigation bar
+
+
+
+.show > .btn-outline-secondary.dropdown-toggle {
+	color: $teal;
+	background-color: transparent !important; 
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+.outline-secondary.dropdown-toggle { 
+	color: $teal;
+	background-color: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+.btn .btn-outline-secondary .dropdown-toggle .dropdown-toggle-split{
+	background-color: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
