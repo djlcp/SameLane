@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
  
  
+  resources :room_messages
+  resources :rooms
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'static_pages#home'
   devise_for :users, controllers: { registrations: :registrations }

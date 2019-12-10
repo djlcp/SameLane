@@ -70,3 +70,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'rails_admin', '~> 2.0' # , github: 'sferik/rails_admin'
 
 gem 'pundit', '~> 2.1'
+
+gem 'simple_form'
