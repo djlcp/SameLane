@@ -4,8 +4,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-2 offset-1">
-			<%= link_to "Current Rideshares", user_rideshares_current_path, class: "btn btn-primary #{action_name === 'current'? 'active' : '';}" %>
-			<%= link_to "Rideshare Histroy", user_rideshares_history_path, class: "btn btn-primary #{action_name === 'history'? 'active' : '';}" %>
+			<%= link_to "Current Rideshares", user_rideshares_current_path, class: "btn btn-primary btn-primary-style #{action_name === 'current'? 'active' : '';}" %>
+			<%= link_to "Rideshare History", user_rideshares_history_path, class: "btn btn-primary btn-primary-style #{action_name === 'history'? 'active' : '';}" %>
 		</div>
 		<div class="col-8 offset-1">
 			<div class="container">
@@ -20,7 +20,7 @@
 											<div class="container-custom">
 												<div class="col-custom3">
 													<div class="col-custom">
-														<div id="avatar">Here goes the avatar</div>
+														<div id="avatar"><%= image_tag user_avatar(ride.user, 69) %></div>
 													</div>
 													<div class="col-custom">
 														<div id="rider-name">

@@ -16,6 +16,7 @@
 <%= yield(:head_tags) %> 
 </head>
 
+<div class="nav">
       <!-- Logo Navigation -->
       <div class="nav logo-img">
     <%= link_to(image_tag(asset_pack_path('media/images/logo-square-white.png'), class: 'logo-img'), root_path   ) %>
@@ -52,12 +53,13 @@
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu">
-                  <%= link_to 'My Profil', current_user, class: 'nav-link dropdown-item' %> 
+                  <%= link_to 'My Dashboard', user_rideshares_current_path, class: 'nav-link dropdown-item' %>
+                  <%= link_to 'My Profile', current_user, class: 'nav-link dropdown-item' %>
                   <%= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link dropdown-item' %>
-                  <%= link_to 'Ride History', user_rides_path(current_user) , class: 'nav-link dropdown-item' %>
+                  <%= link_to 'Ride History', user_rides_path(current_user), class: 'nav-link dropdown-item' %>
                   <%= link_to 'Messages', edit_user_registration_path, class: 'nav-link dropdown-item' %>
                   <div class="dropdown-divider"></div>
-                  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link dropdown-item'  %>
+                  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link dropdown-item' %>
                 </div>
               </div>
             </div>
@@ -99,6 +101,8 @@
 		</div>
 	<% end %>
 </div><!-- /Alert Messages -->
+
+</div>
 
 <%= yield %>
 </body>

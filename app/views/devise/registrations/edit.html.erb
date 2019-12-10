@@ -63,17 +63,13 @@
       </div>
 
       <div class="actions action-user-button">
-            <%= link_to "Back", :back %>
-              <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, 
-        method: :delete, :class => "delete-button"%>
         <%= f.submit "Update", :class => "submit-button"  %>
-
-      <% end %>
-      
-
-      </div>
-
-  </div>
-
+    <% end %>
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, 
+      method: :delete, :class => "delete-button"%>
+      <%= link_to "Back", :back %>
+    </div>
+ 
+</div>
 
 
