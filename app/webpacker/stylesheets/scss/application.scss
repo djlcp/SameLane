@@ -325,7 +325,7 @@ a {
 	margin-left: 65%;
 }
 
-#updated_at {
+#start_date {
 	margin-top: -40px;
 	margin-left: 65%;
 }
@@ -346,6 +346,7 @@ a {
 	flex-wrap: nowrap;
 	min-height: 60px;
 	padding: 4px;
+	justify-content: space-around;
 
 	// SameWay logo
 	.logo-img {
@@ -357,9 +358,9 @@ a {
 
 	// Links position
 	.wrap {
-		margin-left: 50%;
+		margin-left: 40%;
 		width: 17em;
-		margin-right: 5em;
+		// margin-right: 5em;
 		display: flex;
 		justify-content: space-between;
 		// /Links position
@@ -667,7 +668,8 @@ a {
 
 }
 .row-routes{
-  height: 172px;
+	height: 172px;
+	margin-left: 2px;
 }
 .bottom-row{
   display:flex;
