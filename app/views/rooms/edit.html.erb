@@ -3,3 +3,11 @@
 </h1>
 
 <%= render partial: 'form' %>
+
+<button class="delete-button">
+  <%= link_to "Delete", room_path(@room),
+      :data => {:confirm => "You sure?",
+      :method => "delete"} %>
+</button>
+
+                                  

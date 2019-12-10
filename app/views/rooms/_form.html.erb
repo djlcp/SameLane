@@ -1,4 +1,9 @@
-<%= simple_form_for @room do |form| %>
-    <%= form.input :name %>
-    <%= form.submit "Save", class: 'btn btn-success' %>
-  <% end %>
+  <%= form_with(model: @room, local: true) do |f| %>
+
+    <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+    
+  <%= f.submit "Save", class: 'submit-button' %>
+<% end %>

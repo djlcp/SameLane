@@ -40,6 +40,12 @@ class RoomsController < ApplicationController
     @room_messages = @room.room_messages.includes(:user)
   end
 
+  def destroy
+    @room = Room.find(params[:id])
+    @room.destroy
+    redirect_to rooms_path
+  end
+
   protected
 
   def load_entities
