@@ -114,6 +114,16 @@ a {
   padding: 0 1em 0 1em;
 }
 
+.btn-primary-style {
+	color: white;
+  width: auto;
+  height: 2em;
+  border-radius: $br;
+	padding: 4px;
+	margin: 5px;
+}
+
+
 
 /* ========================================================================== */
 /* GEOLOCALISATION */
@@ -127,7 +137,6 @@ a {
 	border-color: #fff;
 	border-style: solid;
 	box-shadow: 2px 5px 10px rgb(105, 105, 105);
-	margin-top: 25px;
 	border-width: 2px;
 }
 
@@ -259,7 +268,7 @@ a {
 }
 
 .col-date {
-	width: 100px !important;
+	width: 115px !important;
 	margin-right: 1em;
 }
 
@@ -283,7 +292,8 @@ a {
   color: $nandor;
   text-align: center;
   width: 150px;
-  height: 80px;
+	height: 80px;
+	padding-left: 1px;
 }
 
 #ride-time {
@@ -347,7 +357,7 @@ a {
 
 	// Links position
 	.wrap {
-		margin-left: 40%;
+		margin-left: 50%;
 		width: 17em;
 		margin-right: 5em;
 		display: flex;
@@ -370,8 +380,8 @@ a {
 				color: $twilight-blue !important;
 				display: flex;
 				align-items: center;
-				margin: 0;
-				padding: 10px;
+				margin-top: 2px;
+				padding: 2px;
 
 			}
 
@@ -611,6 +621,7 @@ a {
 .container-edit-user{
 	display: flex;
 	justify-content: center;
+	margin-bottom: 2em;
 }
 
 .field-edit-user{
@@ -804,3 +815,4 @@ input#weekdays {
 	justify-content: center;
 	margin-bottom: 1.5em;
 }
+
