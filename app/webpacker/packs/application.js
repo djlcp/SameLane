@@ -3,11 +3,11 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+require("../../../node_modules/jquery/dist/jquery")
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("../../../node_modules/jquery/dist/jquery")
 require("../../../node_modules/popper.js")
 require("../../../node_modules/bootstrap/dist/js/bootstrap")
 require.context('../images/', true, /.(gif|jpg|png|svg)$/i);
