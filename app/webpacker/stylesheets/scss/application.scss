@@ -818,3 +818,27 @@ input#weekdays {
 	margin-bottom: 1.5em;
 }
 
+/* ========================================================================== */
+/* DASHBOARD */
+/* ========================================================================== */
+
+.dashboard-button{
+	margin: 1em;
+	width: 15em;
+	background-color: $tarawera;
+	color: $iron;
+	border: none;
+}
+.dashboard-button:hover{
+	background-color: $teal;
+}
+
+.dashboard-button:not(:disabled):not(.disabled).active{
+	background-color: $twilight-blue;
+	color: $tarawera;
+	border: 1px solid $tarawera;
+}
+
+/* ========================================================================== */
+/* USER PROFIL */
+/* ========================================================================== */
