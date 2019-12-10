@@ -1,6 +1,7 @@
-<h1>
+<h2 class="alert-heading">
   <%= @room.name %>
-</h1>
+</h2>
+<div class="blue-line"></div>
 
 <div class="row">
   <div class="col-12 col-md-3">
@@ -33,21 +34,25 @@
         </div>
       <% end %>
     </div>
+    
 
-    <%= simple_form_for @room_message, remote: true do |form| %>
+
+    <%= form_with(model: @room_message, id: 'new_room_message', remote: true) do |f| %>
+
       <div class="input-group mb-3">
-        <%= form.input :message, as: :string,
-                                 wrapper: false,
-                                 label: false,
-                                 input_html: {
-                                   class: 'chat-input'
-                                 } %>
+            <%= f.label :message, "Message:",
+      wrapper: false,
+      label: false,
+      input_html: {
+        class: 'chat-input'
+      } %>
+            <%= f.text_field :message %> 
         <div class="input-group-append">
-          <%= form.submit "Send", class: 'btn btn-primary chat-input' %>
+    <%= f.submit "Send", class: 'submit-button chat-input' %>
         </div>
       </div>
-
-      <%= form.input :room_id, as: :hidden %>
-    <% end %>
+    <%= f.label :room_id, class: "hidden" %> <%= f.number_field :room_id %>
+  <% end %>
+  
   </div>
 </div>

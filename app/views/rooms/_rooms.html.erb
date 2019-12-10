@@ -5,9 +5,9 @@
 </div>
 
 <% if @rooms.present? %>
-  <nav class="nav flex-column">
+  <nav class="flex-column">
     <% @rooms.each do |room| %>
-      <%= link_to room.name, room_path(room), class: 'nav-link' %>
+      <%= link_to room.name, room_path(room), class: 'nav-link dropdown-item' %>
     <% end %>
   </nav>
 <% else %>
