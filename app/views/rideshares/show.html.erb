@@ -22,17 +22,17 @@
     </div>
   </div>   
     <div class="row date-row">
-      <%= @rideshare.updated_at&.strftime("%B %e, %Y") %>
+      <%= @rideshare.start_date&.strftime("%B %e, %Y") %> <!-- here -->
     </div>
 
   <div class="row">
     <div class="col-8">
       <div class="row">
         <div class="col-2">
-          <div class="row justify-content-end row-routes">
+          <div class="row row-routes top-row-test">
             <%= @rideshare.dep_at.strftime("%I:%M %P")%><br />
           </div>
-          <div class="row-routes bottom-row-test ">
+          <div class="row row-routes bottom-row-test ">
             <%= @rideshare.arr_at.strftime("%I:%M %P")%><br />            
           </div>
         </div>
@@ -77,7 +77,7 @@
     <p>
       <%= link_to 'Edit', edit_rideshare_path(@rideshare) %>
       <%= link_to 'Delete', @rideshare, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%= link_to "Back", rideshares_path %><br />
+      <%= link_to "Back", search_rideshares_path %><br />
     </p> 
   </div>
 

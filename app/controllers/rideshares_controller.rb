@@ -43,7 +43,7 @@ class RidesharesController < ApplicationController
 
 	def destroy
 		@rideshare.destroy
-		redirect_to rideshares_path
+		redirect_to search_rideshares_path
 	end
 
 	def self.search(search)

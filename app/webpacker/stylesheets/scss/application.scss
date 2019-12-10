@@ -114,17 +114,6 @@ a {
   padding: 0 1em 0 1em;
 }
 
-.btn-primary-style {
-	color: white;
-  width: auto;
-  height: 2em;
-  border-radius: $br;
-	padding: 4px;
-	margin: 5px;
-}
-
-
-
 /* ========================================================================== */
 /* GEOLOCALISATION */
 /* ========================================================================== */
@@ -325,7 +314,7 @@ a {
 	margin-left: 65%;
 }
 
-#updated_at {
+#start_date {
 	margin-top: -40px;
 	margin-left: 65%;
 }
@@ -346,6 +335,7 @@ a {
 	flex-wrap: nowrap;
 	min-height: 60px;
 	padding: 4px;
+	justify-content: space-around;
 
 	// SameWay logo
 	.logo-img {
@@ -357,9 +347,9 @@ a {
 
 	// Links position
 	.wrap {
-		margin-left: 50%;
+		margin-left: 40%;
 		width: 17em;
-		margin-right: 5em;
+		// margin-right: 5em;
 		display: flex;
 		justify-content: space-between;
 		// /Links position
@@ -551,7 +541,9 @@ a {
 		transform: translateY(-250px);
 	}
 }
-
+.card-body{
+	padding: 0.85rem;
+}
 
 /* ========================================================================== */
 /* DEVISE PAGES */
@@ -667,7 +659,8 @@ a {
 
 }
 .row-routes{
-  height: 172px;
+	height: 172px;
+	margin-left: 2px;
 }
 .bottom-row{
   display:flex;
@@ -816,3 +809,27 @@ input#weekdays {
 	margin-bottom: 1.5em;
 }
 
+/* ========================================================================== */
+/* DASHBOARD */
+/* ========================================================================== */
+
+.dashboard-button{
+	margin: 1em;
+	width: 15em;
+	background-color: $tarawera;
+	color: $iron;
+	border: none;
+}
+.dashboard-button:hover{
+	background-color: $teal;
+}
+
+.dashboard-button:not(:disabled):not(.disabled).active{
+	background-color: $twilight-blue;
+	color: $tarawera;
+	border: 1px solid $tarawera;
+}
+
+/* ========================================================================== */
+/* USER PROFIL */
+/* ========================================================================== */
