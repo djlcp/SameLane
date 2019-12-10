@@ -1,0 +1,63 @@
+<h2 id="notice">Welcome <%= current_user.first_name.capitalize %></h2>
+<div class="blue-line"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-2 offset-1">
+			<%= link_to "Current Rideshares", user_rideshares_current_path, class: "btn btn-primary dashboard-button #{action_name === 'current'? 'active' : '';}" %>
+			<%= link_to "Rideshare History", user_rideshares_history_path, class: "btn btn-primary dashboard-button #{action_name === 'history'? 'active' : '';}" %>
+		</div>
+		<div class="col-8 offset-1">
+			<div class="container">
+				<div class="row row-col-3">
+					<div class="col">
+						<% @rideshares.each do |ride| %>
+							<div class="container">
+								<div class="row">
+									Days: <%= ride.days %>
+									<div class="container-custom">
+										<div class="col-costum2">
+											<div class="container-custom">
+												<div class="col-custom3">
+													<div class="col-custom">
+														<div id="avatar"><%= image_tag user_avatar(ride.user, 69) %></div>
+													</div>
+													<div class="col-custom">
+														<div id="rider-name">
+															<strong><%= ride.user.first_name.capitalize + ' ' +
+																            ride.user.last_name.slice(0).upcase + '.' %></strong>
+														</div>
+													</div>
+												</div>
+												
+												<div id="start_date"><%= ride.start_date&.strftime("%B %e, %Y") %></div>
+												
+												<div class="container-grey">
+													<div class="row-custom">
+														<div id="ride-time"><%= ride.dep_at&.strftime('%I:%M %p') %></div>
+														<div id="ride-time"><%= ride.arr_at&.strftime('%I:%M %p') %></div>
+													</div>
+													<div class="col-custom2">
+														<%= image_tag(asset_pack_path('media/images/dashed-line.svg')) %>
+														<div class="row-custom">
+															<div id="ride-name"><%= ride.from.name %></div>
+															<div id="ride-name"><%= ride.to.name %></div>
+														</div>
+													</div>
+												</div>
+												
+												<div class="button-join">
+													<%= button_to 'Enter', rideshare_path(ride), :method => :get, class: 'submit-button' %>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

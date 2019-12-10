@@ -1,45 +1,104 @@
-<%= form_tag search_rideshares_path, method: :get do %>
-	<div class="search-bar container">
-		<div class="row justify-content-between">
-			<div class="col-3">
-				<%= text_field_tag 'search[from]', nil, placeholder: 'FROM' %>
-			</div>
-			<div class="col-3">
-				<%= text_field_tag 'search[to]', nil, placeholder: 'TO' %>
-			</div>
-<!--			<div class="col-2">-->
-				<%#= text_field_tag 'search[date]', nil, placeholder: 'DATE' %>
-<!--			</div>-->
-<!--			<div class="col-2">-->
-				<%#= text_field_tag 'search[time]', nil, placeholder: 'TIME' %>
-<!--			</div>-->
-			<div class="col-2">
-				<button>Search</button>
-			</div>
-		</div>
-	</div>
-<% end %>
+<div class="body">
+  <h2 id="notice">Search a ride</h2>
+  <div class="blue-line"></div>
+  <% if @rideshares.empty? %>
+      <h1>No rideshares available</h1>
+  <% else %>
+    <!-- main container -->
+    <div class="container container-search">
+        <!-- search bar -->
+        <div class="col-3">
+            <div class="row">
+                <%= form_tag search_rideshares_path, method: :get do %>
+                <div class="search-bar">
+                  <div class="column justify-content-between">
+                      <div class="field">
+                          <%= text_field_tag 'search[from]', nil, placeholder: 'From', class:
+                          "search-area-rideshare"%>
+                      </div>
+                      <div class="field">
+                          <%= text_field_tag 'search[to]', nil, placeholder: 'To', class:
+                          "search-area-rideshare" %>
+                      </div>
+                      <!-- <div class="col-2">-->
+                      <%#= text_field_tag 'search[date]', nil, placeholder: 'DATE' %>
+                      <!-- </div>-->
+                      <!-- <div class="col-2">-->
+                      <%#= text_field_tag 'search[time]', nil, placeholder: 'TIME' %>
+                      <!-- </div>-->
+                      <div class="col-4">
+                          <button class="submit-button">Search</button>
+                      </div>
+                  </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        <!-- /search bar -->
 
+        <!-- ride post -->
+        <div class="col-6">
+            <% @rideshares.each do |ride| %>
+                <div class="container-ride">
+                    <div class="row row-styling">
+                        <!-- Days: <%= ride.days %> -->
+                        <div class="container-custom">
+                            <div class="col-costum2">
+                                <div class="container-custom">
+                                    <div class="col-custom3">
+                                        <div class="col-custom">
+                                            <div id="avatar"><%= image_tag user_avatar(ride.user, 69) %></div>
+                                        </div>
+                                        <div class="col-custom">
+                                            <div id="rider-name">
+                                                <strong><%= ride.user.first_name.capitalize + ' ' +
+                                                    ride.user.last_name.slice(0).upcase + '.'%></strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="start_date"><%= ride.start_date&.strftime("%B %e, %Y") %></div>
+                                    <div class="container-grey">
+                                        <div class="row-custom">
+                                            <div id="ride-time"><%= ride.dep_at&.strftime('%I:%M %p') %></div>
+                                            <div id="ride-time"><%= ride.arr_at&.strftime('%I:%M %p') %></div>
+                                        </div>
+                                        <div class="col-custom2">
+                                            <%= image_tag(asset_pack_path('media/images/dashed-line.svg')) %>
+                                            <div class="row-custom">
+                                                <div id="ride-name"><%= ride.from.name %></div>
+                                                <div id="ride-name"><%= ride.to.name%></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="button-join">
+                                        <%= button_to 'Join the ride', rideshare_path(ride), :method => :get, class:
+                                        'submit-button' %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-1">
+                    <%= link_to 'Edit', edit_rideshare_path(ride) %>
+                    <%= link_to 'Delete', ride, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div> -->
+            <% end %> 
+        </div>
+        <!-- /ride post -->
 
-<% if @rideshares.empty? %>
-	<div class="container">
-		<h1>No rideshares available</h1>
-	</div>
-<% else %>
-	<div class="row">
-		<% @rideshares.each do |r| %>
-			<div class="col-sm-3">
-				<div>
-					<ul>
-						<li><%= r.from.name %></li>
-						<li><%= r.from.parish %></li>
-						<li><%= r.to.name %></li>
-						<li><%= r.to.parish %></li>
-						<li><%= r.dep_at.strftime("%-l:%M%P") %></li>
-						<li><%= r.arr_at.strftime("%-l:%M%P") %></li>
-					</ul>
-				</div>
-			</div>
-		<% end %>
-	</div>
-<% end %>
+        <div class="col-3">
+            <div id="map-style-search">
+                <iframe
+                    width='100%'
+                    height='100%'
+                    src='https://maps.google.com/maps?q=Jersey,%20United%20Kingdom&Roadmap&z=12&output=embed'
+                    frameborder='0'
+                    marginheight='0'
+                    marginwidth='0'></iframe>
+            </div>
+        </div>
+          
+  <% end %>
+</div>
+    <!-- body -->

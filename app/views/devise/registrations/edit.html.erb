@@ -1,82 +1,75 @@
-<div class="form-section">
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
     <div class="blue-line"></div>
-  
+  <div class="container container-edit-user">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
+
     <!-- GO/ Avatar> -->
-    <div class="field">
-      <div class="row">
-        <div class="col-sm-8">
-          <%= f.label 'Change your profile picture' %><br />
-          <%= f.file_field :avatar %>
-        </div>
-        <div class="col-sm-4">
-          <%= image_tag user_avatar(resource, 80) %>
-        </div>
+    <div class="col">
+      <div class="field field-edit-user">
+            <%= image_tag user_avatar(resource, 80), class: "edit-avatar" %>
+            <%= f.label 'Change your profile picture' %><br />
+            <%= f.file_field :avatar %>
       </div>
     </div>
+    
     <!-- GO/ Avatar> -->
+    <div class="col">
+      <div class="field field-edit-user">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name, autofocus: true, autofocus: "first_name", :class => "form-control form-edit" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, autofocus: true, autofocus: "first_name" %>
-    </div>
+      <div class="field field-edit-user">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", :class => "form-control form-edit" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-    </div>
+      <div class="field field-edit-user">
+        <%= f.label :phone_number %><br />
+        <%= f.text_field :phone_number, maxlength: 11, autofocus: true, autocomplete: "phone_number", :class => "form-control form-edit" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :phone_number %><br />
-      <%= f.text_field :phone_number, maxlength: 11, autofocus: true, autocomplete: "phone_number" %>
-    </div>
+      <div class="field field-edit-user">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control form-edit" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
-      <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-        <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
-        <% end %>
-      </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
+        <div class="field field-edit-user">
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.password_field :password, autocomplete: "new-password", :class => "form-control form-edit" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div>
 
-      <div class="field">
+        <div class="field field-edit-user">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control form-edit" %>
+    </div>
+        
+    <div class="line"></div>
+
+      <div class="field field-edit-user">
         <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", :class => "form-control form-edit" %>
+      </div>
       </div>
 
-      <div class="actions">
+      <div class="actions action-user-button">
         <%= f.submit "Update", :class => "submit-button"  %>
-      <% end %>
-        <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, 
-        method: :delete, :class => "delete-button"%>
-      </div>
-        <%= link_to "Back", :back %>
-  </div>
-
+    <% end %>
+      <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, 
+      method: :delete, :class => "delete-button"%>
+      <%= link_to "Back", :back %>
+    </div>
+ 
+</div>
 
 

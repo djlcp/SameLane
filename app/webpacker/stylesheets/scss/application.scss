@@ -1,160 +1,217 @@
-// =========================
-// GLOBAL IMPORTS
-// =========================
+// @import "variables";
+// @import "mixin";
+// @import '../../../node_modules/bootstrap/scss/bootstrap';
 
 @import 'base/index';
 @import 'components/index';
 @import 'layout/index';
 @import '../../../../node_modules/bootstrap/scss/bootstrap';
 
-// *********************************************
-// OLD CSS CODE >> NEED  TO BE TIDY AND CHANGED
-// *********************************************
+/* ========================================================================== */
+/* VARIABLES */
+/* ========================================================================== */
 
-// TO DELETE  ???
+// Code color
+$tarawera: #083f4c;
+$teal: #008081;
+$red-berry: #8C0000;
+$nandor: #525a5a;
+$iron: #e6e6e7;
+$twilight-blue: #feffff;
 
-// .routes-img{
-//   height: 30px;
-//   width: auto;
-// }
+// Font stacks
+$stack-sans-serif: Helvetica, Arial, sans-serif; // base font without styling
+$stack-roboto: 'Roboto:300', $stack-sans-serif; // all text font
+$stack-roboto-link: 'Roboto:300i',$stack-sans-serif; // all links font
+$stack-comfortaa: 'Comfortaa', cursive, $stack-sans-serif; // all titles font
+
+// Border radius
+$br: 5px;
+
+// Shadow
+$bs: 2px 5px 10px rgb(105, 105, 105);
 
 
+// OLD KEYS
+$primary-colour: #083f4c;
+$text-color: #525a5a;
+$main-font:'Roboto',
+sans-serif;
+;
+
+
+
+/* ========================================================================== */
+/* BASE STYLES */
+/* ========================================================================== */
+
+html,
+body {
+	background-color: $twilight-blue;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	position: relative;
+}
 
 // GO/ Add a class to form for rideshare and hide the labels for lat, lng.
 // Same for show info.
+.hidden {
+	display: none;
+}
+
+h2 {
+	margin-left: 20%;
+	font-family: $stack-comfortaa;
+	margin-top: 30px;
+	color: $tarawera
+}
+
+h4 {
+	color: $tarawera;
+	font-family: $stack-comfortaa;
+}
+
+.link {
+	color: $tarawera;
+	font-family: $stack-roboto-link;
+}
+
+a {
+	color: $teal;
+}
+
+.blue-line {
+  width: 60%;
+  margin:  0 0 2.5% 20%;
+  height: 4px;
+  border-radius: 5px;
+  box-shadow: $bs;
+  background: $teal;
+}
+
+/* ========================================================================== */
+/* BUTTONS */
+/* ========================================================================== */
+
+// Form's submit button
+.submit-button {
+	background-color: $tarawera;
+	color: white;
+  width: auto;
+  height: 2em;
+  border-radius: $br;
+  padding: 0 1em 0 1em;
+}
+
+// Form's delete button
+.delete-button {
+	background-color: $red-berry;
+	color: white;
+  width: auto;
+  height: 2em;
+  border-radius: $br;
+  padding: 0 1em 0 1em;
+}
+
+/* ========================================================================== */
+/* GEOLOCALISATION */
+/* ========================================================================== */
+
+#map2,
+#map {
+	width: 550px;
+	height: 350px;
+	border-radius: 4px 4px;
+	border-color: #fff;
+	border-style: solid;
+	box-shadow: 2px 5px 10px rgb(105, 105, 105);
+	border-width: 2px;
+}
 
 
+/* ========================================================================== */
+/* SEARCH BAR */
+/* ========================================================================== */
 
-
-//search bar
 .search-bar {
-	position: -webkit-sticky;
-	position: sticky;
-	-webkit-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.75);
-	-moz-box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.75);
-	box-shadow: 10px 10px 20px -10px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0.75);
+	box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0.75);
 	padding: 10px;
-	margin-top: 20px;
+  margin-top: 3em;
+	margin-bottom: 2em;
 
-	input {
-		box-sizing: border-box;
-		height: 100%;
-		width: 100%;
-		color: $tarawera;
-		background-color: $iron;
-		border: none;
-		padding-left: 10px;
+	.search-area-home {
+    padding-left: 10px;
+    border-radius: 5px;
+    background-color: #e6e6e7;
+    border: none;
+    color: #083f4c;
+    width: 17em;
+    height: 2em;
+  }
+  .search-button{
+    height: 100% !important;
+  }
+}
+.search-area-rideshare {
+	padding-left: 10px;
+	border-radius: 5px;
+	background-color: #e6e6e7;
+	border: none;
+	color: #083f4c;
+	width: 17em;
+	height: 2em;
+	margin: 1em;
+}
+/* ========================================================================== */
+/* CAROUSEL */
+/* ========================================================================== */
+
+#rider-name {
+	width: 180px;
+	padding: 7px;
+	height: 35px;
+	color: $twilight-blue;
+	background-color: $tarawera;
+	border-radius: 0 5px 5px 0;
+	box-shadow: $bs;
+	font-family: $stack-roboto;
+}
+// double styling with the top one .... 
+// *** JN/ change class container
+.container-styling {
+	display: flex !important;
+	justify-content: center !important;
+	width: 650px !important;
+	max-height: 900px !important;
+
+	.carousel-container {
+		display: flex;
+		justify-content: center;
+		margin-top: 50px;
+		width: 650px;
 	}
 }
 
 
+/* ========================================================================== */
+/* GO/Other settings.. */
+/* ========================================================================== */
 
-
-
-
-
-//GO/Other settings..
-
-.blue-line {
-	width: 60%;
-	margin:  0 0 2.5% 20%;
-	height: 4px;
-	border-radius: 5px;
-	box-shadow: $bs;
-	background: $teal;
+.container-home {
+	width: 100%;
 }
 
-.row-custom {
-	display: flex;
-	width: 500px;
-	height: 80px;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+.container-padding {
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
-.input-sm {
-	padding-left: 12px !important;
-}
-
-.row-date {
-	display: flex;
-	width: 300px;
-}
-
-.search-container {
-	background-color: $iron;
-}
-
-#avatar {
-	display: block;
-	width: 70px;
-	height: 70px;
-	background-color: rgb(255, 255, 255);
-	border: lightgrey solid 1px;
-	border-radius: 5px;
-}
-
-#ride-name {
-	font-size: 14px;
-	color: $nandor;
-	text-align: center;
-	width: 150px;
-	height: 80px;
-}
-
-#ride-time {
-	font-size: 14px;
-	color: $nandor;
-	text-align: center;
-	width: 150px;
-	height: 10px;
-}
-
-.container-grey {
-	display: flex;
-	position: static;
-	z-index: -2;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 500px;
-	height: 150px;
-	background: $iron;
-	margin-bottom: 20px;
-	border-radius: 5px;
-}
-
-.button-join {
-	position: static;
-	z-index: 1;
-	margin-top: -30px;
-	margin-left: 65%;
-}
-
-#updated_at {
-	margin-top: -40px;
-	margin-left: 65%;
-}
-
-//GO Temporary divs on rideshares page
-
-.div-empty-col {
-	border: 1px solid grey;
-	border-radius: 5px;
-	width: 300px;
-	height: 300px;
-}
-
-.div-empty-col2 {
-	border: 1px solid grey;
-	border-radius: 5px;
-	width: 300px;
-	height: 300px;
-}
-
-
-// GO/ Columns rideshare?
 .col-2 {
 	padding: 0;
 	width: 50px;
@@ -181,8 +238,504 @@
 	justify-content: center;
 }
 
+.row-custom {
+	display: flex;
+	width: 500px;
+	height: 80px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.input-sm {
+	padding-left: 12px;
+}
+
+.row-date {
+	display: flex;
+	width: 300px;
+}
+
 .col-date {
-	width: 150px;
+	width: 115px !important;
+	margin-right: 1em;
+}
+
+.search-container {
+  background-color: $iron;
+}
+
+#avatar {
+	display: block;
+	width: 70px;
+	height: 70px;
+	background-color: rgb(255, 255, 255);
+	border: lightgrey solid 1px;
+	border-radius: 5px;
+	box-shadow: $bs;
+}
+
+
+#ride-name {
+  font-size: 14px;
+  color: $nandor;
+  text-align: center;
+  width: 150px;
+	height: 80px;
+	padding-left: 1px;
+}
+
+#ride-time {
+  font-size: 14px;
+  color: $nandor;
+  text-align: center;
+  width: 150px;
+  height: 10px;
+}
+
+.container-grey {
+	display: flex;
+	position: static;
+	z-index: -2;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 500px;
+	height: 150px;
+	background: $iron;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+.button-join {
+	position: static;
+	z-index: 1;
+	margin-top: -30px;
+	margin-left: 65%;
+}
+
+#start_date {
+	margin-top: -40px;
+	margin-left: 65%;
+}
+
+
+
+/* ========================================================================== */
+/* NAVIGATION BAR */
+/* ========================================================================== */
+
+// Genaral top navigation bar
+.nav {
+	position: relative;
+	background-color: $tarawera;
+	color: $twilight-blue;
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	min-height: 60px;
+	padding: 4px;
+	justify-content: space-around;
+
+	// SameWay logo
+	.logo-img {
+		max-height: 45px;
+		margin-left: 5%;
+	}
+
+	// /SameWay logo
+
+	// Links position
+	.wrap {
+		margin-left: 40%;
+		width: 17em;
+		// margin-right: 5em;
+		display: flex;
+		justify-content: space-between;
+		// /Links position
+
+		// Rideshare link
+		.nav-item {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: nowrap;
+
+			a {
+				color: $twilight-blue !important;
+			}
+
+			// Create and join a ride links
+			.nav-link {
+				color: $twilight-blue !important;
+				display: flex;
+				align-items: center;
+				margin-top: 2px;
+				padding: 2px;
+
+			}
+
+			// /Create and join a ride links
+
+
+			// /Icon +
+
+		}
+
+		// /Links position
+
+	}
+
+	// /Rideshare links
+
+	.nav-user-name {
+		display: flex;
+		align-items: center;
+	}
+
+	// User section
+	.nav-user {
+		display: flex;
+		align-items: center;
+		margin-right: 5%;
+
+		ul {
+			display: flex;
+			align-items: center;
+
+			p {
+				margin-bottom: 0;
+			}
+
+			.avatar {
+				height: 50px;
+				width: 50px;
+				background-color: $iron;
+			}
+		}
+
+
+		// Button drop down menu
+		button {
+			color: $twilight-blue;
+			border: 0;
+			margin: 0;
+
+			&:hover {
+				color: $teal;
+				background-color: transparent;
+			}
+
+			button[aaria-haspopup="true"] {
+				color: $teal;
+				background-color: transparent;
+			}
+		}
+
+		// /Button drop down menu
+
+	}
+
+	// /User section
+}
+
+// /Genaral top navigation bar
+
+
+
+.show>.btn-outline-secondary.dropdown-toggle {
+	color: $teal;
+	background-color: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.outline-secondary.dropdown-toggle {
+	color: $teal;
+	background-color: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.btn .btn-outline-secondary .dropdown-toggle .dropdown-toggle-split {
+	background-color: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+}
+
+
+/* ========================================================================== */
+/* MAIN PAGE */
+/* ========================================================================== */
+.container-sameway {
+	display: flex;;
+	justify-content: center;
+  margin: auto;
+  padding-top: 2em;
+
+}
+
+.logo-line-img {
+	max-width: 500px;
+	margin: auto;
+	margin-bottom: 1em;
+}
+
+.text-hero {
+	margin: auto;
+	text-align: center;
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+}
+
+.container-card {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	width: 800px ;
+  max-height: 900px;
+  margin-bottom: 3em;
+}
+
+.card {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	border: 0 !important;
+	margin: 3em 10px 10px 10px;
+	max-height: 20em;
+	min-width: 17em !important;
+	text-align: center;
+	overflow: hidden;
+}
+
+.card-img-top {
+	object-fit: scale-down;
+	max-height: 11em;
+	max-width: auto;
+}
+
+.card:hover {
+	background-color: $iron;
+	transition: 0.9s;
+
+	.card-img-top {
+		opacity: 0;
+		transition: all 0.7s;
+	}
+
+	h4 {
+		transform: translateY(-160px);
+		transition: 0.9s;
+		color: $teal;
+	}
+
+	.text-show {
+		opacity: 0;
+	}
+
+	.text-hidden {
+		transition: 0.9s;
+		display: show;
+		opacity: 1;
+		transform: translateY(-250px);
+	}
+}
+.card-body{
+	padding: 0.85rem;
+}
+
+/* ========================================================================== */
+/* DEVISE PAGES */
+/* ========================================================================== */
+// Forms writing area
+.container-custom .devise {
+	width: 70%;
+	margin-top: 100px;
+}
+.button-devise{
+  margin-left: 50%;
+}
+.remember-me{
+  margin-left: 50%;
+}
+.remember {
+  border-radius: 5px;
+  background-color: #e6e6e7;
+  border: none;
+  color: #083f4c;
+  width: 1.5em;
+}
+
+// Form section devise pages
+.form-section {
+	width: 70%;
+	// margin: 2% 20% 5% 20%;
+}
+
+.devise-links {
+	justify-content: flex-end;
+  text-align: right;
+  margin-right: 20%;
+  font-family: $stack-roboto-link;
+}
+
+.error {
+	color: $red-berry;
+}
+
+.form-control {
+	background-color: $iron;
+	color: $nandor;
+	margin: 1em 0 1em 0;
+	width: 350px;
+}
+.form-edit{
+	margin:0 0 0 0 !important;
+}
+
+.new_user {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.edit-avatar{
+	display: block;
+	width: 5em;
+	height:5em;
+	background-color: rgb(255, 255, 255);
+	border: lightgrey solid 1px;
+	border-radius: 5px;
+	box-shadow: $bs;
+	margin: 0 1em 1em 0;
+
+}
+.container-edit-user{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2em;
+}
+
+.field-edit-user{
+	margin-bottom: 1em;
+}
+
+.action-user-button{
+	display: flex;
+	justify-content: space-around;
+}
+
+/* ========================================================================== */
+/* RIDEPOST */
+/* ========================================================================== */
+
+.container-ridepost{
+  width: 40%;
+  margin-right: 40%;
+}
+.row-line{
+  width: 60em;
+}
+.line {
+	width: 100%;
+	margin: 2em 0 2em 0;
+	height: 1px;
+	border-radius: $br;
+	background-color: $nandor;
+}
+.routes-img{
+  max-height: 340px;
+}
+
+.routes-img-div {
+  margin-top: 0.2em;
+  display: flex;
+  justify-content: center;
+}
+.date-row{
+  margin: 1em 0 1em 0;
+  color: $tarawera;
+  font-weight: bold;
+
+}
+.row-routes{
+	height: 172px;
+	margin-left: 2px;
+}
+.bottom-row{
+  display:flex;
+  flex-direction: column-reverse;
+}
+.bottom-row-test{
+  display: flex;
+  align-items: flex-end;
+}
+.book-row{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2em;
+  margin-left: 20%;
+}
+.row-link{
+  display: flex;
+  justify-content: flex-end;
+}
+/* ========================================================================== */
+/* FOOTER */
+/* ========================================================================== */
+footer {
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	background-color: $iron;
+	// height: 2.5rem;
+	margin-top: 3rem;
+	padding: 5px 5% 5px 5%;
+
+	ˇ p {
+		color: $tarawera;
+	}
+}
+
+
+
+
+
+
+
+
+/* ========================================================================== */
+/* TO ARRANGE */
+/* ========================================================================== */
+
+
+// Container 
+.container-custom {
+	width: 100%;
+}
+
+.input-sm-style {
+  padding-left: 12px !important;
+}
+
+.field-style {
+  margin-bottom: 10px;
+}
+
+.input-custom {
+	padding-left: 10px;
+	border-radius: 5px;
+	background-color: #e6e6e7;
+	border: none;
+	color: #083f4c;
+	width: 17em;
+	height: 2em;
+	margin-bottom: 0.5em;
+}
+
+.create-ride-container{
+	display: flex;
+	justify-content: center;
 }
 
 //GO Below, the styling for days per week
@@ -191,7 +744,6 @@
 	margin-top: -10px;
 	margin-bottom: 8px;
 	display: flex;
-	flex-direction: row;
 }
 
 .week label {
@@ -209,10 +761,10 @@
 	font-size: 15px;
 	user-select: none;
 	overflow: hidden;
-	margin: 2px;
+	margin: 1px;
 }
 
-.week input[type='checkbox']:checked + span {
+.week input[type='checkbox']:checked+span {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -230,4 +782,54 @@ input#weekdays {
 }
 
 
+/* ========================================================================== */
+/* SEARCH PAGE */
+/* ========================================================================== */
 
+
+#map-style-search{
+	width: 400px;
+	height: 400px;
+	border-radius: 4px 4px;
+	border-color: #fff;
+	border-style: solid;
+	box-shadow: 2px 5px 10px rgb(105, 105, 105);
+	margin-top: 25px;
+	border-width: 2px;
+}
+
+.container-search{
+	position: sticky;
+	display: flex;
+	min-width: 90%;
+}
+.container-ride {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1.5em;
+}
+
+/* ========================================================================== */
+/* DASHBOARD */
+/* ========================================================================== */
+
+.dashboard-button{
+	margin: 1em;
+	width: 15em;
+	background-color: $tarawera;
+	color: $iron;
+	border: none;
+}
+.dashboard-button:hover{
+	background-color: $teal;
+}
+
+.dashboard-button:not(:disabled):not(.disabled).active{
+	background-color: $twilight-blue;
+	color: $tarawera;
+	border: 1px solid $tarawera;
+}
+
+/* ========================================================================== */
+/* USER PROFIL */
+/* ========================================================================== */
